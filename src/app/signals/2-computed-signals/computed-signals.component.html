@@ -1,1 +1,13 @@
-<p>computed-signals works!</p>
+<div class="profile-container">
+    <div class="profile-info">
+        <label for="firstName">Nombre:</label>
+        <input type="text" (input)="setFirstName($event.target)" placeholder="Name">
+
+        <label for="lastName">Apellido:</label>
+        <input type="text" (input)="setLastName($event.target)" placeholder="Surname">
+    </div>
+
+    <div class="profile-greeting">
+        <p>Hola, {{ fullName()}}!</p>
+    </div>
+</div>
