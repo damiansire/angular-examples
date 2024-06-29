@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { WritableSignalsComponent } from './signals/writable-signals/writable-signals.component';
+import { WritableSignalsComponent } from './signals/1-writable-signals/writable-signals.component';
 
 @Component({
   selector: 'app-root',
