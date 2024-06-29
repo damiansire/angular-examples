@@ -2,11 +2,10 @@
     <div class="profile-info">
         <label for="firstName">Nombre:</label>
         <input type="text" (input)="setFirstName($event.target)" placeholder="Name">
-
+        <br>
         <label for="lastName">Apellido:</label>
         <input type="text" (input)="setLastName($event.target)" placeholder="Surname">
     </div>
-
     <div class="profile-greeting">
         <p>Hola, {{ fullName()}}!</p>
     </div>
