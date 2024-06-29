@@ -1,14 +1,7 @@
-<div class="profile-container">
-    <div class="profile-info">
-        <label for="firstName">Nombre:</label>
-        <input type="text" (input)="setFirstName($event.target)" placeholder="Name">
-        <br>
-        <label for="lastName">Apellido:</label>
-        <input type="text" (input)="setLastName($event.target)" placeholder="Surname">
-    </div>
-    <div class="profile-greeting">
-        <p>Hola, {{ fullName()}}!</p>
-    </div>
+<div class="profile-cards-container">
+    <app-profile-card title="Persona 1"></app-profile-card>
+    <app-profile-card title="Persona 2"></app-profile-card>
+    <app-profile-card title="Persona 3"></app-profile-card>
 </div>
 
 <div>
