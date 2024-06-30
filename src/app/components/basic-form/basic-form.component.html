@@ -1,12 +1,52 @@
-<div class="profile-container">
-  <h2>{{ fullName() }}!</h2>
-  <div class="profile-info">
-    <label for="firstName">Name:</label>
-    <input type="text" placeholder="Name" #firstNameInput />
-    <br />
-    <label for="surname">Surname:</label>
-    <input type="text" placeholder="Surname" #surnameInput />
-    <br />
-    <button class="btn btn-primary" (click)="setValue()">Set</button>
+<div class="p-3">
+  <h1
+    class="text-center mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white"
+  >
+    {{ fullName() }}!
+  </h1>
+
+  <div class="w-full">
+    <div class="mb-5">
+      <label
+        for="fName"
+        class="mb-3 block text-base font-medium text-[#07074D]"
+      >
+        First Name
+      </label>
+      <input
+        type="text"
+        name="fName"
+        id="fName"
+        placeholder="First Name"
+        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+        #firstNameInput
+      />
+    </div>
   </div>
+
+  <div class="w-full">
+    <div class="mb-5">
+      <label
+        for="sName"
+        class="mb-3 block text-base font-medium text-[#07074D]"
+      >
+        Surname
+      </label>
+      <input
+        type="text"
+        name="sName"
+        id="sName"
+        placeholder="Surname"
+        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+        #surnameInput
+      />
+    </div>
+  </div>
+
+  <button
+    class="text-[13px] leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-body text-center justify-center border-0 border-transparent placeholder-white focus-visible:outline-none focus:outline-none bg-black text-white px-5 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white hover:bg-gray-600 hover:shadow-cart h-12 lg:h-14 mt-1 text-sm w-full"
+    (click)="setValue()"
+  >
+    Set
+  </button>
 </div>
