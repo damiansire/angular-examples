@@ -17,9 +17,9 @@ import { FormsModule } from '@angular/forms';
 })
 export class ComputedSignalsComponent {
   firstName: WritableSignal<string> = signal('Damian');
-  lastName: WritableSignal<string> = signal('Sire');
+  surname: WritableSignal<string> = signal('Sire');
   fullName: Signal<string> = computed(() => {
-    return `${this.firstName()} ${this.lastName()}`;
+    return `${this.firstName()} ${this.surname()}`;
   });
 
   setFirstName(eventTarget: any) {
@@ -29,6 +29,6 @@ export class ComputedSignalsComponent {
 
   setLastName(eventTarget: any) {
     const value = eventTarget?.value || '';
-    this.lastName.set(value);
+    this.surname.set(value);
   }
 }

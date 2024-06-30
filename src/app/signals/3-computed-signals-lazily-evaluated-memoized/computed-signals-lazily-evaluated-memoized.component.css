@@ -1,4 +1,43 @@
-.profile-cards-container{
-    display: flex;
-    justify-content: space-around;
+.profile-cards-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.boxs-title {
+  text-align: center;
+}
+
+.boxs-container {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.box-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 10px;
+  gap: 10px;
+}
+
+.box {
+  display: flex;
+  padding: 10px;
+}
+
+.data-box {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.date-box {
+  border: 1px solid black;
+  padding: 10px;
+  align-content: center;
+}
+
+.flex-grow {
+  flex-grow: 1;
 }
