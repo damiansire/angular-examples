@@ -1,29 +1,31 @@
 import { Component } from '@angular/core';
 import { ProfileCardComponent } from '../../components/profile-card/profile-card.component';
 import { ComputedTrackerComponent } from '../../components/computed-tracker/computed-tracker.component';
-
-interface ClickInButton {
-  date: Date;
-  firstName: string;
-  surname: string;
-}
+import { ClickInButton } from '../../components/component.interface';
+import { BasicFormComponent } from '../../components/basic-form/basic-form.component';
+import { ClickHistoryComponent } from '../../components/click-history/click-history.component';
 
 @Component({
   selector: 'app-computed-signals-lazily-evaluated-memoized',
   standalone: true,
   templateUrl: './computed-signals-lazily-evaluated-memoized.component.html',
   styleUrl: './computed-signals-lazily-evaluated-memoized.component.css',
-  imports: [ProfileCardComponent, ComputedTrackerComponent],
+  imports: [
+    ProfileCardComponent,
+    ComputedTrackerComponent,
+    BasicFormComponent,
+    ClickHistoryComponent,
+  ],
 })
 export class ComputedSignalsLazilyEvaluatedMemoizedComponent {
   computedTracker: ClickInButton[] = [];
-  clicksInTheButton: ClickInButton[] = [];
+  clickHistory: ClickInButton[] = [];
 
-  addComputedSignal(data: ClickInButton, index: number) {
+  addComputedSignal(data: ClickInButton) {
     this.computedTracker.push(data);
   }
 
-  setValue(event: ClickInButton) {
-    this.clicksInTheButton.push(event);
+  addClickToHistory(event: ClickInButton) {
+    this.clickHistory.push(event);
   }
 }

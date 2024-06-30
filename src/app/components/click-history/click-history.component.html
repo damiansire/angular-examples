@@ -1,0 +1,11 @@
+<div>
+  <p>Clicks</p>
+  <div class="clicks-events-container">
+    @for (click of clickHistory.reverse(); track $index) {
+    <div>
+      {{ click.date | date : "HH:mm:ss" }} {{ click.firstName }}
+      {{ click.surname }}
+    </div>
+    }
+  </div>
+</div>

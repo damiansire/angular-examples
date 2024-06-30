@@ -1,5 +1,9 @@
 <div class="flex-grow">
-  <app-profile-card (signalComputed)="addComputedSignal($event, 0)" />
+  <app-basic-form
+    (signalComputed)="addComputedSignal($event)"
+    (buttonClicked)="addClickToHistory($event)"
+  ></app-basic-form>
+  <app-click-history [clickHistory]="clickHistory" />
 </div>
 
 <div class="executed-task-container">

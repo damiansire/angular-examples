@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfileCardComponent } from './profile-card.component';
+import { ClickHistoryComponent } from './click-history.component';
 
-describe('ProfileCardComponent', () => {
-  let component: ProfileCardComponent;
-  let fixture: ComponentFixture<ProfileCardComponent>;
+describe('ClickHistoryComponent', () => {
+  let component: ClickHistoryComponent;
+  let fixture: ComponentFixture<ClickHistoryComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProfileCardComponent]
+      imports: [ClickHistoryComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ProfileCardComponent);
+    fixture = TestBed.createComponent(ClickHistoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
