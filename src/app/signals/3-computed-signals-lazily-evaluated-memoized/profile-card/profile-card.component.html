@@ -1,0 +1,30 @@
+<div class="component-container">
+  <div class="profile-container">
+    <h2>{{ fullName() }}!</h2>
+    <div class="profile-info">
+      <label for="firstName">Name:</label>
+      <input type="text" placeholder="Name" #firstNameInput />
+      <br />
+      <label for="surname">Surname:</label>
+      <input type="text" placeholder="Surname" #surnameInput />
+      <br />
+      <button class="btn btn-primary" (click)="setValue()">Set</button>
+    </div>
+  </div>
+  <div class="current-values-container">
+    <div>Current Values</div>
+    <div>Name: {{ firstName() }}</div>
+    <div>Surname: {{ surname() }}</div>
+    @if (clicksInTheButton.length) {
+    <div>
+      <p>Clicks</p>
+      @for (click of clicksInTheButton.reverse(); track $index) {
+      <div>
+        {{ click.date | date : "mediumTime" }} {{ click.firstName }}
+        {{ click.surname }}
+      </div>
+      }
+    </div>
+    }
+  </div>
+</div>

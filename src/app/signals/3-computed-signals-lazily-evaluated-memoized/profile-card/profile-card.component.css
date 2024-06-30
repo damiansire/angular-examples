@@ -1,0 +1,49 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.component-container {
+  display: flex;
+  flex-grow: 1;
+}
+
+.current-values-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.current-values-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/*Scroll*/
+.component-container {
+  overflow: hidden;
+}
+
+.current-values-container {
+  overflow: scroll;
+}
