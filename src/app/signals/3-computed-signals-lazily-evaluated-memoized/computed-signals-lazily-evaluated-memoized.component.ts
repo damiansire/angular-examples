@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ProfileCardComponent } from '../../components/profile-card/profile-card.component';
 import { ComputedTrackerComponent } from '../../components/computed-tracker/computed-tracker.component';
 import { ClickInButton } from '../../components/component.interface';
 import { BasicFormComponent } from '../../components/basic-form/basic-form.component';
@@ -11,7 +10,6 @@ import { ClickHistoryComponent } from '../../components/click-history/click-hist
   templateUrl: './computed-signals-lazily-evaluated-memoized.component.html',
   styleUrl: './computed-signals-lazily-evaluated-memoized.component.css',
   imports: [
-    ProfileCardComponent,
     ComputedTrackerComponent,
     BasicFormComponent,
     ClickHistoryComponent,
