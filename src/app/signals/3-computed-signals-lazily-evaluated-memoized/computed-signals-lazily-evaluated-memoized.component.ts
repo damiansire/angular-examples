@@ -17,43 +17,7 @@ import { ClickHistoryComponent } from '../../components/click-history/click-hist
 })
 export class ComputedSignalsLazilyEvaluatedMemoizedComponent {
   computedTracker: ClickInButton[] = [];
-  clickHistory: ClickInButton[] = [
-    {
-      date: new Date(),
-      firstName: 'damian',
-      surname: 'sire',
-    },
-    {
-      date: new Date(),
-      firstName: 'damian',
-      surname: 'sire',
-    },
-    {
-      date: new Date(),
-      firstName: 'damian',
-      surname: 'sire',
-    },
-    {
-      date: new Date(),
-      firstName: 'damian',
-      surname: 'sire',
-    },
-    {
-      date: new Date(),
-      firstName: 'damian',
-      surname: 'sire',
-    },
-    {
-      date: new Date(),
-      firstName: 'damian',
-      surname: 'sire',
-    },
-    {
-      date: new Date(),
-      firstName: 'damian',
-      surname: 'sire',
-    },
-  ];
+  clickHistory: ClickInButton[] = [];
 
   addComputedSignal(data: ClickInButton) {
     this.computedTracker.push(data);
