@@ -1,5 +1,5 @@
 <div class="profile-cards-container">
-  @for(elementIndex of [1,2,3]; track elementIndex){
+  @for(elementIndex of [0,1,2]; track elementIndex){
   <div class="flex-grow">
     <app-profile-card
       (signalComputed)="addComputedSignal($event, elementIndex)"
