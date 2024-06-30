@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { ProfileCardComponent } from '../../components/profile-card/profile-card.component';
 import { ComputedTrackerComponent } from '../../components/computed-tracker/computed-tracker.component';
 
-interface outputData {
+interface ClickInButton {
   date: Date;
-  name: string;
+  firstName: string;
   surname: string;
 }
 
@@ -16,9 +16,14 @@ interface outputData {
   imports: [ProfileCardComponent, ComputedTrackerComponent],
 })
 export class ComputedSignalsLazilyEvaluatedMemoizedComponent {
-  computedTracker: outputData[][] = [[], [], []];
+  computedTracker: ClickInButton[] = [];
+  clicksInTheButton: ClickInButton[] = [];
 
-  addComputedSignal(data: outputData, index: number) {
-    this.computedTracker[index].push(data);
+  addComputedSignal(data: ClickInButton, index: number) {
+    this.computedTracker.push(data);
+  }
+
+  setValue(event: ClickInButton) {
+    this.clicksInTheButton.push(event);
   }
 }

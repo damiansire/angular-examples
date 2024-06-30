@@ -1,11 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-
-interface outputData {
-  date: Date;
-  name: string;
-  surname: string;
-}
+import { ClickInButton } from '../component.interface';
 
 @Component({
   selector: 'app-computed-tracker',
@@ -15,5 +10,5 @@ interface outputData {
   styleUrl: './computed-tracker.component.css',
 })
 export class ComputedTrackerComponent {
-  @Input() computedTracker: outputData[][] = [];
+  @Input() computedTracker: ClickInButton[] = [];
 }

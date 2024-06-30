@@ -1,24 +1,8 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  Output,
-  Signal,
-  ViewChild,
-  WritableSignal,
-  computed,
-  signal,
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { ProfileCardComponent } from '../../components/profile-card/profile-card.component';
 import { ComputedTrackerComponent } from '../../components/computed-tracker/computed-tracker.component';
-
-interface outputData {
-  date: Date;
-  name: string;
-  surname: string;
-}
+import { ClickInButton } from '../../components/component.interface';
 
 @Component({
   selector: 'app-computed-signals-lazily-evaluated-memoized',
@@ -28,9 +12,9 @@ interface outputData {
   imports: [CommonModule, ProfileCardComponent, ComputedTrackerComponent],
 })
 export class ComputedSignalsLazilyEvaluatedMemoizedComponent {
-  computedTracker: outputData[][] = [[], [], []];
+  computedTracker: ClickInButton[] = [];
 
-  addComputedSignal(data: outputData, index: number) {
-    this.computedTracker[index].push(data);
+  addComputedSignal(data: Date, index: number) {
+    //this.computedTracker[index].push(data);
   }
 }
