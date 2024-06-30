@@ -1,1 +1,12 @@
-<p>basic-form works!</p>
+<div class="profile-container">
+  <h2>{{ fullName() }}!</h2>
+  <div class="profile-info">
+    <label for="firstName">Name:</label>
+    <input type="text" placeholder="Name" #firstNameInput />
+    <br />
+    <label for="surname">Surname:</label>
+    <input type="text" placeholder="Surname" #surnameInput />
+    <br />
+    <button class="btn btn-primary" (click)="setValue()">Set</button>
+  </div>
+</div>
