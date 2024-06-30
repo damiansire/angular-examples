@@ -10,5 +10,6 @@ import { ClickInButton } from '../component.interface';
   styleUrl: './computed-tracker.component.css',
 })
 export class ComputedTrackerComponent {
+  @Input() title: string = 'Calculated Signals';
   @Input() computedTracker: ClickInButton[] = [];
 }

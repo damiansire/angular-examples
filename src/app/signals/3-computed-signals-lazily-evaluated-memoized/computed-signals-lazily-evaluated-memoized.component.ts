@@ -23,6 +23,36 @@ export class ComputedSignalsLazilyEvaluatedMemoizedComponent {
       firstName: 'damian',
       surname: 'sire',
     },
+    {
+      date: new Date(),
+      firstName: 'damian',
+      surname: 'sire',
+    },
+    {
+      date: new Date(),
+      firstName: 'damian',
+      surname: 'sire',
+    },
+    {
+      date: new Date(),
+      firstName: 'damian',
+      surname: 'sire',
+    },
+    {
+      date: new Date(),
+      firstName: 'damian',
+      surname: 'sire',
+    },
+    {
+      date: new Date(),
+      firstName: 'damian',
+      surname: 'sire',
+    },
+    {
+      date: new Date(),
+      firstName: 'damian',
+      surname: 'sire',
+    },
   ];
 
   addComputedSignal(data: ClickInButton) {
