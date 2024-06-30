@@ -1,1 +1,10 @@
-<p>computed-signal-dynamic-dependencies works!</p>
+<div>Show Count: {{ showCount() }}</div>
+<div>Count: {{ count() }}</div>
+
+<button (click)="upCount()">Up</button>
+
+<label for="showCount">showCount:</label>
+<select id="showCount" (change)="onShowCountChange($event)">
+  <option [value]="false">false</option>
+  <option [value]="true">true</option>
+</select>
