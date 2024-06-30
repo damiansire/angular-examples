@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold;
+}

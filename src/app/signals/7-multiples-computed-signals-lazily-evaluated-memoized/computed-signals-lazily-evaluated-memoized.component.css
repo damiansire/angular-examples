@@ -1,6 +1,8 @@
 .profile-cards-container {
   display: flex;
   justify-content: space-around;
+  height: 50%;
+  gap: 15px;
 }
 
 .boxs-title {

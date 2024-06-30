@@ -12,15 +12,17 @@
     </div>
   </div>
   <div class="current-values-container">
-    <div>Current Values</div>
-    <div>Name: {{ firstName() }}</div>
-    <div>Surname: {{ surname() }}</div>
+    <div class="current-value-title bold text-center">Current Signal</div>
+    <div class="current-value-data">
+      <div><span class="bold">Name:</span> {{ firstName() }}</div>
+      <div><span class="bold">Surname:</span> {{ surname() }}</div>
+    </div>
     @if (clicksInTheButton.length) {
-    <div>
-      <p>Clicks</p>
+    <p>Clicks</p>
+    <div class="clicks-events-container">
       @for (click of clicksInTheButton.reverse(); track $index) {
       <div>
-        {{ click.date | date : "mediumTime" }} {{ click.firstName }}
+        {{ click.date | date : "HH:mm:ss" }} {{ click.firstName }}
         {{ click.surname }}
       </div>
       }

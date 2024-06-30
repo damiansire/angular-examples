@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
@@ -28,22 +28,32 @@ input {
   flex-grow: 1;
 }
 
+.current-value-title {
+  margin-bottom: 10px;
+}
+
 .current-values-container {
   border: 1px solid #ccc;
   padding: 20px;
   flex-grow: 1;
 }
 
-.current-values-title {
-  font-size: 20px;
-  font-weight: bold;
+.current-value-data {
+  display: flex;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.current-value-data > * {
+  border: 1px solid #ccc;
 }
 
 /*Scroll*/
 .component-container {
+  height: 100%;
   overflow: hidden;
 }
 
-.current-values-container {
-  overflow: scroll;
+.clicks-events-container {
+  overflow: auto;
 }
