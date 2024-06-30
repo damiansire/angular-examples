@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ComputedSignalsLazilyEvaluatedMemoizedComponent } from './computed-signals-lazily-evaluated-memoized.component';
+import { ComputedSignalsLazilyEvaluatedMemoizedComponent } from './multiples-signals-evaluated';
 
 describe('ComputedSignalsLazilyEvaluatedMemoizedComponent', () => {
   let component: ComputedSignalsLazilyEvaluatedMemoizedComponent;
@@ -8,11 +8,12 @@ describe('ComputedSignalsLazilyEvaluatedMemoizedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ComputedSignalsLazilyEvaluatedMemoizedComponent]
-    })
-    .compileComponents();
+      imports: [ComputedSignalsLazilyEvaluatedMemoizedComponent],
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(ComputedSignalsLazilyEvaluatedMemoizedComponent);
+    fixture = TestBed.createComponent(
+      ComputedSignalsLazilyEvaluatedMemoizedComponent
+    );
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

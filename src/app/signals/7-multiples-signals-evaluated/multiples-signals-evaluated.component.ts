@@ -23,8 +23,8 @@ interface outputData {
   selector: 'app-computed-signals-lazily-evaluated-memoized',
   standalone: true,
   imports: [CommonModule, ProfileCardComponent],
-  templateUrl: './computed-signals-lazily-evaluated-memoized.component.html',
-  styleUrl: './computed-signals-lazily-evaluated-memoized.component.css',
+  templateUrl: './multiples-signals-evaluated.html',
+  styleUrl: './multiples-signals-evaluated.css',
 })
 export class ComputedSignalsLazilyEvaluatedMemoizedComponent {
   computedTracker: outputData[][] = [[], [], []];
