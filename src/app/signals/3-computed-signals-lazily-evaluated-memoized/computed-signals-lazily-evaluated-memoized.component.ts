@@ -17,7 +17,13 @@ import { ClickHistoryComponent } from '../../components/click-history/click-hist
 })
 export class ComputedSignalsLazilyEvaluatedMemoizedComponent {
   computedTracker: ClickInButton[] = [];
-  clickHistory: ClickInButton[] = [];
+  clickHistory: ClickInButton[] = [
+    {
+      date: new Date(),
+      firstName: 'damian',
+      surname: 'sire',
+    },
+  ];
 
   addComputedSignal(data: ClickInButton) {
     this.computedTracker.push(data);

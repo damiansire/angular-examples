@@ -1,9 +1,14 @@
-<div>
-  <app-basic-form
-    (signalComputed)="addComputedSignal($event)"
-    (buttonClicked)="addClickToHistory($event)"
-  ></app-basic-form>
-  <app-click-history [clickHistory]="clickHistory" />
-
-  <app-computed-tracker [computedTracker]="computedTracker" />
+<div class="flex justify-between">
+  <div>
+    <app-basic-form
+      (signalComputed)="addComputedSignal($event)"
+      (buttonClicked)="addClickToHistory($event)"
+    ></app-basic-form>
+  </div>
+  <div>
+    <app-click-history [clickHistory]="clickHistory" />
+  </div>
+  <div>
+    <app-computed-tracker [computedTracker]="computedTracker" />
+  </div>
 </div>
