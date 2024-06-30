@@ -1,14 +1,9 @@
-<div class="flex-grow">
+<div class="flex">
   <app-basic-form
     (signalComputed)="addComputedSignal($event)"
     (buttonClicked)="addClickToHistory($event)"
   ></app-basic-form>
   <app-click-history [clickHistory]="clickHistory" />
-</div>
 
-<div class="executed-task-container">
-  <h2 class="boxs-title">Executed Track</h2>
-  <div class="boxs-container">
-    <app-computed-tracker [computedTracker]="computedTracker" />
-  </div>
+  <app-computed-tracker [computedTracker]="computedTracker" />
 </div>
