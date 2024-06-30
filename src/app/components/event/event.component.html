@@ -1,21 +1,11 @@
-<div class="flex items-center mr-auto">
-  <div class="inline-flex w-12 h-12">
-    <img
-      src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg"
-      alt="aji"
-      class="relative p-1 w-12 h-12 object-cover rounded-2xl"
-    /><span
-      class="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-gray-600 opacity-75"
-    ></span>
-    <span></span>
+<div class="p-4 flex justify-center items-center bg-gray-200 mx-2 rounded">
+  <div class="w-16 h-16 p-2">
+    <icon-click></icon-click>
   </div>
-
-  <div class="flex flex-col ml-3 min-w-0">
-    <div class="font-medium leading-none text-gray-100">
+  <div class="ml-2">
+    <div class="text-2xl uppercase leading-8">
       {{ event.firstName }} {{ event.surname }}
     </div>
-    <p class="text-sm text-gray-500 leading-none mt-1 truncate">
-      {{ event.date | date : "HH:mm:ss" }}
-    </p>
+    <div>{{ event.date | date : "HH:mm:ss" }}</div>
   </div>
 </div>
