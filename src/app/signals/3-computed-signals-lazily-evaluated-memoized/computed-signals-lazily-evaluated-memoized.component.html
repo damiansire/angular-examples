@@ -1,22 +1,11 @@
 <div class="profile-cards-container">
+  @for(elementIndex of [1,2,3]; track elementIndex){
   <div class="flex-grow">
     <app-profile-card
-      title="Persona 1"
-      (signalComputed)="addComputedSignal($event, 0)"
+      (signalComputed)="addComputedSignal($event, elementIndex)"
     />
   </div>
-  <div class="flex-grow">
-    <app-profile-card
-      title="Persona 2"
-      (signalComputed)="addComputedSignal($event, 1)"
-    />
-  </div>
-  <div class="flex-grow">
-    <app-profile-card
-      title="Persona 3"
-      (signalComputed)="addComputedSignal($event, 2)"
-    />
-  </div>
+  }
 </div>
 
 <div class="executed-task-container">
