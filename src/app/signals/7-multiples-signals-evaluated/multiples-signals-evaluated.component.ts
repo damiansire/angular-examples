@@ -11,7 +11,7 @@ import {
   computed,
   signal,
 } from '@angular/core';
-import { ProfileCardComponent } from './profile-card/profile-card.component';
+import { ProfileCardComponent } from '../component/profile-card/profile-card.component';
 
 interface outputData {
   date: Date;
@@ -23,7 +23,7 @@ interface outputData {
   selector: 'app-computed-signals-lazily-evaluated-memoized',
   standalone: true,
   imports: [CommonModule, ProfileCardComponent],
-  templateUrl: './multiples-signals-evaluated.html',
+  templateUrl: './multiples-signals-evaluated.component.html',
   styleUrl: './multiples-signals-evaluated.css',
 })
 export class ComputedSignalsLazilyEvaluatedMemoizedComponent {

@@ -1,1 +1,10 @@
-<p>computed-signals-lazily-evaluated-memoized works!</p>
+<div class="flex-grow">
+  <app-profile-card (signalComputed)="addComputedSignal($event, 0)" />
+</div>
+
+<div class="executed-task-container">
+  <h2 class="boxs-title">Executed Track</h2>
+  <div class="boxs-container">
+    <app-computed-tracker [computedTracker]="computedTracker" />
+  </div>
+</div>

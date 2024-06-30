@@ -11,18 +11,6 @@
 <div class="executed-task-container">
   <h2 class="boxs-title">Executed Track</h2>
   <div class="boxs-container">
-    @for(array of computedTracker.reverse(); track array){
-    <div class="box-container">
-      @for(element of array; track element){
-      <div class="box">
-        <div class="date-box">{{ element.date | date : "HH:mm:ss" }}</div>
-        <div class="data-box">
-          <div>Name: {{ element.name }}</div>
-          <div>Surname: {{ element.surname }}</div>
-        </div>
-      </div>
-      }
-    </div>
-    }
+    <app-computed-tracker [computedTracker]="computedTracker" />
   </div>
 </div>
