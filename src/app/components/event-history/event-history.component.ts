@@ -1,14 +1,15 @@
 import { Component, Input, Signal, signal } from '@angular/core';
-import { historyElement } from '../component.interface';
+import { HistoryElement } from '../component.interface';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-event-history',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './event-history.component.html',
   styleUrl: './event-history.component.css',
 })
 export class EventHistoryComponent {
   @Input() title = 'text';
-  @Input() history: Signal<historyElement[]> = signal([]);
+  @Input() history: Signal<HistoryElement[]> = signal([]);
 }

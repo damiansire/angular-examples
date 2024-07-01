@@ -1,10 +1,29 @@
-{{ title }}
+<h2 class="text-2xl font-semibold mb-4">{{ title }}</h2>
 
-@for (item of history(); track $index) {
-<div>
-  {{ item.date }}
+<div class="space-y-4">
+  @for (item of history().reverse(); track $index) {
+  <div class="bg-gray-100 p-4 rounded-md shadow-sm">
+    <div class="flex justify-between items-center">
+      <div class="flex items-baseline">
+        <span class="text-gray-500 text-sm mr-2">Count:</span>
+        <span class="text-lg font-medium">
+          {{ item.newCount - 1 }}
+          <span class="text-gray-500">-></span>
+          {{ item.newCount }}
+        </span>
+      </div>
+    </div>
+
+    <div class="mt-2">
+      <h3 class="text-md font-semibold text-gray-700 mb-1">Dependencies:</h3>
+      <div class="flex flex-wrap gap-2">
+        @for (dependency of item.dependencies; track $index) {
+        <span class="px-2 py-1 bg-gray-200 rounded-md text-sm">{{
+          dependency
+        }}</span>
+        }
+      </div>
+    </div>
+  </div>
+  }
 </div>
-<div>
-  {{ item.description }}
-</div>
-}
