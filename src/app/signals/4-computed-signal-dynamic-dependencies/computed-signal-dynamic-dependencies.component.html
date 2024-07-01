@@ -11,10 +11,9 @@
       <app-variable-box
         variableName="Count"
         [variableValue]="count().toString()"
+        (click)="upCount()"
       >
       </app-variable-box>
-
-      <app-button (onClick)="upCount()" text="Up"></app-button>
     </div>
   </div>
   <div>
