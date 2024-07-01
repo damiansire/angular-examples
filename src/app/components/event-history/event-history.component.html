@@ -5,7 +5,7 @@
   <div class="bg-gray-100 p-4 rounded-md shadow-sm flex justify-between">
     <div class="flex justify-between items-center">
       <div class="flex items-baseline">
-        <span class="text-gray-500 text-sm mr-2">Count:</span>
+        <span class="text-gray-500 text-sm mr-2">{{ stateName }}</span>
         <span class="text-lg font-medium">
           @if(item.isCountIncrement){
           {{ item.newState && beforeNumber(item.newState) }}
