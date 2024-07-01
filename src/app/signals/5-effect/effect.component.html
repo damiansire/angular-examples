@@ -1,15 +1,34 @@
-<div class="flex">
-  <div>
+<div class="flex justify-around">
+  <div class="flex flex-col gap-4">
     <app-variable-box
-      variableName="Count"
+      variableName="Count1"
       [variableValue]="count().toString()"
       (click)="upCount()"
     />
+    <app-variable-box
+      variableName="Count2"
+      [variableValue]="count2().toString()"
+      (click)="upCount2()"
+    />
+    <div class="mt-6">
+      <app-dependencies-status
+        [dependencies]="dependencies"
+        computedName="effect (1)"
+      ></app-dependencies-status>
+    </div>
+
+    <div class="mt-6">
+      <app-dependencies-status
+        [dependencies]="dependencies2"
+        computedName="effect (2)"
+      ></app-dependencies-status>
+    </div>
   </div>
-  <div>
+  <div class="flex-grow px-10">
     <app-event-history
       title="Effect Execution"
       [history]="appEventHistory"
+      stateName="Count Number:"
     ></app-event-history>
   </div>
   <div>
