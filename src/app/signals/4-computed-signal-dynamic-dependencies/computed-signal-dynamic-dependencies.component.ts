@@ -15,7 +15,7 @@ import { VariableBoxComponent } from '../../components-atom/variable-box/variabl
 })
 export class ComputedSignalDynamicDependenciesComponent {
   showCount = signal(false);
-  lines: codeLine[] = [
+  lines = computed<codeLine[]>(() => [
     { line: 'const showCount = signal(false);', active: false },
     { line: 'const count = signal(0);', active: false },
     { line: 'const conditionalCount = computed(() => {', active: false },
@@ -28,7 +28,7 @@ export class ComputedSignalDynamicDependenciesComponent {
     { line: "    return 'Nothing to see here!';", active: !this.showCount() },
     { line: '  }', active: false },
     { line: '});', active: false },
-  ];
+  ]);
   count = signal(0);
   trackerHistory = signal<{ date: Date }[]>([]);
   conditionalCount = computed(() => {

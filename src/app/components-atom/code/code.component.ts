@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { codeLine } from '../component-atom.interface';
 
 @Component({
@@ -10,5 +10,5 @@ import { codeLine } from '../component-atom.interface';
   styleUrl: './code.component.css',
 })
 export class CodeComponent {
-  @Input() lines: codeLine[] = [];
+  @Input() lines = signal<codeLine[]>([]);
 }
