@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, Signal, computed, signal } from '@angular/core';
 import { count } from 'rxjs';
 import { ButtonComponent } from '../../components-atom/button/button.component';
 import { CommonModule } from '@angular/common';
@@ -7,6 +7,7 @@ import { CodeComponent } from '../../components-atom/code/code.component';
 import { VariableBoxComponent } from '../../components-atom/variable-box/variable-box.component';
 import { EventHistoryComponent } from '../../components/event-history/event-history.component';
 import { DependenciesStatusComponent } from '../../components/dependencies-status/dependencies-status.component';
+import { HistoryElement } from '../../components/component.interface';
 
 @Component({
   selector: 'app-computed-signal-dynamic-dependencies',
@@ -32,6 +33,7 @@ export class ComputedSignalDynamicDependenciesComponent {
       return 'Nothing to see here!';
     }
   });
+  history = signal<HistoryElement[]>([]);
   dependencies = computed<string[]>(() => {
     return this.showCount() ? ['showCount', 'count'] : ['showCount'];
   });
@@ -52,6 +54,15 @@ export class ComputedSignalDynamicDependenciesComponent {
   ]);
   upCount() {
     this.count.update((currentCount: number) => currentCount + 1);
+    this.history.update((prevHistory) => {
+      const newHistory = prevHistory.length ? [...prevHistory] : [];
+      newHistory.push({
+        date: new Date(),
+        dependencies: this.showCount() ? ['showCount', 'count'] : ['showCount'],
+        newCount: this.count(),
+      });
+      return newHistory;
+    });
   }
   onShowCountChange() {
     this.showCount.set(!this.showCount());

@@ -18,7 +18,6 @@
       <app-variable-box
         variableName="conditionalCount"
         [variableValue]="conditionalCount().toString()"
-        (click)="upCount()"
       >
       </app-variable-box>
 
@@ -31,7 +30,10 @@
     </div>
   </div>
   <div>
-    <app-event-history></app-event-history>
+    <app-event-history
+      title="Evaluated"
+      [history]="history"
+    ></app-event-history>
   </div>
   <div>
     <app-code [lines]="lines"></app-code>

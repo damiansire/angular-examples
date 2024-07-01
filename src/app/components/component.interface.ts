@@ -4,7 +4,8 @@ export interface ClickInButton {
   surname: string;
 }
 
-export interface historyElement {
+export interface HistoryElement {
   date: Date;
-  description: string;
+  dependencies: string[];
+  newCount: number;
 }
