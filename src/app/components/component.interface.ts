@@ -3,3 +3,8 @@ export interface ClickInButton {
   firstName: string;
   surname: string;
 }
+
+export interface historyElement {
+  date: Date;
+  description: string;
+}

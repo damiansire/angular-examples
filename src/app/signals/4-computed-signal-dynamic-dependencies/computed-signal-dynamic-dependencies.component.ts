@@ -25,6 +25,13 @@ import { DependenciesStatusComponent } from '../../components/dependencies-statu
 export class ComputedSignalDynamicDependenciesComponent {
   showCount = signal(false);
   count = signal(0);
+  conditionalCount = computed(() => {
+    if (this.showCount()) {
+      return `The count is ${this.count()}.`;
+    } else {
+      return 'Nothing to see here!';
+    }
+  });
   dependencies = computed<string[]>(() => {
     return this.showCount() ? ['showCount', 'count'] : ['showCount'];
   });

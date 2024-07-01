@@ -15,6 +15,13 @@
       >
       </app-variable-box>
 
+      <app-variable-box
+        variableName="conditionalCount"
+        [variableValue]="conditionalCount().toString()"
+        (click)="upCount()"
+      >
+      </app-variable-box>
+
       <br />
       <app-dependencies-status
         [dependencies]="dependencies"
