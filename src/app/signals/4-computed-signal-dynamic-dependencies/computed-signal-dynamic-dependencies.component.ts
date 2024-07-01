@@ -4,13 +4,14 @@ import { ButtonComponent } from '../../components-atom/button/button.component';
 import { CommonModule } from '@angular/common';
 import { codeLine } from '../../components-atom/component-atom.interface';
 import { CodeComponent } from '../../components-atom/code/code.component';
+import { VariableBoxComponent } from '../../components-atom/variable-box/variable-box.component';
 
 @Component({
   selector: 'app-computed-signal-dynamic-dependencies',
   standalone: true,
   templateUrl: './computed-signal-dynamic-dependencies.component.html',
   styleUrl: './computed-signal-dynamic-dependencies.component.css',
-  imports: [ButtonComponent, CommonModule, CodeComponent],
+  imports: [ButtonComponent, CommonModule, CodeComponent, VariableBoxComponent],
 })
 export class ComputedSignalDynamicDependenciesComponent {
   showCount = signal(false);

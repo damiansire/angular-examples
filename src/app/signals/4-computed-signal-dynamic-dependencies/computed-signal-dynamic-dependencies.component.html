@@ -1,14 +1,20 @@
 <div class="flex justify-around">
   <div>
-    <div>Show Count: {{ showCount() }}</div>
-    <div>Count: {{ count() }}</div>
+    <div class="flex flex-col gap-4">
+      <app-variable-box
+        variableName="ShowCount"
+        [variableValue]="showCount().toString()"
+      >
+      </app-variable-box>
 
-    <app-button (onClick)="upCount()" text="Up"></app-button>
-    <label for="showCount">showCount:</label>
-    <select id="showCount" (change)="onShowCountChange($event)">
-      <option [value]="false">false</option>
-      <option [value]="true">true</option>
-    </select>
+      <app-variable-box
+        variableName="Count"
+        [variableValue]="count().toString()"
+      >
+      </app-variable-box>
+
+      <app-button (onClick)="upCount()" text="Up"></app-button>
+    </div>
   </div>
   <div>
     <app-code [lines]="lines"></app-code>
