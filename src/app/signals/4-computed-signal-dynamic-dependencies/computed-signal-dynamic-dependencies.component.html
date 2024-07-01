@@ -1,10 +1,11 @@
 <div>Show Count: {{ showCount() }}</div>
 <div>Count: {{ count() }}</div>
 
-<button (click)="upCount()">Up</button>
-
+<app-button (onClick)="upCount()" text="Up"></app-button>
 <label for="showCount">showCount:</label>
 <select id="showCount" (change)="onShowCountChange($event)">
   <option [value]="false">false</option>
   <option [value]="true">true</option>
 </select>
+
+<app-code [lines]="lines"></app-code>
