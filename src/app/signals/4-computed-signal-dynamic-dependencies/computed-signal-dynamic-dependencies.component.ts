@@ -24,6 +24,11 @@ import { DependenciesStatusComponent } from '../../components/dependencies-statu
 })
 export class ComputedSignalDynamicDependenciesComponent {
   showCount = signal(false);
+  count = signal(0);
+  dependencies = computed<string[]>(() => {
+    return this.showCount() ? ['showCount', 'count'] : ['showCount'];
+  });
+  signalsInside = signal(['showCount', 'count']);
   lines = computed<codeLine[]>(() => [
     { line: 'const showCount = signal(false);', active: false },
     { line: 'const count = signal(0);', active: false },
@@ -38,15 +43,6 @@ export class ComputedSignalDynamicDependenciesComponent {
     { line: '  }', active: false },
     { line: '});', active: false },
   ]);
-  count = signal(0);
-  trackerHistory = signal<{ date: Date }[]>([]);
-  conditionalCount = computed(() => {
-    if (this.showCount()) {
-      return `The count is ${count()}.`;
-    } else {
-      return 'Nothing to see here!';
-    }
-  });
   upCount() {
     this.count.update((currentCount: number) => currentCount + 1);
   }

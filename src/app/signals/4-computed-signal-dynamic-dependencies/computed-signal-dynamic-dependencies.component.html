@@ -15,7 +15,12 @@
       >
       </app-variable-box>
 
-      <app-dependencies-status></app-dependencies-status>
+      <br />
+      <app-dependencies-status
+        [dependencies]="dependencies"
+        [signalsInside]="signalsInside"
+        computedName="conditionalCount"
+      ></app-dependencies-status>
     </div>
   </div>
   <div>
