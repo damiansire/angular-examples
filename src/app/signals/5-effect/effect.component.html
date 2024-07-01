@@ -1,1 +1,18 @@
-<p>effect works!</p>
+<div class="flex">
+  <div>
+    <app-variable-box
+      variableName="Count"
+      [variableValue]="count().toString()"
+      (click)="upCount()"
+    />
+  </div>
+  <div>
+    <app-event-history
+      title="Effect Execution"
+      [history]="appEventHistory"
+    ></app-event-history>
+  </div>
+  <div>
+    <app-code [lines]="lines"></app-code>
+  </div>
+</div>

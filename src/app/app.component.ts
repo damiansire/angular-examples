@@ -4,6 +4,7 @@ import { WritableSignalsComponent } from './signals/1-writable-signals/writable-
 import { ComputedSignalsComponent } from './signals/2-computed-signals/computed-signals.component';
 import { ComputedSignalsLazilyEvaluatedMemoizedComponent } from './signals/3-computed-signals-lazily-evaluated-memoized/computed-signals-lazily-evaluated-memoized.component';
 import { ComputedSignalDynamicDependenciesComponent } from './signals/4-computed-signal-dynamic-dependencies/computed-signal-dynamic-dependencies.component';
+import { EffectComponent } from './signals/5-effect/effect.component';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import { ComputedSignalDynamicDependenciesComponent } from './signals/4-computed
     ComputedSignalsComponent,
     ComputedSignalsLazilyEvaluatedMemoizedComponent,
     ComputedSignalDynamicDependenciesComponent,
+    EffectComponent,
   ],
 })
 export class AppComponent {
