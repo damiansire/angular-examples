@@ -1,11 +1,16 @@
-<div>Show Count: {{ showCount() }}</div>
-<div>Count: {{ count() }}</div>
+<div class="flex justify-around">
+  <div>
+    <div>Show Count: {{ showCount() }}</div>
+    <div>Count: {{ count() }}</div>
 
-<app-button (onClick)="upCount()" text="Up"></app-button>
-<label for="showCount">showCount:</label>
-<select id="showCount" (change)="onShowCountChange($event)">
-  <option [value]="false">false</option>
-  <option [value]="true">true</option>
-</select>
-
-<app-code [lines]="lines"></app-code>
+    <app-button (onClick)="upCount()" text="Up"></app-button>
+    <label for="showCount">showCount:</label>
+    <select id="showCount" (change)="onShowCountChange($event)">
+      <option [value]="false">false</option>
+      <option [value]="true">true</option>
+    </select>
+  </div>
+  <div>
+    <app-code [lines]="lines"></app-code>
+  </div>
+</div>
