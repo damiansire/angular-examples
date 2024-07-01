@@ -41,9 +41,7 @@ export class ComputedSignalDynamicDependenciesComponent {
   upCount() {
     this.count.update((currentCount: number) => currentCount + 1);
   }
-  onShowCountChange(event: Event) {
-    const target = event.target as HTMLSelectElement;
-    const newValue = target.value === 'true';
-    this.showCount.set(newValue);
+  onShowCountChange() {
+    this.showCount.set(!this.showCount());
   }
 }
