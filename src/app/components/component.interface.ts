@@ -6,6 +6,7 @@ export interface ClickInButton {
 
 export interface HistoryElement {
   date: Date;
-  dependencies: string[];
-  newCount: number;
+  trigger: string;
+  newState: number | string;
+  isCountIncrement: boolean;
 }

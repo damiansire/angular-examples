@@ -12,4 +12,7 @@ import { CommonModule } from '@angular/common';
 export class EventHistoryComponent {
   @Input() title = 'text';
   @Input() history: Signal<HistoryElement[]> = signal([]);
+  beforeNumber(value: string | number): number {
+    return Number(value) - 1;
+  }
 }

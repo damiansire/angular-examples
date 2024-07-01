@@ -31,8 +31,12 @@
   </div>
   <div>
     <app-event-history
-      title="Evaluated"
-      [history]="history"
+      title="conditionalCount Recomputations"
+      [history]="conditionalCountHistory"
+    ></app-event-history>
+    <app-event-history
+      title="All Signals Recomputations"
+      [history]="appEventHistory"
     ></app-event-history>
   </div>
   <div>

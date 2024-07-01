@@ -33,7 +33,8 @@ export class ComputedSignalDynamicDependenciesComponent {
       return 'Nothing to see here!';
     }
   });
-  history = signal<HistoryElement[]>([]);
+  conditionalCountHistory = signal<HistoryElement[]>([]);
+  appEventHistory = signal<HistoryElement[]>([]);
   dependencies = computed<string[]>(() => {
     return this.showCount() ? ['showCount', 'count'] : ['showCount'];
   });
@@ -54,17 +55,51 @@ export class ComputedSignalDynamicDependenciesComponent {
   ]);
   upCount() {
     this.count.update((currentCount: number) => currentCount + 1);
-    this.history.update((prevHistory) => {
+    if (this.showCount()) {
+      this.addConditionalCountRecomputation(
+        'count',
+        this.conditionalCount(),
+        false
+      );
+    }
+    this.addCountRecomputation('count', this.count());
+  }
+  onShowCountChange() {
+    this.showCount.set(!this.showCount());
+    this.addConditionalCountRecomputation(
+      'showCount',
+      this.conditionalCount(),
+      false
+    );
+  }
+
+  addConditionalCountRecomputation(
+    trigger: string,
+    newState: number | string,
+    isCountIncrement: boolean
+  ) {
+    this.conditionalCountHistory.update((prevHistory) => {
       const newHistory = prevHistory.length ? [...prevHistory] : [];
       newHistory.push({
         date: new Date(),
-        dependencies: this.showCount() ? ['showCount', 'count'] : ['showCount'],
-        newCount: this.count(),
+        trigger,
+        newState,
+        isCountIncrement,
       });
       return newHistory;
     });
   }
-  onShowCountChange() {
-    this.showCount.set(!this.showCount());
+
+  addCountRecomputation(trigger: string, newState: number | string) {
+    this.appEventHistory.update((prevHistory) => {
+      const newHistory = prevHistory.length ? [...prevHistory] : [];
+      newHistory.push({
+        date: new Date(),
+        trigger,
+        newState,
+        isCountIncrement: true,
+      });
+      return newHistory;
+    });
   }
 }
