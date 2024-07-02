@@ -10,6 +10,21 @@ import { ButtonComponent } from '../../components-atom/button/button.component';
   imports: [InputComponent, ButtonComponent],
 })
 export class SignalEqualityFunctionsComponent {
+  name = signal('');
+  setName(event: string) {
+    this.name.set(event);
+  }
+  age = signal('');
+  setAge(event: string) {
+    this.age.set(event);
+  }
+
+  person = signal({ name: '', age: '' });
+  setPerson(personName: string, personAge: string) {
+    const newData = { name: personName, age: personAge };
+    this.person.set(newData);
+  }
+
   data = signal(
     { name: 'damian' },
     {
