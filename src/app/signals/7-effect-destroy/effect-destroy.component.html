@@ -1,1 +1,22 @@
-<p>effect-destroy works!</p>
+<div class="flex">
+  <div>
+    <button (click)="destroy()">Destroy</button>
+    @if(showComponent){
+    <div>
+      <app-component-destroy
+        (newIntervalOutput)="newIntervalOutput($event)"
+        (autoRefreshEvent)="setAutoRefresh($event)"
+      />
+    </div>
+    }
+    <app-event-history
+      title="Interval Evaluation"
+      [history]="appEventHistory"
+      stateName="Count Number:"
+    ></app-event-history>
+  </div>
+
+  <div class="flex-grow">
+    <app-code [lines]="lines"></app-code>
+  </div>
+</div>
