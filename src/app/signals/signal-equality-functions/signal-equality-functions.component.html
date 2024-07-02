@@ -1,7 +1,7 @@
 <section>
   <app-selection-option (selectedLevelChange)="selectedLevelChange($event)" />
 </section>
-<section role="set-info" class="flex justify-between">
+<section role="set-info" class="flex flex-col justify-between">
   @if(currentLevel() === "Nivel 1"){
   <section class="flex flex-col">
     <app-variable-box variableName="name" [variableValue]="name()" />
@@ -49,6 +49,35 @@
       </div>
       <app-button text="Set" (onClick)="setData('person')" />
       <app-code [lines]="linesPerson" />
+    </div>
+  </section>
+  } @if(currentLevel() === "Nivel 4"){
+  <section>
+    <div class="flex flex-col">
+      <div class="flex">
+        <app-variable-box
+          variableName="person.name"
+          [variableValue]="person().name"
+        />
+        <app-variable-box
+          variableName="person.surname"
+          [variableValue]="person().surname"
+        />
+      </div>
+      <div class="flex">
+        <app-input
+          placeholder="name"
+          (onChangeEvent)="saveInHiddenVariableInputData($event, 'person.name')"
+        />
+        <app-input
+          placeholder="surname"
+          (onChangeEvent)="
+            saveInHiddenVariableInputData($event, 'person.surname')
+          "
+        />
+      </div>
+      <app-button text="Set" (onClick)="setData('person')" />
+      <app-code [lines]="linesPersonCustomCompare" />
     </div>
   </section>
   }

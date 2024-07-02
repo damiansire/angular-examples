@@ -146,5 +146,39 @@ export class SignalEqualityFunctionsComponent {
   selectedLevelChange(newLevel: string) {
     this.currentLevel.set(newLevel);
   }
+
+  linesPersonCustomCompare = computed<codeLine[]>(() => [
+    {
+      line: 'person = signal({ name: "damian", surname: "sire" },',
+      active: false,
+    },
+    {
+      line: '                { equal: (old, new) => {',
+      active: true,
+    },
+    {
+      line: '                   return old.name === new.name',
+      active: true,
+    },
+    {
+      line: '                   && old.surname === new.surname }',
+      active: true,
+    },
+    {
+      line: '                });',
+      active: false,
+    },
+    {
+      line: 'setPerson(personName: string, personSurname: string) {',
+      active: false,
+    },
+    {
+      line: '  const newData = { name: personName, surname: personSurname };',
+      active: false,
+    },
+    { line: '  this.person.set(newData);', active: false },
+    { line: '}', active: false },
+  ]);
+
   constructor() {}
 }
