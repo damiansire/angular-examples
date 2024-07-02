@@ -7,9 +7,11 @@ import { EffectComponent } from './signals/5-effect/effect.component';
 import { DestroyEffectComponent } from './signals/6-interval-when-is-destroy/destroy-effect.component';
 import { EffectDestroyComponent } from './signals/7-effect-destroy/effect-destroy.component';
 import { SignalEqualityFunctionsComponent } from './signals/signal-equality-functions/signal-equality-functions.component';
+import { UpdateSignalComponent } from './signals/update-signal/update-signal.component';
 
 export const routes: Routes = [
-  { path: '1', component: WritableSignalsComponent },
+  { path: '0', component: WritableSignalsComponent },
+  { path: '1', component: UpdateSignalComponent },
   { path: '2', component: ComputedSignalsComponent },
   { path: '3', component: ComputedSignalsLazilyEvaluatedMemoizedComponent },
   { path: '4', component: ComputedSignalDynamicDependenciesComponent },

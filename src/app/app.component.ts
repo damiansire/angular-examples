@@ -10,6 +10,7 @@ import { EffectDestroyComponent } from './signals/7-effect-destroy/effect-destro
 import { SignalEqualityFunctionsComponent } from './signals/signal-equality-functions/signal-equality-functions.component';
 import { CommonModule } from '@angular/common';
 import { routes } from './app.routes';
+import { UpdateSignalComponent } from './signals/update-signal/update-signal.component';
 interface ComponentItem {
   path: string;
   component: any; // Asegúrate de importar tus componentes
@@ -37,7 +38,8 @@ interface ComponentItem {
 export class AppComponent {
   title = 'angular-examples';
   components: ComponentItem[] = [
-    { path: '1', component: WritableSignalsComponent },
+    { path: '0', component: WritableSignalsComponent },
+    { path: '1', component: UpdateSignalComponent },
     { path: '2', component: ComputedSignalsComponent },
     { path: '3', component: ComputedSignalsLazilyEvaluatedMemoizedComponent },
     { path: '4', component: ComputedSignalDynamicDependenciesComponent },
