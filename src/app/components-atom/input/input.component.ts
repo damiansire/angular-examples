@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-input',
@@ -10,4 +10,10 @@ import { Component, Input } from '@angular/core';
 export class InputComponent {
   @Input() text: string = '';
   @Input() placeholder: string = '';
+  @Output() onChangeEvent = new EventEmitter<string>();
+
+  sendData(event: any) {
+    const inputValue = (event.target as HTMLInputElement).value;
+    this.onChangeEvent.emit(inputValue);
+  }
 }

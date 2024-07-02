@@ -1,14 +1,20 @@
 <section role="set-info" class="flex justify-between">
   <section class="flex flex-col">
     <app-variable-box variableName="name" [variableValue]="name()" />
-    <app-input placeholder="name" />
-    <app-button text="Set" />
+    <app-input
+      placeholder="name"
+      (onChangeEvent)="saveInHiddenVariableInputData($event, 'name')"
+    />
+    <app-button text="Set" (onClick)="setData('name')" />
     <app-code [lines]="linesName" />
   </section>
   <section class="flex flex-col">
     <app-variable-box variableName="age" [variableValue]="age()" />
-    <app-input placeholder="age" />
-    <app-button text="Set" />
+    <app-input
+      placeholder="age"
+      (onChangeEvent)="saveInHiddenVariableInputData($event, 'age')"
+    />
+    <app-button text="Set" (onClick)="setData('age')" />
     <app-code [lines]="linesAge" />
   </section>
   <section>
@@ -24,10 +30,18 @@
         />
       </div>
       <div class="flex">
-        <app-input placeholder="name" />
-        <app-input placeholder="surname" />
+        <app-input
+          placeholder="name"
+          (onChangeEvent)="saveInHiddenVariableInputData($event, 'person.name')"
+        />
+        <app-input
+          placeholder="surname"
+          (onChangeEvent)="
+            saveInHiddenVariableInputData($event, 'person.surname')
+          "
+        />
       </div>
-      <app-button text="Set" />
+      <app-button text="Set" (onClick)="setData('person')" />
       <app-code [lines]="linesPerson" />
     </div>
   </section>

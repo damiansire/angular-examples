@@ -21,13 +21,49 @@ import { HistoryElement } from '../../components/component.interface';
   ],
 })
 export class SignalEqualityFunctionsComponent {
-  appEventHistory = signal<HistoryElement[]>([]);
+  appEventHistory = signal<HistoryElement[]>([
+    {
+      date: new Date(),
+      trigger: 'test',
+      newState: 'test',
+      isCountIncrement: false,
+    },
+  ]);
+
+  exampleData = signal({
+    name: '',
+    age: '',
+    person: {
+      name: '',
+      surname: '',
+    },
+  });
+
+  saveInHiddenVariableInputData(event: any, inputName: string) {
+    if (inputName === 'name') {
+      this.exampleData.update((data) => {
+        data.name = event;
+        return data;
+      });
+    } else if (inputName === 'age') {
+      this.exampleData.update((data) => {
+        data.age = event;
+        return data;
+      });
+    } else if (inputName === 'person.name') {
+      this.exampleData.update((data) => {
+        data.person.name = event;
+        return data;
+      });
+    } else if (inputName === 'person.surname') {
+      this.exampleData.update((data) => {
+        data.person.surname = event;
+        return data;
+      });
+    }
+  }
 
   name = signal('dami');
-  setName(event: string) {
-    this.name.set(event);
-    this.addConditionalCountRecomputation('interval', event, false);
-  }
   linesName = computed<codeLine[]>(() => [
     { line: 'name = signal("dami");', active: false },
     { line: 'setName(event: string) {', active: false },
@@ -36,9 +72,6 @@ export class SignalEqualityFunctionsComponent {
   ]);
 
   age = signal('26');
-  setAge(event: string) {
-    this.age.set(event);
-  }
   linesAge = computed<codeLine[]>(() => [
     { line: 'age = signal("26");', active: false },
     { line: 'setAge(event: string) {', active: false },
@@ -47,10 +80,6 @@ export class SignalEqualityFunctionsComponent {
   ]);
 
   person = signal({ name: 'damian', surname: 'sire' });
-  setPerson(personName: string, personSurname: string) {
-    const newData = { name: personName, surname: personSurname };
-    this.person.set(newData);
-  }
   linesPerson = computed<codeLine[]>(() => [
     {
       line: 'person = signal({ name: "damian", surname: "sire" });',
@@ -76,7 +105,7 @@ export class SignalEqualityFunctionsComponent {
       },
     }
   );
-  constructor() {}
+
   addConditionalCountRecomputation(
     trigger: string,
     newState: number | string,
@@ -93,4 +122,22 @@ export class SignalEqualityFunctionsComponent {
       return newHistory;
     });
   }
+
+  setData(event: string) {
+    if (event === 'name') {
+      if (this.name() != this.exampleData().name) {
+        this.addConditionalCountRecomputation('interval', event, false);
+      }
+      this.name.set(this.exampleData().name);
+    } else if (event === 'age') {
+      if (this.age().toString() != this.exampleData().age.toString()) {
+        this.addConditionalCountRecomputation('interval', event, false);
+      }
+      this.age.set(this.exampleData().age);
+    } else if (event === 'person') {
+      this.person.set(this.exampleData().person);
+      this.addConditionalCountRecomputation('interval', event, false);
+    }
+  }
+  constructor() {}
 }
