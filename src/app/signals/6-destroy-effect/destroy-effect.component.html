@@ -1,4 +1,5 @@
 <button (click)="destroy()">Destroy</button>
 @if(showComponent){
-<app-destroy-box></app-destroy-box>
+<app-destroy-box (autoRefreshEvent)="setAutoRefresh($event)"></app-destroy-box>
 }
+<app-code [lines]="lines"></app-code>

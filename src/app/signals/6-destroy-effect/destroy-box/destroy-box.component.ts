@@ -1,4 +1,4 @@
-import { Component, effect, signal } from '@angular/core';
+import { Component, EventEmitter, Output, effect, signal } from '@angular/core';
 import { InputComponent } from '../../../components-atom/input/input.component';
 import { ButtonComponent } from '../../../components-atom/button/button.component';
 import { CommonModule } from '@angular/common';
@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
   imports: [InputComponent, ButtonComponent, CommonModule],
 })
 export class DestroyBoxComponent {
+  @Output() autoRefreshEvent = new EventEmitter<boolean>();
   currentTime = new Date();
   autoRefresh = signal(false);
   intervalSave: any;
@@ -31,6 +32,7 @@ export class DestroyBoxComponent {
     this.currentTime = new Date();
   }
   toggleAutoRefresh() {
+    this.autoRefreshEvent.emit(!this.autoRefresh());
     this.autoRefresh.set(!this.autoRefresh());
   }
 }
