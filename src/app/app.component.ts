@@ -6,6 +6,7 @@ import { ComputedSignalsLazilyEvaluatedMemoizedComponent } from './signals/3-com
 import { ComputedSignalDynamicDependenciesComponent } from './signals/4-computed-signal-dynamic-dependencies/computed-signal-dynamic-dependencies.component';
 import { EffectComponent } from './signals/5-effect/effect.component';
 import { DestroyEffectComponent } from './signals/6-interval-when-is-destroy/destroy-effect.component';
+import { EffectDestroyComponent } from './signals/7-effect-destroy/effect-destroy.component';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ import { DestroyEffectComponent } from './signals/6-interval-when-is-destroy/des
     ComputedSignalDynamicDependenciesComponent,
     EffectComponent,
     DestroyEffectComponent,
+    EffectDestroyComponent,
   ],
 })
 export class AppComponent {

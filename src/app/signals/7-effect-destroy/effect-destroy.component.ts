@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './effect-destroy.component.html',
-  styleUrl: './effect-destroy.component.css'
+  styleUrl: './effect-destroy.component.css',
 })
-export class EffectDestroyComponent {
-
-}
+export class EffectDestroyComponent {}
