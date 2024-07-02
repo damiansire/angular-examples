@@ -1,11 +1,19 @@
-import { Component, ElementRef, ViewChild, signal } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  ViewChild,
+  computed,
+  signal,
+} from '@angular/core';
+import { CodeComponent } from '../../components-atom/code/code.component';
+import { codeLine } from '../../components-atom/component-atom.interface';
 
 @Component({
   selector: 'app-update-signal',
   standalone: true,
-  imports: [],
   templateUrl: './update-signal.component.html',
   styleUrl: './update-signal.component.css',
+  imports: [CodeComponent],
 })
 export class UpdateSignalComponent {
   count = signal(0);
@@ -17,10 +25,12 @@ export class UpdateSignalComponent {
     this.count.update((value) => value + 1);
     console.log(this.count());
   }
-  setValue() {
-    const inputValue = parseInt(this.myInput.nativeElement.value, 10);
-    if (!isNaN(inputValue)) {
-      this.count.set(inputValue);
-    }
-  }
+
+  lines = computed<codeLine[]>(() => [
+    { line: 'count = signal(0);', active: false },
+    { line: 'update() {', active: false },
+    { line: '  this.count.update((value) => value + 1);', active: true },
+    { line: '  console.log(this.count());', active: false },
+    { line: '}', active: false },
+  ]);
 }
