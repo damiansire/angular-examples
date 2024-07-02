@@ -2,7 +2,7 @@
   <app-selection-option (selectedLevelChange)="selectedLevelChange($event)" />
 </section>
 <section class="flex gap-8">
-  <section role="set-info" class="flex flex-col justify-between w-2/5">
+  <section role="set-info" class="flex flex-col justify-between w-2/5 mt-4">
     @if(currentLevel() === "Nivel 1"){
     <section class="flex flex-col">
       <app-variable-box variableName="name" [variableValue]="name()" />
@@ -25,28 +25,36 @@
     <section>
       <div class="flex flex-col">
         <div class="flex">
-          <app-variable-box
-            variableName="person.name"
-            [variableValue]="person().name"
-          />
-          <app-variable-box
-            variableName="person.surname"
-            [variableValue]="person().surname"
-          />
+          <div class="w-full">
+            <app-variable-box
+              variableName="person.name"
+              [variableValue]="person().name"
+            />
+          </div>
+          <div class="w-full">
+            <app-variable-box
+              variableName="person.surname"
+              [variableValue]="person().surname"
+            />
+          </div>
         </div>
         <div class="flex">
-          <app-input
-            placeholder="name"
-            (onChangeEvent)="
-              saveInHiddenVariableInputData($event, 'person.name')
-            "
-          />
-          <app-input
-            placeholder="surname"
-            (onChangeEvent)="
-              saveInHiddenVariableInputData($event, 'person.surname')
-            "
-          />
+          <div class="w-full">
+            <app-input
+              placeholder="name"
+              (onChangeEvent)="
+                saveInHiddenVariableInputData($event, 'person.name')
+              "
+            />
+          </div>
+          <div class="w-full">
+            <app-input
+              placeholder="surname"
+              (onChangeEvent)="
+                saveInHiddenVariableInputData($event, 'person.surname')
+              "
+            />
+          </div>
         </div>
         <app-button text="Set" (onClick)="setData('person')" />
       </div>
@@ -55,28 +63,36 @@
     <section>
       <div class="flex flex-col">
         <div class="flex">
-          <app-variable-box
-            variableName="person.name"
-            [variableValue]="person().name"
-          />
-          <app-variable-box
-            variableName="person.surname"
-            [variableValue]="person().surname"
-          />
+          <div class="w-full">
+            <app-variable-box
+              variableName="person.name"
+              [variableValue]="person().name"
+            />
+          </div>
+          <div class="w-full">
+            <app-variable-box
+              variableName="person.surname"
+              [variableValue]="person().surname"
+            />
+          </div>
         </div>
         <div class="flex">
-          <app-input
-            placeholder="name"
-            (onChangeEvent)="
-              saveInHiddenVariableInputData($event, 'person.name')
-            "
-          />
-          <app-input
-            placeholder="surname"
-            (onChangeEvent)="
-              saveInHiddenVariableInputData($event, 'person.surname')
-            "
-          />
+          <div class="w-full">
+            <app-input
+              placeholder="name"
+              (onChangeEvent)="
+                saveInHiddenVariableInputData($event, 'person.name')
+              "
+            />
+          </div>
+          <div class="w-full">
+            <app-input
+              placeholder="surname"
+              (onChangeEvent)="
+                saveInHiddenVariableInputData($event, 'person.surname')
+              "
+            />
+          </div>
         </div>
         <app-button text="Set" (onClick)="setData('person')" />
       </div>

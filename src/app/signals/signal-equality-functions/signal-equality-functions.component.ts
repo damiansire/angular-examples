@@ -138,8 +138,14 @@ export class SignalEqualityFunctionsComponent {
       }
       this.age.set(this.exampleData().age);
     } else if (event === 'person') {
-      this.person.set(this.exampleData().person);
-      this.addConditionalCountRecomputation('interval', event, false);
+      if (
+        this.person().name != this.exampleData().person.name ||
+        this.person().surname != this.exampleData().person.surname
+      ) {
+        this.addConditionalCountRecomputation('interval', event, false);
+        debugger;
+        this.person.set(this.exampleData().person);
+      }
     }
   }
 
