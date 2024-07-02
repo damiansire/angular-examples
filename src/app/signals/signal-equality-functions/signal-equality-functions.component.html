@@ -1,8 +1,8 @@
 <section>
-  {{ currentLevel() }}
   <app-selection-option (selectedLevelChange)="selectedLevelChange($event)" />
 </section>
 <section role="set-info" class="flex justify-between">
+  @if(currentLevel() === "Nivel 1"){
   <section class="flex flex-col">
     <app-variable-box variableName="name" [variableValue]="name()" />
     <app-input
@@ -12,6 +12,7 @@
     <app-button text="Set" (onClick)="setData('name')" />
     <app-code [lines]="linesName" />
   </section>
+  } @if(currentLevel() === "Nivel 2"){
   <section class="flex flex-col">
     <app-variable-box variableName="age" [variableValue]="age()" />
     <app-input
@@ -21,6 +22,7 @@
     <app-button text="Set" (onClick)="setData('age')" />
     <app-code [lines]="linesAge" />
   </section>
+  } @if(currentLevel() === "Nivel 3"){
   <section>
     <div class="flex flex-col">
       <div class="flex">
@@ -49,6 +51,7 @@
       <app-code [lines]="linesPerson" />
     </div>
   </section>
+  }
   <section>
     <app-event-history
       title="Signal Tracker"
