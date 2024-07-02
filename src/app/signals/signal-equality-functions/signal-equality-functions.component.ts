@@ -6,6 +6,7 @@ import { codeLine } from '../../components-atom/component-atom.interface';
 import { CodeComponent } from '../../components-atom/code/code.component';
 import { EventHistoryComponent } from '../../components/event-history/event-history.component';
 import { HistoryElement } from '../../components/component.interface';
+import { SelectionOptionComponent } from '../../components/selection-option/selection-option.component';
 
 @Component({
   selector: 'app-signal-equality-functions',
@@ -18,9 +19,11 @@ import { HistoryElement } from '../../components/component.interface';
     VariableBoxComponent,
     CodeComponent,
     EventHistoryComponent,
+    SelectionOptionComponent,
   ],
 })
 export class SignalEqualityFunctionsComponent {
+  currentLevel = signal('Nivel 1');
   appEventHistory = signal<HistoryElement[]>([
     {
       date: new Date(),
@@ -138,6 +141,10 @@ export class SignalEqualityFunctionsComponent {
       this.person.set(this.exampleData().person);
       this.addConditionalCountRecomputation('interval', event, false);
     }
+  }
+
+  selectedLevelChange(newLevel: string) {
+    this.currentLevel.set(newLevel);
   }
   constructor() {}
 }

@@ -1,3 +1,7 @@
+<section>
+  {{ currentLevel() }}
+  <app-selection-option (selectedLevelChange)="selectedLevelChange($event)" />
+</section>
 <section role="set-info" class="flex justify-between">
   <section class="flex flex-col">
     <app-variable-box variableName="name" [variableValue]="name()" />
