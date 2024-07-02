@@ -1,18 +1,31 @@
-<section class="flex">
-  <app-input placeholder="name" />
-  <app-button text="Set" />
-</section>
-<section class="flex">
-  <app-input placeholder="age" />
-  <app-button text="Set" />
-</section>
-<section>
-  <h1>Persona</h1>
-  <div class="flex flex-col">
-    <div class="flex">
-      <app-input placeholder="name" />
-      <app-input placeholder="age" />
-    </div>
+<section role="set-info" class="flex justify-between">
+  <section class="flex flex-col">
+    <app-variable-box variableName="name" [variableValue]="name()" />
+    <app-input placeholder="name" />
     <app-button text="Set" />
-  </div>
+  </section>
+  <section class="flex flex-col">
+    <app-variable-box variableName="age" [variableValue]="age()" />
+    <app-input placeholder="age" />
+    <app-button text="Set" />
+  </section>
+  <section>
+    <div class="flex flex-col">
+      <div class="flex">
+        <app-variable-box
+          variableName="person.name"
+          [variableValue]="person().name"
+        />
+        <app-variable-box
+          variableName="person.surname"
+          [variableValue]="person().surname"
+        />
+      </div>
+      <div class="flex">
+        <app-input placeholder="name" />
+        <app-input placeholder="surname" />
+      </div>
+      <app-button text="Set" />
+    </div>
+  </section>
 </section>
