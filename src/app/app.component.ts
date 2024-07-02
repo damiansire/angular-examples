@@ -7,6 +7,7 @@ import { ComputedSignalDynamicDependenciesComponent } from './signals/4-computed
 import { EffectComponent } from './signals/5-effect/effect.component';
 import { DestroyEffectComponent } from './signals/6-interval-when-is-destroy/destroy-effect.component';
 import { EffectDestroyComponent } from './signals/7-effect-destroy/effect-destroy.component';
+import { SignalEqualityFunctionsComponent } from './signals/signal-equality-functions/signal-equality-functions.component';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ import { EffectDestroyComponent } from './signals/7-effect-destroy/effect-destro
     EffectComponent,
     DestroyEffectComponent,
     EffectDestroyComponent,
+    SignalEqualityFunctionsComponent,
   ],
 })
 export class AppComponent {
