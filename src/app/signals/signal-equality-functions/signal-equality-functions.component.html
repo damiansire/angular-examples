@@ -3,11 +3,13 @@
     <app-variable-box variableName="name" [variableValue]="name()" />
     <app-input placeholder="name" />
     <app-button text="Set" />
+    <app-code [lines]="linesName" />
   </section>
   <section class="flex flex-col">
     <app-variable-box variableName="age" [variableValue]="age()" />
     <app-input placeholder="age" />
     <app-button text="Set" />
+    <app-code [lines]="linesAge" />
   </section>
   <section>
     <div class="flex flex-col">
@@ -26,6 +28,7 @@
         <app-input placeholder="surname" />
       </div>
       <app-button text="Set" />
+      <app-code [lines]="linesPerson" />
     </div>
   </section>
 </section>
