@@ -15,6 +15,7 @@ import { HistoryElement } from '../../components/component.interface';
 export class EffectDestroyComponent {
   autoRefresh = signal(false);
   appEventHistory = signal<HistoryElement[]>([]);
+  count = signal(0);
   lines = computed<codeLine[]>(() => [
     {
       line: 'constructor() {',
@@ -71,11 +72,12 @@ export class EffectDestroyComponent {
     effect(() => {
       if (this.autoRefresh()) {
         this.intervalSave = setInterval(() => {
+          this.count.update((x) => x + 1);
           const event = new Date();
           this.addConditionalCountRecomputation(
-            'interval',
             this.getFormattedTime(event),
-            false
+            this.count(),
+            true
           );
         }, 1000);
       } else {
@@ -86,6 +88,7 @@ export class EffectDestroyComponent {
   showComponent = true;
   destroy() {
     this.showComponent = false;
+    clearInterval(this.intervalSave);
   }
   setAutoRefresh(event: boolean) {
     this.autoRefresh.set(event);

@@ -1,19 +1,17 @@
-<div class="flex">
-  <div>
-    <button (click)="destroy()">Destroy</button>
+<div class="flex flex-col w-full">
+  <button (click)="destroy()">Destroy</button>
+  <div class="flex w-full">
     @if(showComponent){
     <div>
       <app-component-destroy (autoRefreshEvent)="setAutoRefresh($event)" />
     </div>
     }
-    <app-event-history
-      title="Interval Evaluation"
-      [history]="appEventHistory"
-      stateName="Count Number:"
-    ></app-event-history>
-  </div>
-
-  <div class="flex-grow">
-    <app-code [lines]="lines"></app-code>
+    <div class="w-full">
+      <app-event-history
+        title="Effect Evaluation"
+        [history]="appEventHistory"
+        stateName="Count Number:"
+      ></app-event-history>
+    </div>
   </div>
 </div>

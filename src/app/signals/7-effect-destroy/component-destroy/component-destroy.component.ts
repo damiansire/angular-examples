@@ -13,13 +13,14 @@ export class ComponentDestroyComponent {
   @Output() newIntervalOutput = new EventEmitter<Date>();
   currentTime = new Date();
   autoRefresh = signal(false);
+  count = signal(0);
   intervalSave: any;
   constructor() {
     effect(() => {
       if (this.autoRefresh()) {
         this.intervalSave = setInterval(() => {
-          console.log('Sigo aca');
           this.currentTime = new Date();
+          this.count.update((x) => x + 1);
           this.newIntervalOutput.emit(this.currentTime);
         }, 1000);
       } else {
