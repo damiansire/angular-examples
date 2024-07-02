@@ -5,7 +5,26 @@
 <app-computed-signal-dynamic-dependencies />
 <app-effect></app-effect>
 <app-destroy-effect></app-destroy-effect>
+<app-signal-equality-functions></app-signal-equality-functions>
 -->
 <div class="body-container p-5">
-  <app-signal-equality-functions></app-signal-equality-functions>
+  <div class="flex">
+    <div class="w-64 bg-gray-800 text-white h-screen">
+      <ul class="py-4">
+        @for (component of components; track component.path) {
+        <li
+          routerLinkActive="bg-gray-700"
+          class="px-4 py-2 cursor-pointer hover:bg-gray-700"
+          [routerLink]="[component.path]"
+        >
+          {{ component.path }}
+        </li>
+        }
+      </ul>
+    </div>
+
+    <div class="flex-grow p-5">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>

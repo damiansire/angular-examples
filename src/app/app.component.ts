@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { WritableSignalsComponent } from './signals/1-writable-signals/writable-signals.component';
 import { ComputedSignalsComponent } from './signals/2-computed-signals/computed-signals.component';
 import { ComputedSignalsLazilyEvaluatedMemoizedComponent } from './signals/3-computed-signals-lazily-evaluated-memoized/computed-signals-lazily-evaluated-memoized.component';
@@ -8,6 +8,12 @@ import { EffectComponent } from './signals/5-effect/effect.component';
 import { DestroyEffectComponent } from './signals/6-interval-when-is-destroy/destroy-effect.component';
 import { EffectDestroyComponent } from './signals/7-effect-destroy/effect-destroy.component';
 import { SignalEqualityFunctionsComponent } from './signals/signal-equality-functions/signal-equality-functions.component';
+import { CommonModule } from '@angular/common';
+import { routes } from './app.routes';
+interface ComponentItem {
+  path: string;
+  component: any; // Asegúrate de importar tus componentes
+}
 
 @Component({
   selector: 'app-root',
@@ -24,8 +30,20 @@ import { SignalEqualityFunctionsComponent } from './signals/signal-equality-func
     DestroyEffectComponent,
     EffectDestroyComponent,
     SignalEqualityFunctionsComponent,
+    CommonModule,
+    RouterModule,
   ],
 })
 export class AppComponent {
   title = 'angular-examples';
+  components: ComponentItem[] = [
+    { path: '1', component: WritableSignalsComponent },
+    { path: '2', component: ComputedSignalsComponent },
+    { path: '3', component: ComputedSignalsLazilyEvaluatedMemoizedComponent },
+    { path: '4', component: ComputedSignalDynamicDependenciesComponent },
+    { path: '5', component: EffectComponent },
+    { path: '6', component: DestroyEffectComponent },
+    { path: '7', component: EffectDestroyComponent },
+    { path: '8', component: SignalEqualityFunctionsComponent },
+  ];
 }
