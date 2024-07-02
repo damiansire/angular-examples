@@ -5,6 +5,7 @@ import { ComputedSignalsComponent } from './signals/2-computed-signals/computed-
 import { ComputedSignalsLazilyEvaluatedMemoizedComponent } from './signals/3-computed-signals-lazily-evaluated-memoized/computed-signals-lazily-evaluated-memoized.component';
 import { ComputedSignalDynamicDependenciesComponent } from './signals/4-computed-signal-dynamic-dependencies/computed-signal-dynamic-dependencies.component';
 import { EffectComponent } from './signals/5-effect/effect.component';
+import { DestroyEffectComponent } from './signals/6-destroy-effect/destroy-effect.component';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ import { EffectComponent } from './signals/5-effect/effect.component';
     ComputedSignalsLazilyEvaluatedMemoizedComponent,
     ComputedSignalDynamicDependenciesComponent,
     EffectComponent,
+    DestroyEffectComponent,
   ],
 })
 export class AppComponent {

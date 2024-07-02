@@ -1,1 +1,16 @@
-<p>destroy-box works!</p>
+<div class="weather-widget p-4 rounded-lg shadow-md bg-white">
+  <h2 class="text-xl font-semibold mb-2">Weather Widget</h2>
+
+  <div class="flex items-center space-x-2 mb-4">
+    <app-input text="City Name" class="w-full" />
+    <app-button
+      text="Set"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    />
+  </div>
+
+  <app-button
+    text="Destroy Component"
+    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+  />
+</div>
