@@ -18,6 +18,7 @@ export class ComponentDestroyComponent {
     effect(() => {
       if (this.autoRefresh()) {
         this.intervalSave = setInterval(() => {
+          console.log('Sigo aca');
           this.currentTime = new Date();
           this.newIntervalOutput.emit(this.currentTime);
         }, 1000);

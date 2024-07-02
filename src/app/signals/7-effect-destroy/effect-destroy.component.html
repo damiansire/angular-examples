@@ -3,10 +3,7 @@
     <button (click)="destroy()">Destroy</button>
     @if(showComponent){
     <div>
-      <app-component-destroy
-        (newIntervalOutput)="newIntervalOutput($event)"
-        (autoRefreshEvent)="setAutoRefresh($event)"
-      />
+      <app-component-destroy (autoRefreshEvent)="setAutoRefresh($event)" />
     </div>
     }
     <app-event-history

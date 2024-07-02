@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 import { ComponentDestroyComponent } from './component-destroy/component-destroy.component';
 import { EventHistoryComponent } from '../../components/event-history/event-history.component';
 import { CodeComponent } from '../../components-atom/code/code.component';
@@ -65,7 +65,24 @@ export class EffectDestroyComponent {
       active: false,
     },
   ]);
+  intervalSave: any;
 
+  constructor() {
+    effect(() => {
+      if (this.autoRefresh()) {
+        this.intervalSave = setInterval(() => {
+          const event = new Date();
+          this.addConditionalCountRecomputation(
+            'interval',
+            this.getFormattedTime(event),
+            false
+          );
+        }, 1000);
+      } else {
+        clearInterval(this.intervalSave);
+      }
+    });
+  }
   showComponent = true;
   destroy() {
     this.showComponent = false;
