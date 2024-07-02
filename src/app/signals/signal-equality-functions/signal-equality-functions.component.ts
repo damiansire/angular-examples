@@ -4,6 +4,8 @@ import { ButtonComponent } from '../../components-atom/button/button.component';
 import { VariableBoxComponent } from '../../components-atom/variable-box/variable-box.component';
 import { codeLine } from '../../components-atom/component-atom.interface';
 import { CodeComponent } from '../../components-atom/code/code.component';
+import { EventHistoryComponent } from '../../components/event-history/event-history.component';
+import { HistoryElement } from '../../components/component.interface';
 
 @Component({
   selector: 'app-signal-equality-functions',
@@ -15,12 +17,16 @@ import { CodeComponent } from '../../components-atom/code/code.component';
     ButtonComponent,
     VariableBoxComponent,
     CodeComponent,
+    EventHistoryComponent,
   ],
 })
 export class SignalEqualityFunctionsComponent {
+  appEventHistory = signal<HistoryElement[]>([]);
+
   name = signal('dami');
   setName(event: string) {
     this.name.set(event);
+    this.addConditionalCountRecomputation('interval', event, false);
   }
   linesName = computed<codeLine[]>(() => [
     { line: 'name = signal("dami");', active: false },
@@ -70,12 +76,21 @@ export class SignalEqualityFunctionsComponent {
       },
     }
   );
-  constructor() {
-    effect(() => {
-      console.log(this.data());
+  constructor() {}
+  addConditionalCountRecomputation(
+    trigger: string,
+    newState: number | string,
+    isCountIncrement: boolean
+  ) {
+    this.appEventHistory.update((prevHistory) => {
+      const newHistory = prevHistory.length ? [...prevHistory] : [];
+      newHistory.push({
+        date: new Date(),
+        trigger,
+        newState,
+        isCountIncrement,
+      });
+      return newHistory;
     });
-  }
-  setValue() {
-    this.data.set({ name: 'pedro' });
   }
 }
