@@ -1,0 +1,19 @@
+<div class="w-full">
+  <label for="level" class="block text-sm font-medium text-gray-700 mb-2"
+    >Selecciona un Nivel:</label
+  >
+
+  <div class="flex space-x-4">
+    <button
+      *ngFor="let level of levels"
+      (click)="selectLevel(level)"
+      class="px-4 py-2 rounded-md text-sm font-medium"
+      [class.bg-green-500]="selectedLevel === level"
+      [class.text-white]="selectedLevel === level"
+      [class.bg-gray-200]="selectedLevel !== level"
+      [class.text-gray-700]="selectedLevel !== level"
+    >
+      {{ level }}
+    </button>
+  </div>
+</div>

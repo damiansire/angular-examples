@@ -1,0 +1,3 @@
+.weather-widget button:hover {
+  @apply opacity-75; /* Reduce la opacidad al pasar el mouse */
+}
