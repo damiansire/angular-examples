@@ -8,4 +8,9 @@ import { DestroyBoxComponent } from './destroy-box/destroy-box.component';
   styleUrl: './destroy-effect.component.css',
   imports: [DestroyBoxComponent],
 })
-export class DestroyEffectComponent {}
+export class DestroyEffectComponent {
+  showComponent = true;
+  destroy() {
+    this.showComponent = false;
+  }
+}
