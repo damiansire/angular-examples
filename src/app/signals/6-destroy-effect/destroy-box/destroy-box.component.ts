@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class DestroyBoxComponent {
   @Output() autoRefreshEvent = new EventEmitter<boolean>();
+  @Output() newIntervalOutput = new EventEmitter<Date>();
   currentTime = new Date();
   autoRefresh = signal(false);
   intervalSave: any;
@@ -20,7 +21,7 @@ export class DestroyBoxComponent {
       if (this.autoRefresh()) {
         this.intervalSave = setInterval(() => {
           this.currentTime = new Date();
-          console.log('Estoy aca');
+          this.newIntervalOutput.emit(this.currentTime);
         }, 1000);
       } else {
         clearInterval(this.intervalSave);

@@ -2,16 +2,19 @@ import { Component, computed, signal } from '@angular/core';
 import { DestroyBoxComponent } from './destroy-box/destroy-box.component';
 import { codeLine } from '../../components-atom/component-atom.interface';
 import { CodeComponent } from '../../components-atom/code/code.component';
+import { EventHistoryComponent } from '../../components/event-history/event-history.component';
+import { HistoryElement } from '../../components/component.interface';
 
 @Component({
   selector: 'app-destroy-effect',
   standalone: true,
   templateUrl: './destroy-effect.component.html',
   styleUrl: './destroy-effect.component.css',
-  imports: [DestroyBoxComponent, CodeComponent],
+  imports: [DestroyBoxComponent, CodeComponent, EventHistoryComponent],
 })
 export class DestroyEffectComponent {
   autoRefresh = signal(false);
+  appEventHistory = signal<HistoryElement[]>([]);
   lines = computed<codeLine[]>(() => [
     {
       line: 'constructor() {',
@@ -69,5 +72,35 @@ export class DestroyEffectComponent {
   }
   setAutoRefresh(event: boolean) {
     this.autoRefresh.set(event);
+  }
+  addConditionalCountRecomputation(
+    trigger: string,
+    newState: number | string,
+    isCountIncrement: boolean
+  ) {
+    this.appEventHistory.update((prevHistory) => {
+      const newHistory = prevHistory.length ? [...prevHistory] : [];
+      newHistory.push({
+        date: new Date(),
+        trigger,
+        newState,
+        isCountIncrement,
+      });
+      return newHistory;
+    });
+  }
+  getFormattedTime(date: Date) {
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+
+    return `${hours}:${minutes}:${seconds}`;
+  }
+  newIntervalOutput(event: Date) {
+    this.addConditionalCountRecomputation(
+      'interval',
+      this.getFormattedTime(event),
+      false
+    );
   }
 }

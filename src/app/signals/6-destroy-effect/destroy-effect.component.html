@@ -4,10 +4,16 @@
     @if(showComponent){
     <div>
       <app-destroy-box
+        (newIntervalOutput)="newIntervalOutput($event)"
         (autoRefreshEvent)="setAutoRefresh($event)"
       ></app-destroy-box>
     </div>
     }
+    <app-event-history
+      title="Interval Evaluation"
+      [history]="appEventHistory"
+      stateName="Count Number:"
+    ></app-event-history>
   </div>
 
   <div class="flex-grow">
