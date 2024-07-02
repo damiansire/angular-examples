@@ -1,5 +1,16 @@
-<button (click)="destroy()">Destroy</button>
-@if(showComponent){
-<app-destroy-box (autoRefreshEvent)="setAutoRefresh($event)"></app-destroy-box>
-}
-<app-code [lines]="lines"></app-code>
+<div class="flex">
+  <div>
+    <button (click)="destroy()">Destroy</button>
+    @if(showComponent){
+    <div>
+      <app-destroy-box
+        (autoRefreshEvent)="setAutoRefresh($event)"
+      ></app-destroy-box>
+    </div>
+    }
+  </div>
+
+  <div class="flex-grow">
+    <app-code [lines]="lines"></app-code>
+  </div>
+</div>
