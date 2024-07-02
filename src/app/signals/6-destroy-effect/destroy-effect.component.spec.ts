@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InjectionContextComponent } from './injection-context.component';
+import { DestroyEffectComponent } from './destroy-effect.component';
 
-describe('InjectionContextComponent', () => {
-  let component: InjectionContextComponent;
-  let fixture: ComponentFixture<InjectionContextComponent>;
+describe('DestroyEffectComponent', () => {
+  let component: DestroyEffectComponent;
+  let fixture: ComponentFixture<DestroyEffectComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [InjectionContextComponent]
+      imports: [DestroyEffectComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(InjectionContextComponent);
+    fixture = TestBed.createComponent(DestroyEffectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
