@@ -1,16 +1,20 @@
-<div class="counter-container">
-  <div class="counter-display">Amount: {{ count() }}</div>
-</div>
-<br />
-<div class="input-group">
-  <input
-    #signalSetInput
-    type="text"
-    class="form-control"
-    placeholder="Enter a value"
-  />
-  <button class="btn btn-primary" (click)="setValue()">Set</button>
-</div>
-<div class="mt-4">
-  <app-code [lines]="lineas" />
-</div>
+<section class="flex gap-4 justify-around">
+  <section role="example">
+    <div class="counter-container">
+      <div class="counter-display">Amount: {{ count() }}</div>
+    </div>
+    <br />
+    <div class="input-group">
+      <input
+        #signalSetInput
+        type="text"
+        class="form-control"
+        placeholder="Enter a value"
+      />
+      <button class="btn btn-primary" (click)="setValue()">Set</button>
+    </div>
+  </section>
+  <section role="code">
+    <app-code [lines]="lineas" />
+  </section>
+</section>
