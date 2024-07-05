@@ -10,6 +10,7 @@ import { SignalEqualityFunctionsComponent } from './signals/signal-equality-func
 import { UpdateSignalComponent } from './signals/update-signal/update-signal.component';
 
 export const routes: Routes = [
+  { path: '', redirectTo: '0', pathMatch: 'full' },
   { path: '0', component: WritableSignalsComponent },
   { path: '1', component: UpdateSignalComponent },
   { path: '2', component: ComputedSignalsComponent },
