@@ -1,7 +1,7 @@
 <div class="rounded-md overflow-hidden shadow-md">
   @for (item of lines(); track $index) {
   <pre
-    class="p-2 text-lg font-mono whitespace-pre-wrap break-words"
+    class="p-2 text-sm font-mono whitespace-pre-wrap break-words"
     [ngClass]="{
       'bg-green-700 text-white': item.active,
       'bg-gray-800 text-gray-300': !item.active,
