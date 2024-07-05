@@ -10,14 +10,14 @@ import { SignalEqualityFunctionsComponent } from './signals/signal-equality-func
 import { UpdateSignalComponent } from './signals/update-signal/update-signal.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '0', pathMatch: 'full' },
-  { path: '0', component: WritableSignalsComponent },
-  { path: '1', component: UpdateSignalComponent },
-  { path: '2', component: ComputedSignalsComponent },
-  { path: '3', component: ComputedSignalsLazilyEvaluatedMemoizedComponent },
-  { path: '4', component: ComputedSignalDynamicDependenciesComponent },
-  { path: '5', component: EffectComponent },
-  { path: '6', component: DestroyEffectComponent },
-  { path: '7', component: EffectDestroyComponent },
-  { path: '8', component: SignalEqualityFunctionsComponent },
+  { path: '', redirectTo: '1', pathMatch: 'full' },
+  { path: '1', component: WritableSignalsComponent },
+  { path: '2', component: UpdateSignalComponent },
+  { path: '3', component: ComputedSignalsComponent },
+  { path: '4', component: ComputedSignalsLazilyEvaluatedMemoizedComponent },
+  { path: '5', component: ComputedSignalDynamicDependenciesComponent },
+  { path: '6', component: EffectComponent },
+  { path: '7', component: DestroyEffectComponent },
+  { path: '8', component: EffectDestroyComponent },
+  { path: '9', component: SignalEqualityFunctionsComponent },
 ];
