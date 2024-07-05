@@ -1,10 +1,10 @@
 <app-title [title]="title"></app-title>
-<div class="flex justify-around">
+<div class="flex justify-around mt-5">
   <section>
-    <ng-content select="[left]"></ng-content>
+    <ng-content></ng-content>
   </section>
 
   <section>
-    <ng-content select="[right]"></ng-content>
+    <app-code [lines]="codeLines" />
   </section>
 </div>
