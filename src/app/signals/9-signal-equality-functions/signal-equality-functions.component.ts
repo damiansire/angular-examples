@@ -143,7 +143,6 @@ export class SignalEqualityFunctionsComponent {
         this.person().surname != this.exampleData().person.surname
       ) {
         this.addConditionalCountRecomputation('interval', event, false);
-        debugger;
         this.person.set(this.exampleData().person);
       }
     }
