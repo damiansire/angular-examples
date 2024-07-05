@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TitleComponent } from '../../components-atom/title/title.component';
 
 @Component({
@@ -8,4 +8,6 @@ import { TitleComponent } from '../../components-atom/title/title.component';
   styleUrl: './column-and-code-layout.component.css',
   imports: [TitleComponent],
 })
-export class ColumnAndCodeLayoutComponent {}
+export class ColumnAndCodeLayoutComponent {
+  @Input() title = 'No Title';
+}
