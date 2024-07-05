@@ -23,7 +23,7 @@ import { SelectionOptionComponent } from '../../components/selection-option/sele
   ],
 })
 export class SignalEqualityFunctionsComponent {
-  currentLevel = signal('Nivel 1');
+  currentLevel = signal(1);
   appEventHistory = signal<HistoryElement[]>([
     {
       date: new Date(),
@@ -149,7 +149,7 @@ export class SignalEqualityFunctionsComponent {
     }
   }
 
-  selectedLevelChange(newLevel: string) {
+  selectedLevelChange(newLevel: number) {
     this.currentLevel.set(newLevel);
   }
 

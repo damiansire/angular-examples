@@ -10,12 +10,12 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './selection-option.component.css',
 })
 export class SelectionOptionComponent {
-  @Output() selectedLevelChange = new EventEmitter<string>();
+  @Output() selectedLevelChange = new EventEmitter<number>();
 
-  levels = ['Nivel 1', 'Nivel 2', 'Nivel 3', 'Nivel 4'];
+  levels = [1, 2, 3, 4];
   selectedLevel = this.levels[0]; // Nivel inicial
 
-  selectLevel(level: string) {
+  selectLevel(level: number) {
     this.selectedLevel = level;
     this.selectedLevelChange.emit(this.selectedLevel);
   }

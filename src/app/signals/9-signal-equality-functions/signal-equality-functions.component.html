@@ -3,7 +3,7 @@
 </section>
 <section class="flex gap-8">
   <section role="set-info" class="flex flex-col justify-between w-2/5 mt-4">
-    @if(currentLevel() === "Nivel 1"){
+    @if(currentLevel() === 1){
     <section class="flex flex-col">
       <app-variable-box variableName="name" [variableValue]="name()" />
       <app-input
@@ -12,7 +12,7 @@
       />
       <app-button text="Set" (onClick)="setData('name')" />
     </section>
-    } @if(currentLevel() === "Nivel 2"){
+    } @if(currentLevel() === 2){
     <section class="flex flex-col">
       <app-variable-box variableName="age" [variableValue]="age()" />
       <app-input
@@ -21,7 +21,7 @@
       />
       <app-button text="Set" (onClick)="setData('age')" />
     </section>
-    } @if(currentLevel() === "Nivel 3"){
+    } @if(currentLevel() === 3){
     <section>
       <div class="flex flex-col">
         <div class="flex">
@@ -59,7 +59,7 @@
         <app-button text="Set" (onClick)="setData('person')" />
       </div>
     </section>
-    } @if(currentLevel() === "Nivel 4"){
+    } @if(currentLevel() === 4){
     <section>
       <div class="flex flex-col">
         <div class="flex">
@@ -107,13 +107,13 @@
     </section>
   </section>
   <section class="w-3/5">
-    @if(currentLevel() === "Nivel 1"){
+    @if(currentLevel() === 1){
     <app-code [lines]="linesName" />
-    } @if(currentLevel() === "Nivel 2"){
+    } @if(currentLevel() === 2){
     <app-code [lines]="linesAge" />
-    } @if(currentLevel() === "Nivel 3"){
+    } @if(currentLevel() === 3){
     <app-code [lines]="linesPerson" />
-    } @if(currentLevel() === "Nivel 4"){
+    } @if(currentLevel() === 4){
     <app-code [lines]="linesPersonCustomCompare" />
     }
   </section>
