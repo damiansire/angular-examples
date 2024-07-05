@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { WritableSignalsComponent } from './signals/1-writable-signals/writable-signals.component';
-import { ComputedSignalsComponent } from './signals/2-computed-signals/computed-signals.component';
-import { ComputedSignalsLazilyEvaluatedMemoizedComponent } from './signals/3-computed-signals-lazily-evaluated-memoized/computed-signals-lazily-evaluated-memoized.component';
+import { ComputedSignalsComponent } from './signals/3-computed-signals/computed-signals.component';
+import { ComputedSignalsLazilyEvaluatedMemoizedComponent } from './signals/5-computed-signals-lazily-evaluated-memoized/computed-signals-lazily-evaluated-memoized.component';
 import { ComputedSignalDynamicDependenciesComponent } from './signals/4-computed-signal-dynamic-dependencies/computed-signal-dynamic-dependencies.component';
-import { EffectComponent } from './signals/5-effect/effect.component';
-import { DestroyEffectComponent } from './signals/6-interval-when-is-destroy/destroy-effect.component';
-import { EffectDestroyComponent } from './signals/7-effect-destroy/effect-destroy.component';
-import { SignalEqualityFunctionsComponent } from './signals/signal-equality-functions/signal-equality-functions.component';
+import { EffectComponent } from './signals/6-effect/effect.component';
+import { DestroyEffectComponent } from './signals/7-interval-when-is-destroy/destroy-effect.component';
+import { EffectDestroyComponent } from './signals/8-effect-destroy/effect-destroy.component';
+import { SignalEqualityFunctionsComponent } from './signals/9-signal-equality-functions/signal-equality-functions.component';
 import { CommonModule } from '@angular/common';
 import { routes } from './app.routes';
-import { UpdateSignalComponent } from './signals/update-signal/update-signal.component';
+import { UpdateSignalComponent } from './signals/2-update-signal/update-signal.component';
 interface ComponentItem {
   path: string;
   component: any; // Asegúrate de importar tus componentes
