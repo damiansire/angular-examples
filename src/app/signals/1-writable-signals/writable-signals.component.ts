@@ -7,13 +7,14 @@ import {
 } from '@angular/core';
 import { codeLine } from '../../components-atom/component-atom.interface';
 import { CodeComponent } from '../../components-atom/code/code.component';
+import { ColumnAndCodeLayoutComponent } from '../../layouts/column-and-code-layout/column-and-code-layout.component';
 
 @Component({
   selector: 'app-writable-signals',
   standalone: true,
   templateUrl: './writable-signals.component.html',
   styleUrl: './writable-signals.component.css',
-  imports: [CodeComponent],
+  imports: [CodeComponent, ColumnAndCodeLayoutComponent],
 })
 export class WritableSignalsComponent {
   count = signal(0);
@@ -26,7 +27,7 @@ export class WritableSignalsComponent {
     console.log(this.count());
   }
 
-  lineas = computed<codeLine[]>(() => [
+  lines = computed<codeLine[]>(() => [
     { line: 'count = signal(0);', active: true },
     { line: 'setValue() {', active: false },
     {

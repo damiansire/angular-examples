@@ -10,13 +10,20 @@ import { FormsModule } from '@angular/forms';
 import { CodeComponent } from '../../components-atom/code/code.component';
 import { codeLine } from '../../components-atom/component-atom.interface';
 import { TitleComponent } from '../../components-atom/title/title.component';
+import { ColumnAndCodeLayoutComponent } from '../../layouts/column-and-code-layout/column-and-code-layout.component';
 
 @Component({
   selector: 'app-computed-signals',
   standalone: true,
   templateUrl: './computed-signals.component.html',
   styleUrl: './computed-signals.component.css',
-  imports: [CommonModule, FormsModule, CodeComponent, TitleComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeComponent,
+    TitleComponent,
+    ColumnAndCodeLayoutComponent,
+  ],
 })
 export class ComputedSignalsComponent {
   firstName: WritableSignal<string> = signal('Damian');

@@ -1,7 +1,6 @@
-<div class="counter-container">
-  <div class="counter-display">Amount: {{ count() }}</div>
-  <button class="counter-button" (click)="update()">Increase</button>
-</div>
-<div class="mt-4">
-  <app-code [lines]="lines" />
-</div>
+<app-column-and-code-layout title="Update Signal" [codeLines]="lines">
+  <div class="counter-container">
+    <div class="counter-display">Amount: {{ count() }}</div>
+    <button class="counter-button" (click)="update()">Increase</button>
+  </div>
+</app-column-and-code-layout>

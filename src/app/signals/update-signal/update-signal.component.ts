@@ -7,13 +7,14 @@ import {
 } from '@angular/core';
 import { CodeComponent } from '../../components-atom/code/code.component';
 import { codeLine } from '../../components-atom/component-atom.interface';
+import { ColumnAndCodeLayoutComponent } from '../../layouts/column-and-code-layout/column-and-code-layout.component';
 
 @Component({
   selector: 'app-update-signal',
   standalone: true,
   templateUrl: './update-signal.component.html',
   styleUrl: './update-signal.component.css',
-  imports: [CodeComponent],
+  imports: [CodeComponent, ColumnAndCodeLayoutComponent],
 })
 export class UpdateSignalComponent {
   count = signal(0);

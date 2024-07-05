@@ -1,5 +1,5 @@
-<section class="flex gap-4 justify-around">
-  <section role="example">
+<app-column-and-code-layout title="Writable Signal" [codeLines]="lines">
+  <section>
     <div class="counter-container">
       <div class="counter-display">Amount: {{ count() }}</div>
     </div>
@@ -14,7 +14,4 @@
       <button class="btn btn-primary" (click)="setValue()">Set</button>
     </div>
   </section>
-  <section role="code">
-    <app-code [lines]="lineas" />
-  </section>
-</section>
+</app-column-and-code-layout>

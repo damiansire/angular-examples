@@ -1,5 +1,4 @@
-<app-title title="Computed signals"></app-title>
-<div class="flex justify-around">
+<app-column-and-code-layout title="Computed signals" [codeLines]="lines">
   <section class="profile-container">
     <div class="profile-info">
       <label for="firstName">Name:</label>
@@ -20,8 +19,4 @@
       <p>Hola, {{ fullName() }}!</p>
     </div>
   </section>
-
-  <section>
-    <app-code [lines]="lines" />
-  </section>
-</div>
+</app-column-and-code-layout>
