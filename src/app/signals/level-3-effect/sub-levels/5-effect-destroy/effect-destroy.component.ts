@@ -1,9 +1,9 @@
 import { Component, computed, effect, signal } from '@angular/core';
 import { ComponentDestroyComponent } from './component-destroy/component-destroy.component';
-import { EventHistoryComponent } from '../../components/event-history/event-history.component';
-import { CodeComponent } from '../../components-atom/code/code.component';
-import { CodeLine } from '../../components-atom/component-atom.interface';
-import { HistoryElement } from '../../components/component.interface';
+import { CodeComponent } from '../../../../components-atom/code/code.component';
+import { CodeLine } from '../../../../components-atom/component-atom.interface';
+import { HistoryElement } from '../../../../components/component.interface';
+import { EventHistoryComponent } from '../../../../components/event-history/event-history.component';
 
 @Component({
   selector: 'app-effect-destroy',

@@ -5,9 +5,9 @@ import {
   computed,
   signal,
 } from '@angular/core';
-import { CodeComponent } from '../../components-atom/code/code.component';
-import { CodeLine } from '../../components-atom/component-atom.interface';
-import { ColumnAndCodeLayoutComponent } from '../../layouts/column-and-code-layout/column-and-code-layout.component';
+import { CodeComponent } from '../../../../components-atom/code/code.component';
+import { CodeLine } from '../../../../components-atom/component-atom.interface';
+import { ColumnAndCodeLayoutComponent } from '../../../../layouts/column-and-code-layout/column-and-code-layout.component';
 
 @Component({
   selector: 'app-update-signal',

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output, effect, signal } from '@angular/core';
-import { InputComponent } from '../../../components-atom/input/input.component';
-import { ButtonComponent } from '../../../components-atom/button/button.component';
 import { CommonModule } from '@angular/common';
+import { ButtonComponent } from '../../../../../components-atom/button/button.component';
+import { InputComponent } from '../../../../../components-atom/input/input.component';
 
 @Component({
   selector: 'app-destroy-box',

@@ -1,11 +1,10 @@
 import { Component, computed, effect, signal } from '@angular/core';
-import { CodeLine } from '../../components-atom/component-atom.interface';
-import { CodeComponent } from '../../components-atom/code/code.component';
-import { VariableBoxComponent } from '../../components-atom/variable-box/variable-box.component';
-import { HistoryElement } from '../../components/component.interface';
-import { EventHistoryComponent } from '../../components/event-history/event-history.component';
-import { trigger } from '@angular/animations';
-import { DependenciesStatusComponent } from '../../components/dependencies-status/dependencies-status.component';
+import { CodeComponent } from '../../../../components-atom/code/code.component';
+import { CodeLine } from '../../../../components-atom/component-atom.interface';
+import { VariableBoxComponent } from '../../../../components-atom/variable-box/variable-box.component';
+import { HistoryElement } from '../../../../components/component.interface';
+import { DependenciesStatusComponent } from '../../../../components/dependencies-status/dependencies-status.component';
+import { EventHistoryComponent } from '../../../../components/event-history/event-history.component';
 
 @Component({
   selector: 'app-effect',

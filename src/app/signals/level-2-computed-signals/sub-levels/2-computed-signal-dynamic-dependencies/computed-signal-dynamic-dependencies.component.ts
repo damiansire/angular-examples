@@ -1,13 +1,12 @@
 import { Component, Signal, computed, signal } from '@angular/core';
-import { count } from 'rxjs';
-import { ButtonComponent } from '../../components-atom/button/button.component';
 import { CommonModule } from '@angular/common';
-import { CodeLine } from '../../components-atom/component-atom.interface';
-import { CodeComponent } from '../../components-atom/code/code.component';
-import { VariableBoxComponent } from '../../components-atom/variable-box/variable-box.component';
-import { EventHistoryComponent } from '../../components/event-history/event-history.component';
-import { DependenciesStatusComponent } from '../../components/dependencies-status/dependencies-status.component';
-import { HistoryElement } from '../../components/component.interface';
+import { ButtonComponent } from '../../../../components-atom/button/button.component';
+import { CodeComponent } from '../../../../components-atom/code/code.component';
+import { CodeLine } from '../../../../components-atom/component-atom.interface';
+import { VariableBoxComponent } from '../../../../components-atom/variable-box/variable-box.component';
+import { HistoryElement } from '../../../../components/component.interface';
+import { DependenciesStatusComponent } from '../../../../components/dependencies-status/dependencies-status.component';
+import { EventHistoryComponent } from '../../../../components/event-history/event-history.component';
 
 @Component({
   selector: 'app-computed-signal-dynamic-dependencies',
