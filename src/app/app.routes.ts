@@ -46,7 +46,7 @@ const signalsRoutesTree: RouteItem[] = [
     ],
   },
   {
-    path: '3',
+    path: '4',
     component: SignalEqualityFunctionsComponent,
     subLevels: [{ path: '1', component: SignalEqualityFunctionsComponent }],
   },
