@@ -5,7 +5,7 @@ import { RouteItem } from './components/component.interface';
 import { InteractionWithSignalsComponent } from './signals/level-1-interaction-with-signals/interaction-with-signals.component';
 import { ReadOnlySignalsComponent } from './signals/level-1-interaction-with-signals/sub-levels/read-only-signals/read-only-signals.component';
 
-const signalsRoutesTree: RouteItem[] = [
+export const signalsRoutesTree: RouteItem[] = [
   {
     path: '1',
     component: InteractionWithSignalsComponent,
@@ -17,23 +17,33 @@ const signalsRoutesTree: RouteItem[] = [
   },
 ];
 
+interface CustomRoute {
+  path: string;
+  component: any;
+  id: string;
+  subLevels?: CustomRoute[];
+}
+
 function generateRoutes(routesTree: RouteItem[]) {
-  let allRoutes = [];
+  let allRoutes: CustomRoute[] = [];
   let relativeRoute = `signals/level`;
   for (let route of routesTree) {
-    const element = {
+    const element: CustomRoute = {
       path: `${relativeRoute}/${route.path}`,
       component: route.component,
+      id: route.path,
     };
-    allRoutes.push(element);
     relativeRoute = `${relativeRoute}/sub-level`;
-    for (let subLevel of route.subLevels || []) {
-      const element = {
-        path: `${relativeRoute}/${subLevel.path}`,
-        component: subLevel.component,
-      };
-      allRoutes.push(element);
-    }
+    const subLevels =
+      route.subLevels?.map((subLevel) => {
+        return {
+          path: `${relativeRoute}/${subLevel.path}`,
+          component: subLevel.component,
+          id: subLevel.path,
+        };
+      }) || [];
+    element.subLevels = subLevels;
+    allRoutes = [...allRoutes, element, ...subLevels];
   }
   return allRoutes;
 }
