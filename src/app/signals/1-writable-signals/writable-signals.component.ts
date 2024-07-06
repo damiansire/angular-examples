@@ -5,7 +5,7 @@ import {
   computed,
   signal,
 } from '@angular/core';
-import { codeLine } from '../../components-atom/component-atom.interface';
+import { CodeLine } from '../../components-atom/component-atom.interface';
 import { CodeComponent } from '../../components-atom/code/code.component';
 import { ColumnAndCodeLayoutComponent } from '../../layouts/column-and-code-layout/column-and-code-layout.component';
 
@@ -27,7 +27,7 @@ export class WritableSignalsComponent {
     console.log(this.count());
   }
 
-  lines = computed<codeLine[]>(() => [
+  lines = computed<CodeLine[]>(() => [
     { line: 'count = signal(0);', active: true },
     { line: 'setValue() {', active: false },
     {

@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CodeComponent } from '../../components-atom/code/code.component';
-import { codeLine } from '../../components-atom/component-atom.interface';
+import { CodeLine } from '../../components-atom/component-atom.interface';
 import { TitleComponent } from '../../components-atom/title/title.component';
 import { ColumnAndCodeLayoutComponent } from '../../layouts/column-and-code-layout/column-and-code-layout.component';
 
@@ -42,7 +42,7 @@ export class ComputedSignalsComponent {
     this.surname.set(value);
   }
 
-  lines = computed<codeLine[]>(() => [
+  lines = computed<CodeLine[]>(() => [
     {
       line: 'firstName: WritableSignal<string> = signal("Damian");',
       active: false,

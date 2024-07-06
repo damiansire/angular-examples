@@ -1,5 +1,5 @@
 import { Component, computed, effect, signal } from '@angular/core';
-import { codeLine } from '../../components-atom/component-atom.interface';
+import { CodeLine } from '../../components-atom/component-atom.interface';
 import { CodeComponent } from '../../components-atom/code/code.component';
 import { VariableBoxComponent } from '../../components-atom/variable-box/variable-box.component';
 import { HistoryElement } from '../../components/component.interface';
@@ -49,7 +49,7 @@ export class EffectComponent {
       { allowSignalWrites: true }
     );
   }
-  lines = computed<codeLine[]>(() => [
+  lines = computed<CodeLine[]>(() => [
     { line: 'count = signal(0);', active: false },
     { line: 'count2 = signal(0);', active: false },
     { line: 'effect(() => {', active: false },

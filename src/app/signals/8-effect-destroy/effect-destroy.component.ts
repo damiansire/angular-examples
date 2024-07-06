@@ -2,7 +2,7 @@ import { Component, computed, effect, signal } from '@angular/core';
 import { ComponentDestroyComponent } from './component-destroy/component-destroy.component';
 import { EventHistoryComponent } from '../../components/event-history/event-history.component';
 import { CodeComponent } from '../../components-atom/code/code.component';
-import { codeLine } from '../../components-atom/component-atom.interface';
+import { CodeLine } from '../../components-atom/component-atom.interface';
 import { HistoryElement } from '../../components/component.interface';
 
 @Component({
@@ -16,7 +16,7 @@ export class EffectDestroyComponent {
   autoRefresh = signal(false);
   appEventHistory = signal<HistoryElement[]>([]);
   count = signal(0);
-  lines = computed<codeLine[]>(() => [
+  lines = computed<CodeLine[]>(() => [
     {
       line: 'constructor() {',
       active: false,

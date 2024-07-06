@@ -1,4 +1,4 @@
-export interface codeLine {
+export interface CodeLine {
   line: string;
   active: boolean;
 }

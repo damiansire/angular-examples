@@ -6,7 +6,7 @@ import {
   signal,
 } from '@angular/core';
 import { CodeComponent } from '../../components-atom/code/code.component';
-import { codeLine } from '../../components-atom/component-atom.interface';
+import { CodeLine } from '../../components-atom/component-atom.interface';
 import { ColumnAndCodeLayoutComponent } from '../../layouts/column-and-code-layout/column-and-code-layout.component';
 
 @Component({
@@ -27,7 +27,7 @@ export class UpdateSignalComponent {
     console.log(this.count());
   }
 
-  lines = computed<codeLine[]>(() => [
+  lines = computed<CodeLine[]>(() => [
     { line: 'count = signal(0);', active: false },
     { line: 'update() {', active: false },
     { line: '  this.count.update((value) => value + 1);', active: true },

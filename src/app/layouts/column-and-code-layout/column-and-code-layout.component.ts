@@ -1,6 +1,6 @@
 import { Component, Input, signal, Signal } from '@angular/core';
 import { TitleComponent } from '../../components-atom/title/title.component';
-import { codeLine } from '../../components-atom/component-atom.interface';
+import { CodeLine } from '../../components-atom/component-atom.interface';
 import { CodeComponent } from '../../components-atom/code/code.component';
 
 @Component({
@@ -12,5 +12,5 @@ import { CodeComponent } from '../../components-atom/code/code.component';
 })
 export class ColumnAndCodeLayoutComponent {
   @Input() title = 'No Title';
-  @Input() codeLines: Signal<codeLine[]> = signal<codeLine[]>([]);
+  @Input() codeLines: Signal<CodeLine[]> = signal<CodeLine[]>([]);
 }

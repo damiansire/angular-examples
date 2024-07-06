@@ -2,7 +2,7 @@ import { Component, computed, effect, signal } from '@angular/core';
 import { InputComponent } from '../../components-atom/input/input.component';
 import { ButtonComponent } from '../../components-atom/button/button.component';
 import { VariableBoxComponent } from '../../components-atom/variable-box/variable-box.component';
-import { codeLine } from '../../components-atom/component-atom.interface';
+import { CodeLine } from '../../components-atom/component-atom.interface';
 import { CodeComponent } from '../../components-atom/code/code.component';
 import { EventHistoryComponent } from '../../components/event-history/event-history.component';
 import { HistoryElement } from '../../components/component.interface';
@@ -119,7 +119,7 @@ export class SignalEqualityFunctionsComponent {
     this.currentLevel.set(newLevel);
   }
 
-  codeLines: Record<number, codeLine[]> = {
+  codeLines: Record<number, CodeLine[]> = {
     1: [
       { line: 'name = signal("dami");', active: false },
       { line: 'setName(event: string) {', active: false },

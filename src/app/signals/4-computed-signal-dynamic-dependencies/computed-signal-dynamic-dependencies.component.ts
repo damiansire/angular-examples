@@ -2,7 +2,7 @@ import { Component, Signal, computed, signal } from '@angular/core';
 import { count } from 'rxjs';
 import { ButtonComponent } from '../../components-atom/button/button.component';
 import { CommonModule } from '@angular/common';
-import { codeLine } from '../../components-atom/component-atom.interface';
+import { CodeLine } from '../../components-atom/component-atom.interface';
 import { CodeComponent } from '../../components-atom/code/code.component';
 import { VariableBoxComponent } from '../../components-atom/variable-box/variable-box.component';
 import { EventHistoryComponent } from '../../components/event-history/event-history.component';
@@ -39,7 +39,7 @@ export class ComputedSignalDynamicDependenciesComponent {
     return this.showCount() ? ['showCount', 'count'] : ['showCount'];
   });
   signalsInside = signal(['showCount', 'count']);
-  lines = computed<codeLine[]>(() => [
+  lines = computed<CodeLine[]>(() => [
     { line: 'const showCount = signal(false);', active: false },
     { line: 'const count = signal(0);', active: false },
     { line: 'const conditionalCount = computed(() => {', active: false },
