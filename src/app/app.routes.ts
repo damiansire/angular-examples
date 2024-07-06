@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { WritableSignalsComponent } from './signals/1-writable-signals/writable-signals.component';
+import { WritableSignalsComponent } from './signals/level-1-interaction-with-signals/sub-levels/1-writable-signals/writable-signals.component';
 import { ComputedSignalsComponent } from './signals/3-computed-signals/computed-signals.component';
 import { ComputedSignalsLazilyEvaluatedMemoizedComponent } from './signals/5-computed-signals-lazily-evaluated-memoized/computed-signals-lazily-evaluated-memoized.component';
 import { ComputedSignalDynamicDependenciesComponent } from './signals/4-computed-signal-dynamic-dependencies/computed-signal-dynamic-dependencies.component';
