@@ -1,23 +1,44 @@
 import { Routes } from '@angular/router';
 import { WritableSignalsComponent } from './signals/level-1-interaction-with-signals/sub-levels/1-writable-signals/writable-signals.component';
-import { ComputedSignalsComponent } from './signals/level-2-computed-signals/sub-levels/1-computed-signals/computed-signals.component';
-import { ComputedSignalsLazilyEvaluatedMemoizedComponent } from './signals/level-2-computed-signals/sub-levels/3-computed-signals-lazily-evaluated-memoized/computed-signals-lazily-evaluated-memoized.component';
 import { UpdateSignalComponent } from './signals/level-1-interaction-with-signals/sub-levels/2-update-signal/update-signal.component';
-import { ComputedSignalDynamicDependenciesComponent } from './signals/level-2-computed-signals/sub-levels/2-computed-signal-dynamic-dependencies/computed-signal-dynamic-dependencies.component';
-import { EffectComponent } from './signals/level-3-effect/sub-levels/1-effect/effect.component';
-import { DestroyEffectComponent } from './signals/level-3-effect/sub-levels/2-interval-when-is-destroy/destroy-effect.component';
-import { EffectDestroyComponent } from './signals/level-3-effect/sub-levels/5-effect-destroy/effect-destroy.component';
-import { SignalEqualityFunctionsComponent } from './signals/level-4-signal-equality-functions/signal-equality-functions.component';
+import { RouteItem } from './components/component.interface';
+import { InteractionWithSignalsComponent } from './signals/level-1-interaction-with-signals/interaction-with-signals.component';
+import { ReadOnlySignalsComponent } from './signals/level-1-interaction-with-signals/sub-levels/read-only-signals/read-only-signals.component';
 
-export const routes: Routes = [
-  { path: '', redirectTo: '1', pathMatch: 'full' },
-  { path: '1', component: WritableSignalsComponent },
-  { path: '2', component: UpdateSignalComponent },
-  { path: '3', component: ComputedSignalsComponent },
-  { path: '4', component: ComputedSignalsLazilyEvaluatedMemoizedComponent },
-  { path: '5', component: ComputedSignalDynamicDependenciesComponent },
-  { path: '6', component: EffectComponent },
-  { path: '7', component: DestroyEffectComponent },
-  { path: '8', component: EffectDestroyComponent },
-  { path: '9', component: SignalEqualityFunctionsComponent },
+const signalsRoutesTree: RouteItem[] = [
+  {
+    path: '1',
+    component: InteractionWithSignalsComponent,
+    subLevels: [
+      { path: '1', component: WritableSignalsComponent },
+      { path: '2', component: UpdateSignalComponent },
+      { path: '3', component: ReadOnlySignalsComponent },
+    ],
+  },
 ];
+
+function generateRoutes(routesTree: RouteItem[]) {
+  let allRoutes = [];
+  let relativeRoute = `signals/level`;
+  for (let route of routesTree) {
+    const element = {
+      path: `${relativeRoute}/${route.path}`,
+      component: route.component,
+    };
+    allRoutes.push(element);
+    relativeRoute = `${relativeRoute}/sub-level`;
+    for (let subLevel of route.subLevels || []) {
+      const element = {
+        path: `${relativeRoute}/${subLevel.path}`,
+        component: subLevel.component,
+      };
+      allRoutes.push(element);
+    }
+  }
+  return allRoutes;
+}
+
+const allRoutes = generateRoutes(signalsRoutesTree);
+
+console.log(allRoutes);
+export const routes: Routes = [...allRoutes];
