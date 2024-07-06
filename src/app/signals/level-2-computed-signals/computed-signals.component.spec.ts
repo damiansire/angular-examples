@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ComputedSignalsComponent } from './computed-signals.component';
+import { ComputedSignalsLevelComponent } from './computed-signals.component';
 
-describe('ComputedSignalsComponent', () => {
-  let component: ComputedSignalsComponent;
-  let fixture: ComponentFixture<ComputedSignalsComponent>;
+describe('ComputedSignalsLevelComponent', () => {
+  let component: ComputedSignalsLevelComponent;
+  let fixture: ComponentFixture<ComputedSignalsLevelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ComputedSignalsComponent]
-    })
-    .compileComponents();
+      imports: [ComputedSignalsLevelComponent],
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(ComputedSignalsComponent);
+    fixture = TestBed.createComponent(ComputedSignalsLevelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

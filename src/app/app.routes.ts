@@ -4,6 +4,16 @@ import { UpdateSignalComponent } from './signals/level-1-interaction-with-signal
 import { RouteItem } from './components/component.interface';
 import { InteractionWithSignalsComponent } from './signals/level-1-interaction-with-signals/interaction-with-signals.component';
 import { ReadOnlySignalsComponent } from './signals/level-1-interaction-with-signals/sub-levels/read-only-signals/read-only-signals.component';
+import { ComputedSignalsLevelComponent } from './signals/level-2-computed-signals/computed-signals.component';
+import { ComputedSignalDynamicDependenciesComponent } from './signals/level-2-computed-signals/sub-levels/2-computed-signal-dynamic-dependencies/computed-signal-dynamic-dependencies.component';
+import { ComputedSignalsLazilyEvaluatedMemoizedComponent } from './signals/level-2-computed-signals/sub-levels/3-computed-signals-lazily-evaluated-memoized/computed-signals-lazily-evaluated-memoized.component';
+import { ComputedSignalsComponent } from './signals/level-2-computed-signals/sub-levels/1-computed-signals/computed-signals.component';
+import { EffectComponent } from './signals/level-3-effect/sub-levels/1-effect/effect.component';
+import { DestroyEffectComponent } from './signals/level-3-effect/sub-levels/2-interval-when-is-destroy/destroy-effect.component';
+import { IntervalManualDestructionComponent } from './signals/level-3-effect/sub-levels/3-interval-manual-destruction/interval-manual-destruction.component';
+import { EffectManualDestructionComponent } from './signals/level-3-effect/sub-levels/4-effect-manual-destruction/effect-manual-destruction.component';
+import { EffectDestroyComponent } from './signals/level-3-effect/sub-levels/5-effect-destroy/effect-destroy.component';
+import { SignalEqualityFunctionsComponent } from './signals/level-4-signal-equality-functions/signal-equality-functions.component';
 
 const signalsRoutesTree: RouteItem[] = [
   {
@@ -14,6 +24,31 @@ const signalsRoutesTree: RouteItem[] = [
       { path: '2', component: UpdateSignalComponent },
       { path: '3', component: ReadOnlySignalsComponent },
     ],
+  },
+  {
+    path: '2',
+    component: ComputedSignalsLevelComponent,
+    subLevels: [
+      { path: '1', component: ComputedSignalsComponent },
+      { path: '2', component: ComputedSignalDynamicDependenciesComponent },
+      { path: '3', component: ComputedSignalsLazilyEvaluatedMemoizedComponent },
+    ],
+  },
+  {
+    path: '3',
+    component: ComputedSignalsLevelComponent,
+    subLevels: [
+      { path: '1', component: EffectComponent },
+      { path: '2', component: DestroyEffectComponent },
+      { path: '3', component: IntervalManualDestructionComponent },
+      { path: '4', component: EffectManualDestructionComponent },
+      { path: '5', component: EffectDestroyComponent },
+    ],
+  },
+  {
+    path: '3',
+    component: SignalEqualityFunctionsComponent,
+    subLevels: [{ path: '1', component: SignalEqualityFunctionsComponent }],
   },
 ];
 
