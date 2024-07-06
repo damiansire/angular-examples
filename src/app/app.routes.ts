@@ -5,7 +5,7 @@ import { RouteItem } from './components/component.interface';
 import { InteractionWithSignalsComponent } from './signals/level-1-interaction-with-signals/interaction-with-signals.component';
 import { ReadOnlySignalsComponent } from './signals/level-1-interaction-with-signals/sub-levels/read-only-signals/read-only-signals.component';
 
-export const signalsRoutesTree: RouteItem[] = [
+const signalsRoutesTree: RouteItem[] = [
   {
     path: '1',
     component: InteractionWithSignalsComponent,
@@ -49,5 +49,5 @@ function generateRoutes(routesTree: RouteItem[]) {
 }
 
 const allRoutes = generateRoutes(signalsRoutesTree);
-
 export const routes: Routes = allRoutes;
+export const menuItems = allRoutes;

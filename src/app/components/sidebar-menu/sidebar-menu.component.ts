@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { signalsRoutesTree } from '../../app.routes';
-
-export interface MenuItem {
-  level: string;
-  subLevels: string[];
-}
+import { menuItems } from '../../app.routes';
 
 @Component({
   selector: 'app-sidebar-menu',
@@ -16,5 +11,9 @@ export interface MenuItem {
   styleUrl: './sidebar-menu.component.css',
 })
 export class SidebarMenuComponent {
-  menuElements = signalsRoutesTree.map;
+  menuItems = menuItems;
+
+  constructor() {
+    console.log(this.menuItems);
+  }
 }
