@@ -50,5 +50,4 @@ function generateRoutes(routesTree: RouteItem[]) {
 
 const allRoutes = generateRoutes(signalsRoutesTree);
 
-console.log(allRoutes);
-export const routes: Routes = [...allRoutes];
+export const routes: Routes = allRoutes;
