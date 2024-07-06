@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { WritableSignalsComponent } from './signals/level-1-interaction-with-signals/sub-levels/1-writable-signals/writable-signals.component';
-import { ComputedSignalsComponent } from './signals/3-computed-signals/computed-signals.component';
-import { ComputedSignalsLazilyEvaluatedMemoizedComponent } from './signals/5-computed-signals-lazily-evaluated-memoized/computed-signals-lazily-evaluated-memoized.component';
+import { ComputedSignalsComponent } from './signals/level-2-computed-signals/sub-levels/1-computed-signals/computed-signals.component';
+import { ComputedSignalsLazilyEvaluatedMemoizedComponent } from './signals/level-2-computed-signals/sub-levels/3-computed-signals-lazily-evaluated-memoized/computed-signals-lazily-evaluated-memoized.component';
 import { ComputedSignalDynamicDependenciesComponent } from './signals/4-computed-signal-dynamic-dependencies/computed-signal-dynamic-dependencies.component';
 import { EffectComponent } from './signals/6-effect/effect.component';
 import { DestroyEffectComponent } from './signals/7-interval-when-is-destroy/destroy-effect.component';

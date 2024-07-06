@@ -7,10 +7,10 @@ import {
   signal,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CodeComponent } from '../../components-atom/code/code.component';
-import { CodeLine } from '../../components-atom/component-atom.interface';
-import { TitleComponent } from '../../components-atom/title/title.component';
-import { ColumnAndCodeLayoutComponent } from '../../layouts/column-and-code-layout/column-and-code-layout.component';
+import { CodeComponent } from '../../../../components-atom/code/code.component';
+import { CodeLine } from '../../../../components-atom/component-atom.interface';
+import { TitleComponent } from '../../../../components-atom/title/title.component';
+import { ColumnAndCodeLayoutComponent } from '../../../../layouts/column-and-code-layout/column-and-code-layout.component';
 
 @Component({
   selector: 'app-computed-signals',

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { ComputedTrackerComponent } from '../../components/computed-tracker/computed-tracker.component';
-import { ClickInButton } from '../../components/component.interface';
-import { BasicFormComponent } from '../../components/basic-form/basic-form.component';
-import { ClickHistoryComponent } from '../../components/click-history/click-history.component';
+import { ComputedTrackerComponent } from '../../../../components/computed-tracker/computed-tracker.component';
+import { ClickInButton } from '../../../../components/component.interface';
+import { BasicFormComponent } from '../../../../components/basic-form/basic-form.component';
+import { ClickHistoryComponent } from '../../../../components/click-history/click-history.component';
 
 @Component({
   selector: 'app-computed-signals-lazily-evaluated-memoized',
