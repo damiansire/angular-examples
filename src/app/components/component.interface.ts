@@ -11,7 +11,8 @@ export interface HistoryElement {
   isCountIncrement: boolean;
 }
 
-export interface MenuLevelItem {
+export interface RouteItem {
   path: string;
   component: any; // Asegúrate de importar tus componentes
+  subLevels?: RouteItem[];
 }
