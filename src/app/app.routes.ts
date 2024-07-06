@@ -61,10 +61,10 @@ interface CustomRoute {
 
 function generateRoutes(routesTree: RouteItem[]) {
   let allRoutes: CustomRoute[] = [];
-  let relativeRoute = `signals/level`;
   for (let route of routesTree) {
+    let relativeRoute = `signals/level/${route.path}`;
     const element: CustomRoute = {
-      path: `${relativeRoute}/${route.path}`,
+      path: relativeRoute,
       component: route.component,
       id: route.path,
     };
