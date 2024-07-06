@@ -10,3 +10,8 @@ export interface HistoryElement {
   newState: number | string;
   isCountIncrement: boolean;
 }
+
+export interface MenuLevelItem {
+  path: string;
+  component: any; // Asegúrate de importar tus componentes
+}

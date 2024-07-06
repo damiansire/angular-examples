@@ -1,1 +1,10 @@
-<p>sidebar-menu works!</p>
+<ul class="py-4">
+  <li
+    *ngFor="let component of components; let i = index"
+    [routerLink]="[component.path]"
+    routerLinkActive="bg-green-500"
+    class="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer hover:bg-gray-700 mx-auto mb-2"
+  >
+    <span class="text-white font-semibold">{{ component.path }}</span>
+  </li>
+</ul>

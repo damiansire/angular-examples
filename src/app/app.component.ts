@@ -10,10 +10,7 @@ import { EffectComponent } from './signals/level-3-effect/sub-levels/1-effect/ef
 import { DestroyEffectComponent } from './signals/level-3-effect/sub-levels/2-interval-when-is-destroy/destroy-effect.component';
 import { EffectDestroyComponent } from './signals/level-3-effect/sub-levels/5-effect-destroy/effect-destroy.component';
 import { SignalEqualityFunctionsComponent } from './signals/level-4-signal-equality-functions/signal-equality-functions.component';
-interface ComponentItem {
-  path: string;
-  component: any; // Asegúrate de importar tus componentes
-}
+import { SidebarMenuComponent } from './components/sidebar-menu/sidebar-menu.component';
 
 @Component({
   selector: 'app-root',
@@ -32,19 +29,9 @@ interface ComponentItem {
     SignalEqualityFunctionsComponent,
     CommonModule,
     RouterModule,
+    SidebarMenuComponent,
   ],
 })
 export class AppComponent {
   title = 'angular-examples';
-  components: ComponentItem[] = [
-    { path: '1', component: WritableSignalsComponent },
-    { path: '2', component: UpdateSignalComponent },
-    { path: '3', component: ComputedSignalsComponent },
-    { path: '4', component: ComputedSignalsLazilyEvaluatedMemoizedComponent },
-    { path: '5', component: ComputedSignalDynamicDependenciesComponent },
-    { path: '6', component: EffectComponent },
-    { path: '7', component: DestroyEffectComponent },
-    { path: '8', component: EffectDestroyComponent },
-    { path: '9', component: SignalEqualityFunctionsComponent },
-  ];
 }
