@@ -107,14 +107,6 @@
     </section>
   </section>
   <section class="w-3/5">
-    @if(currentLevel() === 1){
-    <app-code [lines]="linesName" />
-    } @if(currentLevel() === 2){
-    <app-code [lines]="linesAge" />
-    } @if(currentLevel() === 3){
-    <app-code [lines]="linesPerson" />
-    } @if(currentLevel() === 4){
-    <app-code [lines]="linesPersonCustomCompare" />
-    }
+    <app-code [lines]="codeLinesForCurrentLevel" />
   </section>
 </section>

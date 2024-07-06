@@ -32,7 +32,17 @@ export class SignalEqualityFunctionsComponent {
       isCountIncrement: false,
     },
   ]);
-
+  name = signal('dami');
+  age = signal('26');
+  person = signal({ name: 'damian', surname: 'sire' });
+  data = signal(
+    { name: 'damian' },
+    {
+      equal: (prev, element) => {
+        return element.name === prev.name;
+      },
+    }
+  );
   exampleData = signal({
     name: '',
     age: '',
@@ -65,49 +75,6 @@ export class SignalEqualityFunctionsComponent {
       });
     }
   }
-
-  name = signal('dami');
-  linesName = computed<codeLine[]>(() => [
-    { line: 'name = signal("dami");', active: false },
-    { line: 'setName(event: string) {', active: false },
-    { line: '  this.name.set(event);', active: false }, // Esta línea se ejecuta siempre dentro de la función
-    { line: '}', active: false },
-  ]);
-
-  age = signal('26');
-  linesAge = computed<codeLine[]>(() => [
-    { line: 'age = signal("26");', active: false },
-    { line: 'setAge(event: string) {', active: false },
-    { line: '  this.age.set(event);', active: false }, // Similar a `linesName`
-    { line: '}', active: false },
-  ]);
-
-  person = signal({ name: 'damian', surname: 'sire' });
-  linesPerson = computed<codeLine[]>(() => [
-    {
-      line: 'person = signal({ name: "damian", surname: "sire" });',
-      active: false,
-    },
-    {
-      line: 'setPerson(personName: string, personSurname: string) {',
-      active: false,
-    },
-    {
-      line: '  const newData = { name: personName, surname: personSurname };',
-      active: false,
-    },
-    { line: '  this.person.set(newData);', active: false },
-    { line: '}', active: false },
-  ]);
-
-  data = signal(
-    { name: 'damian' },
-    {
-      equal: (prev, element) => {
-        return element.name === prev.name;
-      },
-    }
-  );
 
   addConditionalCountRecomputation(
     trigger: string,
@@ -152,38 +119,71 @@ export class SignalEqualityFunctionsComponent {
     this.currentLevel.set(newLevel);
   }
 
-  linesPersonCustomCompare = computed<codeLine[]>(() => [
-    {
-      line: 'person = signal({ name: "damian", surname: "sire" },',
-      active: false,
-    },
-    {
-      line: '                { equal: (old, new) => {',
-      active: true,
-    },
-    {
-      line: '                   return old.name === new.name',
-      active: true,
-    },
-    {
-      line: '                   && old.surname === new.surname }',
-      active: true,
-    },
-    {
-      line: '                });',
-      active: false,
-    },
-    {
-      line: 'setPerson(personName: string, personSurname: string) {',
-      active: false,
-    },
-    {
-      line: '  const newData = { name: personName, surname: personSurname };',
-      active: false,
-    },
-    { line: '  this.person.set(newData);', active: false },
-    { line: '}', active: false },
-  ]);
+  codeLines: Record<number, codeLine[]> = {
+    1: [
+      { line: 'name = signal("dami");', active: false },
+      { line: 'setName(event: string) {', active: false },
+      { line: '  this.name.set(event);', active: false }, // Esta línea se ejecuta siempre dentro de la función
+      { line: '}', active: false },
+    ],
+    2: [
+      { line: 'age = signal("26");', active: false },
+      { line: 'setAge(event: string) {', active: false },
+      { line: '  this.age.set(event);', active: false },
+      { line: '}', active: false },
+    ],
+    3: [
+      {
+        line: 'person = signal({ name: "damian", surname: "sire" });',
+        active: false,
+      },
+      {
+        line: 'setPerson(personName: string, personSurname: string) {',
+        active: false,
+      },
+      {
+        line: '  const newData = { name: personName, surname: personSurname };',
+        active: false,
+      },
+      { line: '  this.person.set(newData);', active: false },
+      { line: '}', active: false },
+    ],
+    4: [
+      {
+        line: 'person = signal({ name: "damian", surname: "sire" },',
+        active: false,
+      },
+      {
+        line: '                { equal: (old, new) => {',
+        active: true,
+      },
+      {
+        line: '                   return old.name === new.name',
+        active: true,
+      },
+      {
+        line: '                   && old.surname === new.surname }',
+        active: true,
+      },
+      {
+        line: '                });',
+        active: false,
+      },
+      {
+        line: 'setPerson(personName: string, personSurname: string) {',
+        active: false,
+      },
+      {
+        line: '  const newData = { name: personName, surname: personSurname };',
+        active: false,
+      },
+      { line: '  this.person.set(newData);', active: false },
+      { line: '}', active: false },
+    ],
+  };
 
-  constructor() {}
+  codeLinesForCurrentLevel = computed(() => {
+    const level = this.currentLevel();
+    return this.codeLines[level] ?? []; // Provide default if level doesn't exist
+  });
 }
