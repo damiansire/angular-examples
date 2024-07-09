@@ -14,6 +14,7 @@ import { IntervalManualDestructionComponent } from './signals/level-3-effect/sub
 import { EffectManualDestructionComponent } from './signals/level-3-effect/sub-levels/4-effect-manual-destruction/effect-manual-destruction.component';
 import { EffectDestroyComponent } from './signals/level-3-effect/sub-levels/5-effect-destroy/effect-destroy.component';
 import { SignalEqualityFunctionsComponent } from './signals/level-4-signal-equality-functions/signal-equality-functions.component';
+import { EffectLevelComponent } from './signals/level-3-effect/effect-level.component';
 
 const signalsRoutesTree: RouteItem[] = [
   {
@@ -36,7 +37,7 @@ const signalsRoutesTree: RouteItem[] = [
   },
   {
     path: '3',
-    component: ComputedSignalsLevelComponent,
+    component: EffectLevelComponent,
     subLevels: [
       { path: '1', component: EffectComponent },
       { path: '2', component: DestroyEffectComponent },
