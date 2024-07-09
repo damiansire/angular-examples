@@ -57,7 +57,7 @@ interface CustomRoute {
   path: string;
   component: any;
   id: string;
-  subLevels?: CustomRoute[];
+  subLevels: CustomRoute[];
 }
 
 function generateRoutes(routesTree: RouteItem[]) {
@@ -68,6 +68,7 @@ function generateRoutes(routesTree: RouteItem[]) {
       path: relativeRoute,
       component: route.component,
       id: route.path,
+      subLevels: [],
     };
     relativeRoute = `${relativeRoute}/sub-level`;
     const subLevels =
@@ -76,6 +77,7 @@ function generateRoutes(routesTree: RouteItem[]) {
           path: `${relativeRoute}/${subLevel.path}`,
           component: subLevel.component,
           id: subLevel.path,
+          subLevels: [],
         };
       }) || [];
     element.subLevels = subLevels;
