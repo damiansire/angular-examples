@@ -7,5 +7,18 @@
   >
     <span class="text-white font-semibold">{{ menuItem.id }}</span>
   </li>
-  }
+  @if (menuItem.subLevels.length > 0) {
+  <ul>
+    @for (item of menuItem.subLevels; track $index) {
+    <li class="text-center">|</li>
+    <li
+      class="text-center"
+      [routerLink]="[item.path]"
+      routerLinkActive="bg-green-500"
+    >
+      {{ item.id }}
+    </li>
+    }
+  </ul>
+  } }
 </ul>
