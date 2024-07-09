@@ -53,7 +53,7 @@ const signalsRoutesTree: RouteItem[] = [
   },
 ];
 
-interface CustomRoute {
+export interface CustomRoute {
   path: string;
   component: any;
   id: string;
