@@ -62,6 +62,7 @@ interface CustomRoute {
 
 function generateRoutes(routesTree: RouteItem[]) {
   let allRoutes: CustomRoute[] = [];
+  let baseRoutes = [];
   for (let route of routesTree) {
     let relativeRoute = `signals/level/${route.path}`;
     const element: CustomRoute = {
@@ -81,11 +82,12 @@ function generateRoutes(routesTree: RouteItem[]) {
         };
       }) || [];
     element.subLevels = subLevels;
-    allRoutes.push(element);
+    baseRoutes.push(element);
+    allRoutes = [...allRoutes, element, ...subLevels];
   }
-  return allRoutes;
+  return { allRoutes, baseRoutes };
 }
 
-const allRoutes = generateRoutes(signalsRoutesTree);
+const { allRoutes, baseRoutes } = generateRoutes(signalsRoutesTree);
 export const routes: Routes = allRoutes;
-export const menuItems = allRoutes;
+export const menuItems = baseRoutes;
