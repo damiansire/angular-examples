@@ -78,7 +78,7 @@ function generateRoutes(routesTree: RouteItem[]) {
         };
       }) || [];
     element.subLevels = subLevels;
-    allRoutes = [...allRoutes, element, ...subLevels];
+    allRoutes.push(element);
   }
   return allRoutes;
 }
