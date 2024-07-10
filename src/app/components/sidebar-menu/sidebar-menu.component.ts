@@ -3,6 +3,7 @@ import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CustomRoute, menuItems } from '../../app.routes';
 import { MenuOptionComponent } from './components/menu-option/menu-option.component';
+import { MenuSubLevelOptionComponent } from './components/menu-sub-level-option/menu-sub-level-option.component';
 
 class HandlerLevelStatus {
   levelHistory: any;
@@ -38,7 +39,7 @@ class HandlerLevelStatus {
       return this.levelHistory[level]?.state || 'pending';
     }
 
-    return this.levelHistory[level][subLevel] || 'pending';
+    return this.levelHistory[level]?.[subLevel] || 'pending';
   }
   setCurrentLevel(level: string, subLevel: string) {
     this.currentLevel = { level, subLevel };
@@ -49,7 +50,12 @@ class HandlerLevelStatus {
 @Component({
   selector: 'app-sidebar-menu',
   standalone: true,
-  imports: [CommonModule, RouterModule, MenuOptionComponent],
+  imports: [
+    CommonModule,
+    RouterModule,
+    MenuOptionComponent,
+    MenuSubLevelOptionComponent,
+  ],
   templateUrl: './sidebar-menu.component.html',
   styleUrl: './sidebar-menu.component.css',
 })

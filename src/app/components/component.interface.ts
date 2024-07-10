@@ -16,3 +16,5 @@ export interface RouteItem {
   component: any; // Asegúrate de importar tus componentes
   subLevels?: RouteItem[];
 }
+
+export type LevelState = 'pending' | 'currentLevel' | 'win';

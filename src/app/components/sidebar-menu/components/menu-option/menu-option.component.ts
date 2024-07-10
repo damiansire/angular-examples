@@ -2,8 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CustomRoute } from '../../../../app.routes';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
-type LevelState = 'pending' | 'currentLevel' | 'win';
+import { LevelState } from '../../../component.interface';
 
 @Component({
   selector: 'app-menu-option',

@@ -8,13 +8,10 @@
   <ul>
     @for (item of menuItem.subLevels; track $index) {
     <li class="text-center">|</li>
-    <li
-      class="text-center"
-      [routerLink]="[item.path]"
-      routerLinkActive="bg-green-500"
-    >
-      {{ item.id }}
-    </li>
+    <app-menu-sub-level-option
+      [item]="item"
+      [levelState]="getMenuOptionStatus(menuItem.id, item.id)"
+    />
     }
   </ul>
   } }
