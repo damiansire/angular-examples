@@ -1,6 +1,9 @@
 <ul class="py-4">
   @for ( menuItem of menuItems; track $index) {
-  <app-menu-option [menuItem]="menuItem" />
+  <app-menu-option
+    [menuItem]="menuItem"
+    [levelState]="getMenuOptionStatus(menuItem.id, undefined)"
+  />
   @if (menuItem.subLevels.length > 0) {
   <ul>
     @for (item of menuItem.subLevels; track $index) {

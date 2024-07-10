@@ -6,15 +6,15 @@ import { MenuOptionComponent } from './components/menu-option/menu-option.compon
 
 class HandlerLevelStatus {
   levelHistory: any;
-  currentLevel: { level: number; subLevel: number };
+  currentLevel: { level: string; subLevel: string };
   constructor() {
     this.levelHistory = {};
     this.currentLevel = {
-      level: 1,
-      subLevel: 2,
+      level: '1',
+      subLevel: '2',
     };
   }
-  addLevel(level: number, subLevel: number) {
+  addLevel(level: string, subLevel: string) {
     if (this.levelHistory[level] === undefined) {
       this.levelHistory[level] = {};
     }
@@ -24,7 +24,7 @@ class HandlerLevelStatus {
       this.levelHistory[level]['state'] = 'win';
     }
   }
-  getLevelStatus(level: number, subLevel: number) {
+  getLevelStatus(level: string, subLevel: string | undefined) {
     if (
       this.currentLevel.level === level &&
       this.currentLevel.subLevel === subLevel
@@ -32,12 +32,15 @@ class HandlerLevelStatus {
       return 'currentLevel';
     }
     if (subLevel === undefined) {
-      return this.levelHistory[level]['state'] || 'pending';
+      if (!this.levelHistory[level]?.state) {
+        return 'pending';
+      }
+      return this.levelHistory[level]?.state || 'pending';
     }
 
     return this.levelHistory[level][subLevel] || 'pending';
   }
-  setCurrentLevel(level: number, subLevel: number) {
+  setCurrentLevel(level: string, subLevel: string) {
     this.currentLevel = { level, subLevel };
     this.addLevel(level, subLevel);
   }
@@ -53,16 +56,17 @@ class HandlerLevelStatus {
 export class SidebarMenuComponent {
   private router = inject(Router);
   menuItems: CustomRoute[] = menuItems;
+  //TODO: Create the class before and start with created object based in routes
   levelHandler = new HandlerLevelStatus();
   ngOnInit() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const routePart = event.url.split('/');
-        this.levelHandler.setCurrentLevel(
-          parseInt(routePart[3]),
-          parseInt(routePart[5])
-        );
+        this.levelHandler.setCurrentLevel(routePart[3], routePart[5]);
       }
     });
+  }
+  getMenuOptionStatus(level: string, subLevel: string | undefined) {
+    return this.levelHandler.getLevelStatus(level, subLevel);
   }
 }
