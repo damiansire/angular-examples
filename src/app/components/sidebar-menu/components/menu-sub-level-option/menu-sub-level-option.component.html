@@ -1,1 +1,11 @@
-<p>menu-sub-level-option works!</p>
+<li
+  class="text-center"
+  [routerLink]="[item.path]"
+  [ngClass]="{
+    'bg-green-500': levelState === 'win',
+    'bg-gray-700': levelState === 'pending',
+    'bg-orange-300': levelState === 'currentLevel'
+  }"
+>
+  {{ item.id }}
+</li>
