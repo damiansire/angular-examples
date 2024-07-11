@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CustomRoute, menuItems } from '../../app.routes';
 import { MenuOptionComponent } from './components/menu-option/menu-option.component';
 import { MenuSubLevelOptionComponent } from './components/menu-sub-level-option/menu-sub-level-option.component';
+import { MenuSeparatorComponent } from './components/menu-separator/menu-separator.component';
 
 class HandlerLevelStatus {
   levelHistory: any;
@@ -45,6 +46,9 @@ class HandlerLevelStatus {
     this.currentLevel = { level, subLevel };
     this.addLevel(level, subLevel);
   }
+  isPartOfCurrentLevel(level: string) {
+    return this.currentLevel.level === level;
+  }
 }
 
 @Component({
@@ -55,6 +59,7 @@ class HandlerLevelStatus {
     RouterModule,
     MenuOptionComponent,
     MenuSubLevelOptionComponent,
+    MenuSeparatorComponent,
   ],
   templateUrl: './sidebar-menu.component.html',
   styleUrl: './sidebar-menu.component.css',
@@ -78,5 +83,8 @@ export class SidebarMenuComponent {
   }
   getMenuOptionStatus(level: string, subLevel: string | undefined) {
     return this.levelHandler.getLevelStatus(level, subLevel);
+  }
+  showSubMenu(menuId: string) {
+    return this.levelHandler.isPartOfCurrentLevel(menuId);
   }
 }

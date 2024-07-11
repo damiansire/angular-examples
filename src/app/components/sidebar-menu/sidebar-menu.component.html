@@ -4,10 +4,10 @@
     [menuItem]="menuItem"
     [levelState]="getMenuOptionStatus(menuItem.id, undefined)"
   />
-  @if (menuItem.subLevels.length > 0) {
+  @if (menuItem.subLevels.length > 0 && showSubMenu(menuItem.id)) {
   <ul>
     @for (item of menuItem.subLevels; track $index) {
-    <li class="text-center">|</li>
+    <app-menu-separator />
     <app-menu-sub-level-option
       [item]="item"
       [levelState]="getMenuOptionStatus(menuItem.id, item.id)"
