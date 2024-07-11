@@ -2,9 +2,9 @@
   class="text-center cursor-pointer"
   [routerLink]="[item.path]"
   [ngClass]="{
-    'bg-green-500': levelState === 'win',
+    'bg-green-600': levelState === 'win',
     'bg-gray-700': levelState === 'pending',
-    'bg-orange-300': levelState === 'currentLevel'
+    'bg-orange-500': levelState === 'currentLevel'
   }"
 >
   {{ item.id }}
