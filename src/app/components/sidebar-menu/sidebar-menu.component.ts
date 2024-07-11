@@ -67,7 +67,11 @@ export class SidebarMenuComponent {
   ngOnInit() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        const routePart = event.url.split('/');
+        let finalUrl = event.url;
+        if (event.urlAfterRedirects != event.url) {
+          finalUrl = event.urlAfterRedirects;
+        }
+        const routePart = finalUrl.split('/');
         this.levelHandler.setCurrentLevel(routePart[3], routePart[5]);
       }
     });
