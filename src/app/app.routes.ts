@@ -89,5 +89,8 @@ function generateRoutes(routesTree: RouteItem[]) {
 }
 
 const { allRoutes, baseRoutes } = generateRoutes(signalsRoutesTree);
-export const routes: Routes = allRoutes;
+export const routes: Routes = [
+  ...allRoutes,
+  { path: '', redirectTo: '/signals/level/1', pathMatch: 'full' },
+];
 export const menuItems = baseRoutes;
