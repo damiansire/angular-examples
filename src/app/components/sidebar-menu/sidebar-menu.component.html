@@ -1,18 +1,21 @@
 <ul class="py-4">
   @for ( menuItem of menuItems; track $index) {
-  <app-menu-option
-    [menuItem]="menuItem"
-    [levelState]="getMenuOptionStatus(menuItem.id, undefined)"
-  />
-  @if (menuItem.subLevels.length > 0 && showSubMenu(menuItem.id)) {
-  <ul>
-    @for (item of menuItem.subLevels; track $index) {
-    <app-menu-separator />
-    <app-menu-sub-level-option
-      [item]="item"
-      [levelState]="getMenuOptionStatus(menuItem.id, item.id)"
+  <li class="mb-4">
+    <app-menu-option
+      [menuItem]="menuItem"
+      [levelState]="getMenuOptionStatus(menuItem.id, undefined)"
     />
+    @if (menuItem.subLevels.length > 0 && showSubMenu(menuItem.id)) {
+    <ul>
+      @for (item of menuItem.subLevels; track $index) {
+      <app-menu-separator />
+      <app-menu-sub-level-option
+        [item]="item"
+        [levelState]="getMenuOptionStatus(menuItem.id, item.id)"
+      />
+      }
+    </ul>
     }
-  </ul>
-  } }
+  </li>
+  }
 </ul>
