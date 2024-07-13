@@ -23,14 +23,10 @@ interface LevelHistory {
 }
 
 class HandlerLevelStatus {
-  levelHistory: any;
-  currentLevel: { level: string; subLevel: string };
-  constructor() {
-    this.levelHistory = {};
-    this.currentLevel = {
-      level: '1',
-      subLevel: '2',
-    };
+  levelHistory: LevelHistory = {};
+  currentLevel: CurrentLevel = { level: '1', subLevel: null };
+  constructor(menuItems: CustomRoute[]) {
+    this.setLevelHistory(menuItems);
   }
   addLevel(level: string, subLevel: string) {
     if (this.levelHistory[level] === undefined) {
