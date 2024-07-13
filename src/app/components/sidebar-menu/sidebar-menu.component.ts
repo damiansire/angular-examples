@@ -40,6 +40,7 @@ class HandlerLevelStatus {
   }
   setCurrentLevel(level: string, subLevel: string) {
     this.currentLevel = { level, subLevel };
+    this.setLevelState(level, undefined, 'current');
     this.setLevelState(level, subLevel, 'current');
   }
 
@@ -62,6 +63,20 @@ class HandlerLevelStatus {
       this.levelHistory[level].state = state;
     } else {
       this.levelHistory[level].subLevels[subLevel].state = state;
+    }
+  }
+  leaveLevel(level: string, subLevel: string) {
+    if (subLevel != undefined) {
+      this.setLevelState(level, subLevel, 'win');
+    }
+    const isCompleteLevel = Object.values(
+      this.levelHistory[level].subLevels
+    ).every((x) => x.state === 'win');
+    if (isCompleteLevel) {
+      this.setLevelState(level, undefined, 'win');
+    } else {
+      debugger;
+      this.setLevelState(level, undefined, 'pending');
     }
   }
   private setLevelHistory(menuItems: CustomRoute[]) {
@@ -111,9 +126,7 @@ export class SidebarMenuComponent {
       if (event instanceof NavigationStart) {
         const currentUrl = this.router.url;
         const routePart = currentUrl.split('/');
-        if (routePart[5] != undefined) {
-          this.levelHandler.setLevelState(routePart[3], routePart[5], 'win');
-        }
+        this.levelHandler.leaveLevel(routePart[3], routePart[5]);
       }
       if (event instanceof NavigationEnd) {
         let finalUrl = event.url;
