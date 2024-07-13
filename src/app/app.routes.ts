@@ -24,12 +24,12 @@ const signalsRoutesTree: RouteItem[] = [
     path: '1',
     component: InteractionWithSignalsComponent,
     subLevels: [
-      { path: '1', component: WhatIsSignalsComponent },
-      { path: '2', component: TypesOfSignalsComponent },
-      { path: '3', component: CreateNewSignalsComponent },
-      { path: '4', component: WritableSignalsComponent },
-      { path: '5', component: UpdateSignalComponent },
-      { path: '6', component: ReadOnlySignalsComponent },
+      /*  { path: '1', component: WhatIsSignalsComponent },
+      { path: '2', component: TypesOfSignalsComponent }, 
+      { path: '1', component: CreacteNewSignalsComponent },*/
+      { path: '1', component: WritableSignalsComponent },
+      { path: '2', component: UpdateSignalComponent },
+      /*{ path: '6', component: ReadOnlySignalsComponent },*/
     ],
   },
   {
@@ -47,9 +47,9 @@ const signalsRoutesTree: RouteItem[] = [
     subLevels: [
       { path: '1', component: EffectComponent },
       { path: '2', component: DestroyEffectComponent },
-      { path: '3', component: IntervalManualDestructionComponent },
-      { path: '4', component: EffectManualDestructionComponent },
-      { path: '5', component: EffectDestroyComponent },
+      /*{ path: '3', component: IntervalManualDestructionComponent },
+      { path: '4', component: EffectManualDestructionComponent },*/
+      { path: '3', component: EffectDestroyComponent },
     ],
   },
   {

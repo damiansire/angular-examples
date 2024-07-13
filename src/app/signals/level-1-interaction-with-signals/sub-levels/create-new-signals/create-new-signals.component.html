@@ -1,4 +1,27 @@
+<!--
+You create
+writable signals by calling the signal function with the signal's initial value:
 <p>
   You read a signal's value by calling its getter function, which allows Angular
   to track where the signal is used.
-</p>
+</p> 
+
+-->
+
+<app-column-and-code-layout title="Getter Function" [codeLines]="lines">
+  <section>
+    <div class="counter-container">
+      <div class="counter-display">Amount: 1</div>
+    </div>
+    <br />
+    <div class="input-group">
+      <input
+        #signalSetInput
+        type="text"
+        class="form-control"
+        placeholder="Enter a value"
+      />
+      <button class="btn btn-primary">Set</button>
+    </div>
+  </section>
+</app-column-and-code-layout>
