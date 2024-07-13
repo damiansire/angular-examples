@@ -6,6 +6,22 @@ import { MenuOptionComponent } from './components/menu-option/menu-option.compon
 import { MenuSubLevelOptionComponent } from './components/menu-sub-level-option/menu-sub-level-option.component';
 import { MenuSeparatorComponent } from './components/menu-separator/menu-separator.component';
 
+type LevelState = 'win' | 'pending' | 'current';
+
+interface CurrentLevel {
+  level: string;
+  subLevel: string | null;
+}
+
+interface Level {
+  state: LevelState;
+  subLevels: LevelHistory;
+}
+
+interface LevelHistory {
+  [key: string]: Level;
+}
+
 class HandlerLevelStatus {
   levelHistory: any;
   currentLevel: { level: string; subLevel: string };
