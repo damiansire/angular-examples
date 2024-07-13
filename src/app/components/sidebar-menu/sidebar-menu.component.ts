@@ -40,17 +40,13 @@ class HandlerLevelStatus {
   }
   setCurrentLevel(level: string, subLevel: string) {
     this.currentLevel = { level, subLevel };
+    this.setLevelState(level, subLevel, 'current');
   }
-  isCurrentLevel(level: string, subLevel: string) {
-    return (
-      this.currentLevel.level === level &&
-      this.currentLevel.subLevel === subLevel
-    );
-  }
+
   isPartOfCurrentLevel(level: string) {
     return this.currentLevel.level === level;
   }
-  private setLevelState(
+  setLevelState(
     level: string,
     subLevel: string | undefined,
     state: LevelState
@@ -70,16 +66,24 @@ class HandlerLevelStatus {
   }
   private setLevelHistory(menuItems: CustomRoute[]) {
     for (const levelItem of menuItems) {
-      this.levelHistory[levelItem.id] = {
+      this.createLevel(levelItem.id, null);
+      for (const subLevelItem of levelItem.subLevels) {
+        this.createLevel(levelItem.id, subLevelItem.id);
+      }
+    }
+  }
+  private createLevel(levelId: string, sublevelId: string | null) {
+    if (this.levelHistory[levelId] === undefined) {
+      this.levelHistory[levelId] = {
         state: 'pending',
         subLevels: {},
       };
-      for (const subLevelItem of levelItem.subLevels) {
-        this.levelHistory[levelItem.id].subLevels[subLevelItem.id] = {
-          state: 'pending',
-          subLevels: {},
-        };
-      }
+    }
+    if (sublevelId) {
+      this.levelHistory[levelId].subLevels[sublevelId] = {
+        state: 'pending',
+        subLevels: {},
+      };
     }
   }
 }
@@ -117,7 +121,6 @@ export class SidebarMenuComponent {
           finalUrl = event.urlAfterRedirects;
         }
         const routePart = finalUrl.split('/');
-        this.levelHandler.setLevelState(routePart[3], routePart[5], 'current');
         this.levelHandler.setCurrentLevel(routePart[3], routePart[5]);
       }
     });
