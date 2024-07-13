@@ -31,6 +31,25 @@ class HandlerLevelStatus {
   setWinLevel(level: string, subLevel: string) {
     this.setLevelState(level, subLevel, 'win');
   }
+  getLevelStatus(level: string, subLevel: string | undefined): LevelState {
+    if (subLevel === undefined) {
+      return this.levelHistory[level].state;
+    }
+    return this.levelHistory[level].subLevels[subLevel].state;
+  }
+  setCurrentLevel(level: string, subLevel: string) {
+    this.currentLevel = { level, subLevel };
+    this.setWinLevel(level, subLevel);
+  }
+  isCurrentLevel(level: string, subLevel: string) {
+    return (
+      this.currentLevel.level === level &&
+      this.currentLevel.subLevel === subLevel
+    );
+  }
+  isPartOfCurrentLevel(level: string) {
+    return this.currentLevel.level === level;
+  }
   private setLevelState(
     level: string,
     subLevel: string | undefined,
@@ -81,9 +100,9 @@ class HandlerLevelStatus {
 export class SidebarMenuComponent {
   private router = inject(Router);
   menuItems: CustomRoute[] = menuItems;
-  //TODO: Create the class before and start with created object based in routes
-  levelHandler = new HandlerLevelStatus();
+  levelHandler: any;
   ngOnInit() {
+    this.levelHandler = new HandlerLevelStatus(this.menuItems);
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         let finalUrl = event.url;
