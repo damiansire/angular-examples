@@ -49,38 +49,19 @@ class HandlerLevelStatus {
       this.levelHistory[level].subLevels[subLevel].state = state;
     }
   }
-  addLevel(level: string, subLevel: string) {
-    if (this.levelHistory[level] === undefined) {
-      this.levelHistory[level] = {};
-    }
-    if (subLevel) {
-      this.levelHistory[level][subLevel] = 'win';
-    } else {
-      this.levelHistory[level]['state'] = 'win';
-    }
-  }
-  getLevelStatus(level: string, subLevel: string | undefined) {
-    if (
-      this.currentLevel.level === level &&
-      this.currentLevel.subLevel === subLevel
-    ) {
-      return 'currentLevel';
-    }
-    if (subLevel === undefined) {
-      if (!this.levelHistory[level]?.state) {
-        return 'pending';
+  private setLevelHistory(menuItems: CustomRoute[]) {
+    for (const levelItem of menuItems) {
+      this.levelHistory[levelItem.id] = {
+        state: 'pending',
+        subLevels: {},
+      };
+      for (const subLevelItem of levelItem.subLevels) {
+        this.levelHistory[levelItem.id].subLevels[subLevelItem.id] = {
+          state: 'pending',
+          subLevels: {},
+        };
       }
-      return this.levelHistory[level]?.state || 'pending';
     }
-
-    return this.levelHistory[level]?.[subLevel] || 'pending';
-  }
-  setCurrentLevel(level: string, subLevel: string) {
-    this.currentLevel = { level, subLevel };
-    this.addLevel(level, subLevel);
-  }
-  isPartOfCurrentLevel(level: string) {
-    return this.currentLevel.level === level;
   }
 }
 
