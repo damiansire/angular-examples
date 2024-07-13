@@ -15,15 +15,17 @@ import { EffectManualDestructionComponent } from './signals/level-3-effect/sub-l
 import { EffectDestroyComponent } from './signals/level-3-effect/sub-levels/5-effect-destroy/effect-destroy.component';
 import { SignalEqualityFunctionsComponent } from './signals/level-4-signal-equality-functions/signal-equality-functions.component';
 import { EffectLevelComponent } from './signals/level-3-effect/effect-level.component';
+import { WhatIsSignalsComponent } from './signals/level-1-interaction-with-signals/sub-levels/what-is-signals/what-is-signals.component';
 
 const signalsRoutesTree: RouteItem[] = [
   {
     path: '1',
     component: InteractionWithSignalsComponent,
     subLevels: [
-      { path: '1', component: WritableSignalsComponent },
-      { path: '2', component: UpdateSignalComponent },
-      { path: '3', component: ReadOnlySignalsComponent },
+      { path: '1', component: WhatIsSignalsComponent },
+      { path: '2', component: WritableSignalsComponent },
+      { path: '3', component: UpdateSignalComponent },
+      { path: '4', component: ReadOnlySignalsComponent },
     ],
   },
   {
