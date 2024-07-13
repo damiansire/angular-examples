@@ -28,6 +28,27 @@ class HandlerLevelStatus {
   constructor(menuItems: CustomRoute[]) {
     this.setLevelHistory(menuItems);
   }
+  setWinLevel(level: string, subLevel: string) {
+    this.setLevelState(level, subLevel, 'win');
+  }
+  private setLevelState(
+    level: string,
+    subLevel: string | undefined,
+    state: LevelState
+  ) {
+    const isInvalidLevel = this.levelHistory[level] === undefined;
+    const isInvalidSubLevel =
+      subLevel !== undefined &&
+      this.levelHistory[level].subLevels[subLevel].state;
+    if (isInvalidLevel && isInvalidSubLevel) {
+      throw Error(`[${level},${subLevel}] Is invalidad level`);
+    }
+    if (subLevel === undefined) {
+      this.levelHistory[level].state = state;
+    } else {
+      this.levelHistory[level].subLevels[subLevel].state = state;
+    }
+  }
   addLevel(level: string, subLevel: string) {
     if (this.levelHistory[level] === undefined) {
       this.levelHistory[level] = {};
