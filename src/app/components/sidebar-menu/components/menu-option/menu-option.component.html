@@ -1,5 +1,5 @@
 <li
-  [routerLink]="[menuItem.path]"
+  [routerLink]="getLink(menuItem.path)"
   [ngClass]="{
     'bg-green-600': levelState === 'win',
     'bg-gray-700': levelState === 'pending',

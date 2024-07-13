@@ -19,4 +19,7 @@ export class MenuOptionComponent {
     subLevels: [],
   };
   @Input() levelState: LevelState = 'pending';
+  getLink(menuItemPath: string) {
+    return `${menuItemPath}/sub-level/1`;
+  }
 }

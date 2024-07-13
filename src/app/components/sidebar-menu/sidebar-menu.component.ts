@@ -75,7 +75,6 @@ class HandlerLevelStatus {
     if (isCompleteLevel) {
       this.setLevelState(level, undefined, 'win');
     } else {
-      debugger;
       this.setLevelState(level, undefined, 'pending');
     }
   }
