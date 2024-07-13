@@ -16,6 +16,8 @@ import { EffectDestroyComponent } from './signals/level-3-effect/sub-levels/5-ef
 import { SignalEqualityFunctionsComponent } from './signals/level-4-signal-equality-functions/signal-equality-functions.component';
 import { EffectLevelComponent } from './signals/level-3-effect/effect-level.component';
 import { WhatIsSignalsComponent } from './signals/level-1-interaction-with-signals/sub-levels/what-is-signals/what-is-signals.component';
+import { CreateNewSignalsComponent } from './signals/level-1-interaction-with-signals/sub-levels/create-new-signals/create-new-signals.component';
+import { TypesOfSignalsComponent } from './signals/level-1-interaction-with-signals/sub-levels/types-of-signals/types-of-signals.component';
 
 const signalsRoutesTree: RouteItem[] = [
   {
@@ -23,9 +25,11 @@ const signalsRoutesTree: RouteItem[] = [
     component: InteractionWithSignalsComponent,
     subLevels: [
       { path: '1', component: WhatIsSignalsComponent },
-      { path: '2', component: WritableSignalsComponent },
-      { path: '3', component: UpdateSignalComponent },
-      { path: '4', component: ReadOnlySignalsComponent },
+      { path: '2', component: TypesOfSignalsComponent },
+      { path: '3', component: CreateNewSignalsComponent },
+      { path: '4', component: WritableSignalsComponent },
+      { path: '5', component: UpdateSignalComponent },
+      { path: '6', component: ReadOnlySignalsComponent },
     ],
   },
   {
