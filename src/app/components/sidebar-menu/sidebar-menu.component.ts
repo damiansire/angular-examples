@@ -1,5 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { NavigationEnd, Router, RouterModule } from '@angular/router';
+import {
+  NavigationEnd,
+  NavigationStart,
+  Router,
+  RouterModule,
+} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CustomRoute, menuItems } from '../../app.routes';
 import { MenuOptionComponent } from './components/menu-option/menu-option.component';
@@ -28,9 +33,6 @@ class HandlerLevelStatus {
   constructor(menuItems: CustomRoute[]) {
     this.setLevelHistory(menuItems);
   }
-  setWinLevel(level: string, subLevel: string) {
-    this.setLevelState(level, subLevel, 'win');
-  }
   getLevelStatus(level: string, subLevel: string | undefined): LevelState {
     if (subLevel === undefined) {
       return this.levelHistory[level].state;
@@ -39,7 +41,6 @@ class HandlerLevelStatus {
   }
   setCurrentLevel(level: string, subLevel: string) {
     this.currentLevel = { level, subLevel };
-    this.setWinLevel(level, subLevel);
   }
   isCurrentLevel(level: string, subLevel: string) {
     return (
@@ -104,6 +105,13 @@ export class SidebarMenuComponent {
   ngOnInit() {
     this.levelHandler = new HandlerLevelStatus(this.menuItems);
     this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        const currentUrl = this.router.url;
+        const routePart = currentUrl.split('/');
+        if (routePart[5] != undefined) {
+          this.levelHandler.setLevelState(routePart[3], routePart[5], 'win');
+        }
+      }
       if (event instanceof NavigationEnd) {
         let finalUrl = event.url;
         if (event.urlAfterRedirects != event.url) {
