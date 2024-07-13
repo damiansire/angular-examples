@@ -17,4 +17,4 @@ export interface RouteItem {
   subLevels?: RouteItem[];
 }
 
-export type LevelState = 'pending' | 'currentLevel' | 'win';
+export type LevelState = 'pending' | 'current' | 'win';

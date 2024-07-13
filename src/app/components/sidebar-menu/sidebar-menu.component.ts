@@ -10,8 +10,7 @@ import { CustomRoute, menuItems } from '../../app.routes';
 import { MenuOptionComponent } from './components/menu-option/menu-option.component';
 import { MenuSubLevelOptionComponent } from './components/menu-sub-level-option/menu-sub-level-option.component';
 import { MenuSeparatorComponent } from './components/menu-separator/menu-separator.component';
-
-type LevelState = 'win' | 'pending' | 'current';
+import { LevelState } from '../component.interface';
 
 interface CurrentLevel {
   level: string;
@@ -118,6 +117,7 @@ export class SidebarMenuComponent {
           finalUrl = event.urlAfterRedirects;
         }
         const routePart = finalUrl.split('/');
+        this.levelHandler.setLevelState(routePart[3], routePart[5], 'current');
         this.levelHandler.setCurrentLevel(routePart[3], routePart[5]);
       }
     });
