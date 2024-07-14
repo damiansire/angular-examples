@@ -26,9 +26,9 @@ const signalsRoutesTree: RouteItem[] = [
     subLevels: [
       { path: '1', component: WhatIsSignalsComponent },
       { path: '2', component: TypesOfSignalsComponent },
-      { path: '1', component: CreateNewSignalsComponent },
-      { path: '1', component: WritableSignalsComponent },
-      { path: '2', component: UpdateSignalComponent },
+      { path: '3', component: CreateNewSignalsComponent },
+      { path: '4', component: WritableSignalsComponent },
+      { path: '5', component: UpdateSignalComponent },
       { path: '6', component: ReadOnlySignalsComponent },
     ],
   },
@@ -49,7 +49,7 @@ const signalsRoutesTree: RouteItem[] = [
       { path: '2', component: DestroyEffectComponent },
       { path: '3', component: IntervalManualDestructionComponent },
       { path: '4', component: EffectManualDestructionComponent },
-      { path: '3', component: EffectDestroyComponent },
+      { path: '5', component: EffectDestroyComponent },
     ],
   },
   {
