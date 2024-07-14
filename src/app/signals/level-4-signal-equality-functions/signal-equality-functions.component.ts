@@ -93,7 +93,7 @@ export class SignalEqualityFunctionsComponent {
     });
   }
 
-  setData(event: string) {
+  setData(event: string, allowRepetear: boolean = false) {
     if (event === 'name') {
       if (this.name() != this.exampleData().name) {
         this.addConditionalCountRecomputation('interval', event, false);
@@ -107,7 +107,8 @@ export class SignalEqualityFunctionsComponent {
     } else if (event === 'person') {
       if (
         this.person().name != this.exampleData().person.name ||
-        this.person().surname != this.exampleData().person.surname
+        this.person().surname != this.exampleData().person.surname ||
+        allowRepetear
       ) {
         this.addConditionalCountRecomputation('interval', event, false);
         this.person.set(this.exampleData().person);
