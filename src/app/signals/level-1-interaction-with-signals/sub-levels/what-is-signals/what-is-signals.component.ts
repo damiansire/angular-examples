@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { TitleComponent } from '../../../../components-atom/title/title.component';
+import { WrapperAnimationComponent } from './wrapper-animation/wrapper-animation.component';
 
 @Component({
   selector: 'app-what-is-signals',
   standalone: true,
-  imports: [TitleComponent],
+  imports: [TitleComponent, WrapperAnimationComponent],
   templateUrl: './what-is-signals.component.html',
   styleUrl: './what-is-signals.component.css',
 })
