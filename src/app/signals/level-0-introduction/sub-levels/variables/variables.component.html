@@ -1,8 +1,21 @@
 <h1>Variables</h1>
-<div class="flex flex-wrap justify-around">
+<section class="flex flex-wrap justify-around">
   @for (type of dataTypes; track $index) {
   <div>
     <app-variable-box-draw [variableName]="type"></app-variable-box-draw>
   </div>
   }
-</div>
+</section>
+<section class="flex justify-around">
+  <div class="flex flex-col justify-around">
+    @for (item of numberValues; track $index) {
+    <app-variable-box-draw
+      [variableName]="item"
+      (onClick)="setValue($event)"
+    ></app-variable-box-draw>
+    }
+  </div>
+  <div>
+    <app-code [lines]="lines"></app-code>
+  </div>
+</section>
