@@ -18,8 +18,23 @@ import { EffectLevelComponent } from './signals/level-3-effect/effect-level.comp
 import { WhatIsSignalsComponent } from './signals/level-1-interaction-with-signals/sub-levels/what-is-signals/what-is-signals.component';
 import { CreateNewSignalsComponent } from './signals/level-1-interaction-with-signals/sub-levels/create-new-signals/create-new-signals.component';
 import { TypesOfSignalsComponent } from './signals/level-1-interaction-with-signals/sub-levels/types-of-signals/types-of-signals.component';
+import { IntroductionComponent } from './signals/level-0-introduction/introduction.component';
+import { VariablesComponent } from './signals/level-0-introduction/sub-levels/variables/variables.component';
+import { HtmlToTreeComponent } from './signals/level-0-introduction/sub-levels/html-to-tree/html-to-tree.component';
+import { OldChangeDetectionComponent } from './signals/level-0-introduction/sub-levels/old-change-detection/old-change-detection.component';
+import { SignalsChangeDetectionComponent } from './signals/level-0-introduction/sub-levels/signals-change-detection/signals-change-detection.component';
 
 const signalsRoutesTree: RouteItem[] = [
+  {
+    path: '0',
+    component: IntroductionComponent,
+    subLevels: [
+      { path: '1', component: VariablesComponent },
+      { path: '2', component: HtmlToTreeComponent },
+      { path: '3', component: OldChangeDetectionComponent },
+      { path: '4', component: SignalsChangeDetectionComponent },
+    ],
+  },
   {
     path: '1',
     component: InteractionWithSignalsComponent,
