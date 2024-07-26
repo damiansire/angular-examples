@@ -1,1 +1,8 @@
-<p>variables works!</p>
+<h1>Variables</h1>
+<div class="flex flex-wrap justify-around">
+  @for (type of dataTypes; track $index) {
+  <div>
+    <app-variable-box-draw [variableName]="type"></app-variable-box-draw>
+  </div>
+  }
+</div>
