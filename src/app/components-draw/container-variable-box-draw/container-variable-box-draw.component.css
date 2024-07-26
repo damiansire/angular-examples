@@ -1,0 +1,26 @@
+.outer-box {
+  width: 200px;
+  height: 120px;
+  padding: 15px;
+  border: 4px solid red; /* Red outer border */
+  border-radius: 15px; /* Rounded corners */
+  background-image: linear-gradient(45deg, #f2f2f2 25%, transparent 25%),
+    linear-gradient(-45deg, #f2f2f2 25%, transparent 25%); /* Diagonal stripes */
+  background-size: 20px 20px; /* Stripe size */
+}
+
+.inner-box {
+  width: 100%;
+  height: 100%;
+  border: 3px solid blue; /* Blue inner border */
+  border-radius: 10px;
+  background-color: #ffe0b2; /* Light orange background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+span {
+  font-size: 32px;
+  font-family: "Caveat", cursive; /* Cursive font for the word "string" */
+}
