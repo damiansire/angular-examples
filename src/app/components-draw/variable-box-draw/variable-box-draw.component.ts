@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-variable-box-draw',
@@ -9,4 +9,9 @@ import { Component, Input } from '@angular/core';
 })
 export class VariableBoxDrawComponent {
   @Input() variableName: string = '';
+  @Output() onClick = new EventEmitter<{ name: string; value: string }>();
+
+  _onClick() {
+    this.onClick.emit({ name: this.variableName, value: '' });
+  }
 }
