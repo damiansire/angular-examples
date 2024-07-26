@@ -1,0 +1,15 @@
+.inner-box {
+  width: 100%;
+  height: 100%;
+  border: 3px solid blue; /* Blue inner border */
+  border-radius: 10px;
+  background-color: #ffe0b2; /* Light orange background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+span {
+  font-size: 32px;
+  font-family: "Caveat", cursive; /* Cursive font for the word "string" */
+}
