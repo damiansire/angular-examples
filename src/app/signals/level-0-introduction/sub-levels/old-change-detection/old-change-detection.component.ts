@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import {
   NodeTree,
   Link,
@@ -16,18 +16,18 @@ export class OldChangeDetectionComponent {
   step = signal(0);
 
   incrementStep() {
-    if (this.step() < 3) {
-      this.step.update((currentStep) => currentStep + 1);
+    if (this.step() < 5) {
+      this.step.update((currentStep) => currentStep + 2);
     }
   }
 
   decrementStep() {
     if (this.step() > 0) {
-      this.step.update((currentStep) => currentStep - 1);
+      this.step.update((currentStep) => currentStep - 2);
     }
   }
 
-  data = signal<NodeTree[]>([
+  baseElement = <NodeTree[]>[
     {
       name: 'main',
       x: 550,
@@ -70,7 +70,16 @@ export class OldChangeDetectionComponent {
       y: 500,
       color: this.step() > 2 ? '#90EE90' : '',
     },
-  ]);
+  ];
+
+  // Computed signal to derive node data based on 'step'
+  data = computed<NodeTree[]>(() =>
+    this.baseElement.map((node) => ({
+      ...node,
+      color: this.step() >= node.y / 100 ? '#90EE90' : '',
+    }))
+  );
+
   links = signal<Link[]>([
     {
       source: 'main',

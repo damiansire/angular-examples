@@ -3,6 +3,7 @@ import {
   Component,
   computed,
   Input,
+  Signal,
   signal,
   WritableSignal,
 } from '@angular/core';
@@ -23,7 +24,9 @@ import { Link, NodeTree } from '../components-draw.inferface';
   styleUrl: './node-tree.component.css',
 })
 export class NodeTreeComponent {
-  @Input() data: WritableSignal<NodeTree[]> = signal<NodeTree[]>([]);
+  @Input() data: WritableSignal<NodeTree[]> | Signal<NodeTree[]> = signal<
+    NodeTree[]
+  >([]);
   @Input() links: WritableSignal<Link[]> = signal<Link[]>([]);
   @Input() title: string = '';
   chartOption = computed<EChartsOption>(() => ({
