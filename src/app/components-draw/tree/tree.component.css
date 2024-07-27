@@ -1,0 +1,30 @@
+.tree ul {
+  padding-left: 20px; /* Indentation for each level */
+  list-style: none; /* Remove default list item markers */
+}
+
+.tree li {
+  position: relative; /* For positioning connectors */
+}
+
+.tree li::before {
+  /* Vertical connector lines */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -10px; /* Adjust for spacing */
+  width: 1px;
+  height: 100%;
+  border-left: 1px dashed gray;
+}
+
+.tree li:last-child::before {
+  /* Remove line for last child */
+  height: 50%;
+}
+
+.node {
+  /* Style for node labels (element names) */
+  font-weight: bold;
+  margin-right: 5px;
+}
