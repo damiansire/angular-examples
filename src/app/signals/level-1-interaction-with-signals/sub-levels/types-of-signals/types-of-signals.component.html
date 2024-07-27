@@ -1,14 +1,20 @@
-<app-title title="Writable Signals" />
+<app-title title="How do we make this wrapper?" />
 
-<div class="flex flex-col justify-around mt-5">
-  <section>
-    <app-code [lines]="lines" />
+<div class="flex flex-col justify-around mt-3">
+  <app-text-description
+    text="You create writable signals by calling the signal function with the signal's initial value:"
+  ></app-text-description>
+  <section class="flex flex-wrap justify-around my-6">
+    @for (type of dataTypes; track $index) {
+
+    <app-variable-box-draw
+      [variableName]="type.text"
+      (onClick)="selectType($event)"
+    ></app-variable-box-draw>
+
+    }
   </section>
   <section>
-    <p class="prose lg:prose-xl">
-      You create writable signals by calling the
-      <strong>signal</strong> function with the signal's
-      <strong>initial value</strong>:
-    </p>
+    <app-code [lines]="lines" />
   </section>
 </div>
