@@ -2,11 +2,12 @@ import { Component, computed } from '@angular/core';
 import { CodeLine } from '../../../../components-atom/component-atom.interface';
 import { CodeComponent } from '../../../../components-atom/code/code.component';
 import { TreeComponent } from '../../../../components-draw/tree/tree.component';
+import { NodeTreeComponent } from '../../../../components-draw/node-tree/node-tree.component';
 
 @Component({
   selector: 'app-html-to-tree',
   standalone: true,
-  imports: [CodeComponent, TreeComponent],
+  imports: [CodeComponent, TreeComponent, NodeTreeComponent],
   templateUrl: './html-to-tree.component.html',
   styleUrl: './html-to-tree.component.css',
 })
