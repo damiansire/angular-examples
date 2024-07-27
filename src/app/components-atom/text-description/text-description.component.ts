@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-text-description',
   standalone: true,
   imports: [],
   templateUrl: './text-description.component.html',
-  styleUrl: './text-description.component.css'
+  styleUrl: './text-description.component.css',
 })
 export class TextDescriptionComponent {
-
+  @Input() text: string = '';
 }
