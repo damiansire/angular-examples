@@ -17,13 +17,11 @@ export class HtmlToTreeComponent {
     { line: `  <section>`, active: false },
     { line: `    <h2>Introduction</h2>`, active: false },
     {
-      line: `    <p>This is a simple example</p>`,
+      line: `    <p>This is a simple example \n                
+                 of a DOM tree</p>`,
       active: false,
     },
-    {
-      line: `    <p>of a DOM tree.</p>`,
-      active: false,
-    },
+
     { line: `  </section>`, active: false },
     { line: `  <article>`, active: false },
     { line: `    <h3>Article Title</h3>`, active: false },

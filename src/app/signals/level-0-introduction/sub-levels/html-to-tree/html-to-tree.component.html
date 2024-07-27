@@ -1,6 +1,10 @@
-<!-- <p>html-to-tree works!</p>
-<div class="flex">
-  <app-code [lines]="lines"></app-code>
-  <app-tree></app-tree>
-</div> -->
-<app-node-tree></app-node-tree>
+<div>
+  <div class="grid grid-cols-2 gap-4">
+    <div>
+      <app-node-tree></app-node-tree>
+    </div>
+    <div class="inline-block">
+      <app-code [lines]="lines"></app-code>
+    </div>
+  </div>
+</div>
