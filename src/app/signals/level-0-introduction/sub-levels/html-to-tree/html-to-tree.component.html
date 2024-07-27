@@ -1,7 +1,11 @@
 <div>
   <div class="grid grid-cols-2 gap-4">
     <div>
-      <app-node-tree [data]="data" [links]="links"></app-node-tree>
+      <app-node-tree
+        [data]="data"
+        [links]="links"
+        title="Example of HTML tree construction"
+      ></app-node-tree>
     </div>
     <div class="inline-block">
       <app-code

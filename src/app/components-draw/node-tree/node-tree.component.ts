@@ -25,9 +25,10 @@ import { Link, NodeTree } from '../components-draw.inferface';
 export class NodeTreeComponent {
   @Input() data: WritableSignal<NodeTree[]> = signal<NodeTree[]>([]);
   @Input() links: WritableSignal<Link[]> = signal<Link[]>([]);
+  @Input() title: string = '';
   chartOption = computed<EChartsOption>(() => ({
     title: {
-      text: 'Simple Graph',
+      text: this.title,
     },
     tooltip: {},
     animationDurationUpdate: 1500,
