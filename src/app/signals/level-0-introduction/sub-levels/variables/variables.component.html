@@ -1,21 +1,27 @@
 <h1>Variables</h1>
 <section class="flex flex-wrap justify-around">
   @for (type of dataTypes; track $index) {
-  <div>
-    <app-variable-box-draw [variableName]="type"></app-variable-box-draw>
-  </div>
+
+  <app-variable-box-draw
+    [variableName]="type"
+    (onClick)="selectType($event)"
+  ></app-variable-box-draw>
+
   }
 </section>
-<section class="flex justify-around">
-  <div class="flex flex-col justify-around">
-    @for (item of numberValues; track $index) {
-    <app-variable-box-draw
-      [variableName]="item"
-      (onClick)="setValue($event)"
-    ></app-variable-box-draw>
-    }
-  </div>
-  <div>
-    <app-code [lines]="lines"></app-code>
+<section class="flex flex-col justify-around">
+  <h1>{{ this.selectedType().name }}</h1>
+  <div class="flex justify-around">
+    <div class="flex flex-col justify-around">
+      @for (item of selectedType().examples; track $index) {
+      <app-variable-box-draw
+        [variableName]="item"
+        (onClick)="selectExample($event)"
+      ></app-variable-box-draw>
+      }
+    </div>
+    <div>
+      <app-code [lines]="lines"></app-code>
+    </div>
   </div>
 </section>
