@@ -28,7 +28,7 @@ export class VariablesComponent {
     },
     Boolean: {
       name: 'Boolean',
-      examples: ['True', 'False'],
+      examples: ['true', 'false'],
     },
     Object: {
       name: 'Object',
