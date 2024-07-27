@@ -47,7 +47,13 @@ export class NodeTreeComponent {
         edgeLabel: {
           fontSize: 20,
         },
-        data: this.data(), // Unwrap the signals here
+        data: this.data(),
+        itemStyle: {
+          color: (params) => {
+            const node = params.data as NodeTree;
+            return node.color || '#5784C1';
+          },
+        },
         links: this.links(),
         lineStyle: {
           opacity: 0.9,
