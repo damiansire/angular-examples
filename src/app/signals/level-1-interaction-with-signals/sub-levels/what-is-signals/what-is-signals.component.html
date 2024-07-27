@@ -1,16 +1,29 @@
 <app-title [title]="title"></app-title>
-<p>
-  A signal is a wrapper around a value that notifies interested consumers when
-  that value changes.
-</p>
+<section class="my-6">
+  <app-text-description
+    text="A signal is a wrapper around a value that notifies interested consumers when
+  that value changes."
+  ></app-text-description>
+</section>
 <app-wrapper-animation></app-wrapper-animation>
 <div>
-  <h1>Signal Wrapper</h1>
-  <section>
-    <app-draw-preview
-      imgUrl="./assets/images/signals/string_wrappers.png"
-    ></app-draw-preview>
+  <section class="flex flex-wrap justify-around my-6">
+    @for (type of dataTypes; track $index) { @if(type.isContainer){
+    <app-container-variable-box-draw
+      [variableName]="type.text"
+    ></app-container-variable-box-draw>
+    } @else{
+    <app-variable-box-draw
+      [variableName]="type.text"
+      (onClick)="convertToContainer($event)"
+    ></app-variable-box-draw>
+    } }
   </section>
+</div>
+<div class="flex justify-center">
+  <div class="max-w-fit">
+    <app-code [lines]="signalWrapperLines"></app-code>
+  </div>
 </div>
 
 @if(false){
