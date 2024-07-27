@@ -29,22 +29,22 @@ const signalsRoutesTree: RouteItem[] = [
     path: '0',
     component: IntroductionComponent,
     subLevels: [
-      { path: '1', component: VariablesComponent },
-      { path: '2', component: HtmlToTreeComponent },
-      { path: '3', component: OldChangeDetectionComponent },
-      { path: '4', component: SignalsChangeDetectionComponent },
+      { path: '1', component: HtmlToTreeComponent },
+      { path: '2', component: OldChangeDetectionComponent },
+      { path: '3', component: SignalsChangeDetectionComponent },
     ],
   },
   {
     path: '1',
     component: InteractionWithSignalsComponent,
     subLevels: [
-      { path: '1', component: WhatIsSignalsComponent },
-      { path: '2', component: TypesOfSignalsComponent },
-      { path: '3', component: CreateNewSignalsComponent },
-      { path: '4', component: WritableSignalsComponent },
-      { path: '5', component: UpdateSignalComponent },
-      { path: '6', component: ReadOnlySignalsComponent },
+      { path: '1', component: VariablesComponent },
+      { path: '2', component: WhatIsSignalsComponent },
+      { path: '3', component: TypesOfSignalsComponent },
+      { path: '4', component: CreateNewSignalsComponent },
+      { path: '5', component: WritableSignalsComponent },
+      { path: '6', component: UpdateSignalComponent },
+      { path: '7', component: ReadOnlySignalsComponent },
     ],
   },
   {
@@ -112,6 +112,6 @@ function generateRoutes(routesTree: RouteItem[]) {
 const { allRoutes, baseRoutes } = generateRoutes(signalsRoutesTree);
 export const routes: Routes = [
   ...allRoutes,
-  { path: '', redirectTo: '/signals/level/1/sub-level/1', pathMatch: 'full' },
+  { path: '', redirectTo: '/signals/level/0/sub-level/1', pathMatch: 'full' },
 ];
 export const menuItems = baseRoutes;
