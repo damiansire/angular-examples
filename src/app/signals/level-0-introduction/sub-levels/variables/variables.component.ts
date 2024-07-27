@@ -2,6 +2,7 @@ import { Component, computed, signal } from '@angular/core';
 import { VariableBoxDrawComponent } from '../../../../components-draw/variable-box-draw/variable-box-draw.component';
 import { CodeLine } from '../../../../components-atom/component-atom.interface';
 import { CodeComponent } from '../../../../components-atom/code/code.component';
+import { TitleComponent } from '../../../../components-atom/title/title.component';
 
 interface DataTypeExample {
   name: string;
@@ -11,7 +12,7 @@ interface DataTypeExample {
 @Component({
   selector: 'app-variables',
   standalone: true,
-  imports: [VariableBoxDrawComponent, CodeComponent],
+  imports: [VariableBoxDrawComponent, CodeComponent, TitleComponent],
   templateUrl: './variables.component.html',
   styleUrl: './variables.component.css',
 })
@@ -32,20 +33,11 @@ export class VariablesComponent {
     },
     Object: {
       name: 'Object',
-      examples: [
-        '{}',
-        '{name: "Damian"}',
-        '{name: "Damian", surname: "Sire", age : 26}',
-      ],
+      examples: ['{}', '{name: "Damian"}', '{surname: "Sire", age : 26}'],
     },
     Array: {
       name: 'Array',
-      examples: [
-        '[]',
-        '[1,2,3,4,5]',
-        '[true, false]',
-        '[ 1 , 2 , true , {name : "damian"} ]',
-      ],
+      examples: ['[]', '[1,2,3,4,5]', '[true, false]', '[ 1 , 2 , true  ]'],
     },
   };
   selectedType = signal(this.typesExamples['Number']);
