@@ -30,13 +30,7 @@ export class WritableSignalsComponent {
   lines = computed<CodeLine[]>(() => [
     { line: 'count = signal(0);', active: true },
     { line: 'setValue() {', active: false },
-    {
-      line: '  const inputValue = parseInt(this.myInput.nativeElement.value, 10);',
-      active: false,
-    },
-    { line: '  if (!isNaN(inputValue)) {', active: false },
-    { line: '    this.count.set(inputValue);', active: true }, // Esta línea se ejecuta solo si inputValue es un número
-    { line: '  }', active: false },
+    { line: '    this.count.set(inputValue);', active: true },
     { line: '}', active: false },
   ]);
   setValue() {
