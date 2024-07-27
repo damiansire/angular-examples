@@ -16,24 +16,61 @@ import {
   styleUrl: './html-to-tree.component.css',
 })
 export class HtmlToTreeComponent {
-  lines = computed<CodeLine[]>(() => [
-    { line: `<main>`, active: false },
-    { line: `  <section>`, active: false },
-    { line: `    <h2>Introduction</h2>`, active: false },
-    {
-      line: `    <p>This is a simple example \n                
+  lines = computed<CodeLine[]>(() =>
+    [
+      { line: `<main>`, active: false, id: 'main' },
+      { line: `  <section>`, active: false, id: 'section' },
+      { line: `    <h2>Introduction</h2>`, active: false, id: 'h2' },
+      {
+        line: `    <p>This is a simple example \n                
                  of a DOM tree</p>`,
-      active: false,
-    },
+        active: false,
+        id: 'p',
+      },
 
-    { line: `  </section>`, active: false },
-    { line: `  <article>`, active: false },
-    { line: `    <h3>Article Title</h3>`, active: false },
-    { line: `    <p>Some interesting content here.</p>`, active: false },
-    { line: `  </article>`, active: false },
-    { line: `</main>`, active: false },
+      { line: `  </section>`, active: false, id: 'section' },
+      { line: `  <article>`, active: false, id: 'article' },
+      { line: `    <h3>Article Title</h3>`, active: false, id: 'h3' },
+      {
+        line: `    <p>Some interesting content here.</p>`,
+        active: false,
+        id: 'p2',
+      },
+      { line: `  </article>`, active: false, id: 'article' },
+      { line: `</main>`, active: false, id: 'main' },
+    ].map((line) => ({
+      ...line,
+      active: this.data().some((dataItem) => dataItem.name === line.id),
+    }))
+  );
+  data = signal<NodeTree[]>([]);
+  links = signal<Link[]>([
+    {
+      source: 'main',
+      target: 'article',
+    },
+    {
+      source: 'main',
+      target: 'section',
+    },
+    {
+      source: 'section',
+      target: 'h2',
+    },
+    {
+      source: 'section',
+      target: 'p',
+    },
+    {
+      source: 'article',
+      target: 'h3',
+    },
+    {
+      source: 'article',
+      target: 'p2',
+    },
   ]);
-  data = signal<NodeTree[]>([
+  baseElement = [
     {
       name: 'main',
       x: 550,
@@ -69,31 +106,19 @@ export class HtmlToTreeComponent {
       x: 800,
       y: 500,
     },
-  ]);
-  links = signal<Link[]>([
-    {
-      source: 'main',
-      target: 'article',
-    },
-    {
-      source: 'main',
-      target: 'section',
-    },
-    {
-      source: 'section',
-      target: 'h2',
-    },
-    {
-      source: 'section',
-      target: 'p',
-    },
-    {
-      source: 'article',
-      target: 'h3',
-    },
-    {
-      source: 'article',
-      target: 'p2',
-    },
-  ]);
+  ];
+  lineClickHandler(event: string) {
+    this.addElementToData(event);
+  }
+  addElementToData(name: string) {
+    const existingElement = this.data().find((item) => item.name === name);
+    if (!existingElement) {
+      const newElement = this.baseElement.find((item) => item.name === name);
+      if (newElement) {
+        this.data.update((data) => [...data, newElement]);
+      } else {
+        console.warn(`Element with name "${name}" not found in baseElement.`);
+      }
+    }
+  }
 }

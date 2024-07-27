@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Signal, signal } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  Signal,
+  signal,
+} from '@angular/core';
 import { CodeLine } from '../component-atom.interface';
 
 type TailwindTextSize =
@@ -27,4 +34,9 @@ type TailwindTextSize =
 export class CodeComponent {
   @Input() textSize: TailwindTextSize = 'text-2xl';
   @Input() lines: Signal<CodeLine[]> = signal([]);
+  @Output() lineClick = new EventEmitter<string>();
+
+  onLineClick(line: CodeLine) {
+    this.lineClick.emit(line.id); // Emit the line's ID
+  }
 }

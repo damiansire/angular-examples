@@ -8,6 +8,7 @@
       'hover:bg-green-800 hover:text-white': !item.active
     }"
     [class]="textSize"
+    (click)="onLineClick(item)"
   >
     {{ item.line }}
   </div>
