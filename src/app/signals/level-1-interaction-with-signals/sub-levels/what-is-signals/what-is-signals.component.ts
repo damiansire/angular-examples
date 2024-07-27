@@ -41,6 +41,7 @@ export class WhatIsSignalsComponent {
     const index = this.dataTypes.findIndex((type) => type.text === id);
     if (index !== -1) {
       this.dataTypes[index].isContainer = true;
+      this.clickCount++;
     }
   }
 

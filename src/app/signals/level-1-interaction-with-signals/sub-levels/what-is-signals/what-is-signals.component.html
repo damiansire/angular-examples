@@ -1,13 +1,14 @@
 <app-title [title]="title"></app-title>
-<section class="my-6">
+<section class="mt-4 mb-5">
   <app-text-description
     text="A signal is a wrapper around a value that notifies interested consumers when
   that value changes."
   ></app-text-description>
 </section>
 <app-wrapper-animation></app-wrapper-animation>
+
 <div>
-  <section class="flex flex-wrap justify-around my-6">
+  <section class="flex flex-wrap justify-around mt-4">
     @for (type of dataTypes; track $index) { @if(type.isContainer){
     <app-container-variable-box-draw
       [variableName]="type.text"
@@ -20,14 +21,17 @@
     } }
   </section>
 </div>
+@if(clickCount > 0){
+<div class="mt-4 mb-4">
+  <app-text-description
+    text="Signals can contain any value, from primitives to complex data structures."
+  >
+  </app-text-description>
+</div>
+} @if(clickCount > 4){
 <div class="flex justify-center">
   <div class="max-w-fit">
-    <app-code [lines]="signalWrapperLines"></app-code>
+    <app-code [lines]="signalWrapperLines" textSize="text-lg"></app-code>
   </div>
 </div>
-
-@if(false){
-<p>
-  Signals can contain any value, from primitives to complex data structures.
-</p>
 }
