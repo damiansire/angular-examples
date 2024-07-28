@@ -9,7 +9,7 @@ import {
   signal,
 } from '@angular/core';
 import { CodeLine, CodeLineElement } from '../component-atom.interface';
-import { spliteInTags } from '../../libs/code-parser';
+import { isTag, spliteInTags } from '../../libs/code-parser';
 
 type TailwindTextSize =
   | 'text-xs'
@@ -60,7 +60,7 @@ export class CodeComponent {
       const codeLineElements: CodeLineElement[] = elementInLine.map((text) => {
         return {
           text,
-          color: true,
+          color: isTag(text),
         };
       });
       const newElement: CodeLine = {
@@ -74,6 +74,6 @@ export class CodeComponent {
   }
 
   onLineClick(line: CodeLine) {
-    this.lineClick.emit(line.id); // Emit the line's ID
+    this.lineClick.emit(line.id);
   }
 }
