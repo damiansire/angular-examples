@@ -2,7 +2,7 @@
   <app-selection-option (selectedLevelChange)="selectedLevelChange($event)" />
 </section>
 <section class="flex gap-8">
-  <section role="set-info" class="flex flex-col justify-between w-2/5 mt-4">
+  <section role="set-info" class="flex flex-col w-2/5 mt-4">
     @if(currentLevel() === 1){
     <section class="flex flex-col">
       <app-variable-box variableName="name" [variableValue]="name()" />
@@ -107,6 +107,6 @@
     </section>
   </section>
   <section class="w-3/5">
-    <app-code [lines]="codeLinesForCurrentLevel" />
+    <app-code [lines]="codeLinesForCurrentLevel" textSize="text-lg" />
   </section>
 </section>

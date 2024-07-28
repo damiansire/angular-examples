@@ -105,6 +105,7 @@ export class SignalEqualityFunctionsComponent {
       }
       this.age.set(this.exampleData().age);
     } else if (event === 'person') {
+      debugger;
       if (
         this.person().name != this.exampleData().person.name ||
         this.person().surname != this.exampleData().person.surname ||
@@ -118,6 +119,7 @@ export class SignalEqualityFunctionsComponent {
 
   selectedLevelChange(newLevel: number) {
     this.currentLevel.set(newLevel);
+    this.appEventHistory.set([]);
   }
 
   codeLines: Record<number, CodeLine[]> = {
