@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import {
   Component,
+  computed,
   EventEmitter,
   Input,
   Output,
@@ -8,6 +9,7 @@ import {
   signal,
 } from '@angular/core';
 import { CodeLine } from '../component-atom.interface';
+import { spliteInTags } from '../../libs/code-parser';
 
 type TailwindTextSize =
   | 'text-xs'
@@ -36,7 +38,19 @@ export class CodeComponent {
   @Input() lines: Signal<CodeLine[]> = signal([]);
   @Output() lineClick = new EventEmitter<string>();
 
+  /*
+  linesWithColor = computed(() => {
+    const linesWithColor = [];
+    for (const codeLine of this.lines()) {
+      const data = spliteInTags(codeLine);
+    }
+  });
+  */
   onLineClick(line: CodeLine) {
     this.lineClick.emit(line.id); // Emit the line's ID
   }
 }
+/*
+const regex = /(<\/?\w+>)/g; // Expresión regular para encontrar etiquetas
+const result = htmlString.split(regex).filter(Boolean);
+*/

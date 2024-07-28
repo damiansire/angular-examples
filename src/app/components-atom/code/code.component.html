@@ -10,7 +10,15 @@
     [class]="textSize"
     (click)="onLineClick(item)"
   >
-    {{ item.line }}
+    @for(element of item.line; track $index){
+    <span
+      [ngClass]="{
+    'text-green-600': element.color,
+  }"
+    >
+      {{ element.text }}
+    </span>
+    }
   </div>
   }
 </div>

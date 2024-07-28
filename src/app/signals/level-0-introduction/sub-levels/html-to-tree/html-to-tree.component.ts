@@ -18,26 +18,84 @@ import {
 export class HtmlToTreeComponent {
   lines = computed<CodeLine[]>(() =>
     [
-      { line: `<main>`, active: false, id: 'main' },
-      { line: `  <section>`, active: false, id: 'section' },
-      { line: `    <h2>Introduction</h2>`, active: false, id: 'h2' },
+      { line: [{ text: '<main>', color: true }], active: false, id: 'main' },
       {
-        line: `    <p>This is a simple example \n                
-                 of a DOM tree</p>`,
+        line: [
+          { text: '  ', color: false },
+          { text: '<section>', color: true },
+        ],
+        active: false,
+        id: 'section',
+      },
+      {
+        line: [
+          { text: '    ', color: false },
+          { text: '<h2>', color: true },
+          { text: 'Introduction', color: false },
+          { text: '</h2>', color: true },
+        ],
+        active: false,
+        id: 'h2',
+      },
+      {
+        line: [
+          { text: '    ', color: false },
+          { text: '<p>', color: true },
+          {
+            text: 'This is a simple example \n        \n        of a DOM tree',
+            color: false,
+          },
+          { text: '</p>', color: true },
+        ],
         active: false,
         id: 'p',
       },
 
-      { line: `  </section>`, active: false, id: 'section' },
-      { line: `  <article>`, active: false, id: 'article' },
-      { line: `    <h3>Article Title</h3>`, active: false, id: 'h3' },
       {
-        line: `    <p>Some interesting content here.</p>`,
+        line: [
+          { text: '  ', color: false },
+          { text: '</section>', color: true },
+        ],
+        active: false,
+        id: 'section',
+      },
+      {
+        line: [
+          { text: '  ', color: false },
+          { text: '<article>', color: true },
+        ],
+        active: false,
+        id: 'article',
+      },
+      {
+        line: [
+          { text: '    ', color: false },
+          { text: '<h3>', color: true },
+          { text: 'Article Title', color: false },
+          { text: '</h3>', color: true },
+        ],
+        active: false,
+        id: 'h3',
+      },
+      {
+        line: [
+          { text: '    ', color: false },
+          { text: '<p>', color: true },
+          { text: 'Some interesting content here.', color: false },
+          { text: '</p>', color: true },
+        ],
         active: false,
         id: 'p2',
       },
-      { line: `  </article>`, active: false, id: 'article' },
-      { line: `</main>`, active: false, id: 'main' },
+      {
+        line: [
+          { text: '  ', color: false },
+          { text: '</article>', color: true },
+        ],
+        active: false,
+        id: 'article',
+      },
+      { line: [{ text: '</main>', color: true }], active: false, id: 'main' },
     ].map((line) => ({
       ...line,
       active: this.data().some((dataItem) => dataItem.name === line.id),

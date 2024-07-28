@@ -1,5 +1,9 @@
+export interface CodeLineElement {
+  text: string;
+  color: boolean;
+}
 export interface CodeLine {
-  line: string;
+  line: CodeLineElement[] | any;
   active: boolean;
   id?: string;
 }
