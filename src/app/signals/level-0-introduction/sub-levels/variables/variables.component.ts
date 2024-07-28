@@ -25,7 +25,7 @@ export class VariablesComponent {
     },
     String: {
       name: 'String',
-      examples: ['A', 'B', 'C', 'Hello', 'Count$'],
+      examples: ['"A"', '"B"', '"C"', '"Hello"', '"Count$"'],
     },
     Boolean: {
       name: 'Boolean',
