@@ -1,5 +1,5 @@
 <div class="rounded-md overflow-hidden shadow-md p-4 bg-gray-800">
-  @for (item of lines(); track $index) {
+  @for (item of codeLines; track $index) {
   <div
     class="text-2xl font-mono whitespace-pre-wrap break-words py-2 cursor-pointer"
     [ngClass]="{
@@ -10,7 +10,7 @@
     [class]="textSize"
     (click)="onLineClick(item)"
   >
-    @for(element of item.line; track $index){
+    @for(element of item.elements; track $index){
     <span
       [ngClass]="{
     'text-green-600': element.color,

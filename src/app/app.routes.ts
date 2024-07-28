@@ -30,10 +30,13 @@ const signalsRoutesTree: RouteItem[] = [
     component: IntroductionComponent,
     subLevels: [
       { path: '1', component: HtmlToTreeComponent },
+      /*
       { path: '2', component: OldChangeDetectionComponent },
       { path: '3', component: SignalsChangeDetectionComponent },
+       */
     ],
   },
+  /*
   {
     path: '1',
     component: InteractionWithSignalsComponent,
@@ -44,7 +47,7 @@ const signalsRoutesTree: RouteItem[] = [
       { path: '4', component: CreateNewSignalsComponent },
       { path: '5', component: WritableSignalsComponent },
       { path: '6', component: UpdateSignalComponent },
-      /* { path: '7', component: ReadOnlySignalsComponent },*/
+       { path: '7', component: ReadOnlySignalsComponent },
     ],
   },
   {
@@ -52,8 +55,8 @@ const signalsRoutesTree: RouteItem[] = [
     component: ComputedSignalsLevelComponent,
     subLevels: [
       { path: '1', component: ComputedSignalsComponent },
-      { path: '2', component: ComputedSignalDynamicDependenciesComponent },
-      { path: '3', component: ComputedSignalsLazilyEvaluatedMemoizedComponent },
+      { path: '2', component: ComputedSignalsLazilyEvaluatedMemoizedComponent },
+      { path: '3', component: ComputedSignalDynamicDependenciesComponent },
     ],
   },
   {
@@ -62,8 +65,8 @@ const signalsRoutesTree: RouteItem[] = [
     subLevels: [
       { path: '1', component: EffectComponent },
       { path: '2', component: DestroyEffectComponent },
-      /* { path: '3', component: IntervalManualDestructionComponent },
-      { path: '4', component: EffectManualDestructionComponent },*/
+      { path: '3', component: IntervalManualDestructionComponent },
+      { path: '4', component: EffectManualDestructionComponent },
       { path: '3', component: EffectDestroyComponent },
     ],
   },
@@ -72,6 +75,7 @@ const signalsRoutesTree: RouteItem[] = [
     component: SignalEqualityFunctionsComponent,
     subLevels: [{ path: '1', component: SignalEqualityFunctionsComponent }],
   },
+  */
 ];
 
 export interface CustomRoute {

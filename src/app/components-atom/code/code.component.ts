@@ -8,7 +8,7 @@ import {
   Signal,
   signal,
 } from '@angular/core';
-import { CodeLine } from '../component-atom.interface';
+import { CodeLine, CodeLineElement } from '../component-atom.interface';
 import { spliteInTags } from '../../libs/code-parser';
 
 type TailwindTextSize =
@@ -37,20 +37,43 @@ export class CodeComponent {
   @Input() textSize: TailwindTextSize = 'text-2xl';
   @Input() lines: Signal<CodeLine[]> = signal([]);
   @Output() lineClick = new EventEmitter<string>();
+  codeExample = ` <main> 
+     <section> 
+       <h2>  Introduction  </h2> 
+       <p>  This is a simple example 
+        
+        of a DOM tree  </p> 
+     </section> 
+     <article> 
+       <h3>  Article Title  </h3> 
+       <p>  Some interesting content here.  </p> 
+     </article> 
+ </main> `;
 
-  /*
-  linesWithColor = computed(() => {
-    const linesWithColor = [];
-    for (const codeLine of this.lines()) {
-      const data = spliteInTags(codeLine);
+  codeLines: CodeLine[] = this.parseCode(this.codeExample);
+
+  parseCode(code: string): CodeLine[] {
+    const parsedCode = [];
+    const lines = code.split('\n');
+    for (const line of lines) {
+      const elementInLine = spliteInTags(line);
+      const codeLineElements: CodeLineElement[] = elementInLine.map((text) => {
+        return {
+          text,
+          color: true,
+        };
+      });
+      const newElement: CodeLine = {
+        elements: codeLineElements,
+        active: false,
+        id: 'algo',
+      };
+      parsedCode.push(newElement);
     }
-  });
-  */
+    return parsedCode;
+  }
+
   onLineClick(line: CodeLine) {
     this.lineClick.emit(line.id); // Emit the line's ID
   }
 }
-/*
-const regex = /(<\/?\w+>)/g; // Expresión regular para encontrar etiquetas
-const result = htmlString.split(regex).filter(Boolean);
-*/

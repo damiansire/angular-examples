@@ -3,7 +3,8 @@ export interface CodeLineElement {
   color: boolean;
 }
 export interface CodeLine {
-  line: CodeLineElement[] | any;
+  line?: CodeLineElement[] | any;
+  elements?: CodeLineElement[];
   active: boolean;
   id?: string;
 }
