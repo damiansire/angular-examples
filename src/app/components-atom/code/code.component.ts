@@ -9,7 +9,11 @@ import {
   signal,
 } from '@angular/core';
 import { CodeLine, CodeLineElement } from '../component-atom.interface';
-import { isTag, spliteInTags } from '../../libs/code-parser';
+import {
+  isTag,
+  spliteInTags,
+  HtmlIdGeneratorService,
+} from '../../libs/code-parser';
 
 type TailwindTextSize =
   | 'text-xs'
@@ -41,16 +45,15 @@ export class CodeComponent {
      <section> 
        <h2>  Introduction  </h2> 
        <p>  This is a simple example 
-        
-        of a DOM tree  </p> 
+             of a DOM tree  </p> 
      </section> 
      <article> 
        <h3>  Article Title  </h3> 
-       <p>  Some interesting content here.  </p> 
+       <p> Some interesting content </p> 
      </article> 
  </main> `;
 
-  codeLines: CodeLine[] = this.parseCode(this.codeExample);
+  codeLines = signal<CodeLine[]>(this.parseCode(this.codeExample));
 
   parseCode(code: string): CodeLine[] {
     const parsedCode = [];
@@ -66,14 +69,20 @@ export class CodeComponent {
       const newElement: CodeLine = {
         elements: codeLineElements,
         active: false,
-        id: 'algo',
+        id: HtmlIdGeneratorService.generateId(codeLineElements[0].text),
       };
       parsedCode.push(newElement);
     }
     return parsedCode;
   }
 
-  onLineClick(line: CodeLine) {
-    this.lineClick.emit(line.id);
+  onLineClick(clickedItem: CodeLine) {
+    const updatedCodeLines = this.codeLines().map((item) =>
+      item.id === clickedItem.id ? { ...item, active: true } : item
+    );
+
+    this.codeLines.set(updatedCodeLines);
+
+    this.lineClick.emit(clickedItem.id);
   }
 }
