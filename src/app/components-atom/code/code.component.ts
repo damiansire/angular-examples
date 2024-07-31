@@ -38,8 +38,9 @@ type TailwindTextSize =
   styleUrl: './code.component.css',
 })
 export class CodeComponent {
-  @Input() textSize: TailwindTextSize = 'text-2xl';
+  //@deprecated
   @Input() lines: Signal<CodeLine[]> = signal([]);
+  @Input() textSize: TailwindTextSize = 'text-2xl';
   @Input() selectBy: 'Line' | 'Element' = 'Element';
   @Output() click = new EventEmitter<string>();
   codeExample = ` <main> 
@@ -64,24 +65,26 @@ export class CodeComponent {
       const codeLineElements: CodeLineElement[] = elementInLine.map((text) => {
         return {
           text,
-          color: isTag(text),
+          reservedWord: isTag(text),
           id: HtmlIdGeneratorService.generateId(text),
+          selected: false,
         };
       });
       const newElement: CodeLine = {
         elements: codeLineElements,
-        active: false,
+        selected: false,
         id: codeLineElements.map((x) => x.id).join('$'),
       };
       parsedCode.push(newElement);
     }
-    debugger;
     return parsedCode;
   }
 
   onLineClick(clickedItem: CodeLine) {
     const updatedCodeLines = this.codeLines().map((item) =>
-      item.id === clickedItem.id ? { ...item, active: true } : item
+      item.id === clickedItem.id
+        ? { ...item, active: !clickedItem.selected }
+        : item
     );
 
     this.codeLines.set(updatedCodeLines);
@@ -89,10 +92,30 @@ export class CodeComponent {
     this.click.emit(clickedItem.id);
   }
 
+  isSpaceElement(id: string) {
+    return /^space-\d+$/.test(id);
+  }
+
   onElementClick(codeLine: CodeLine, clickedItem: CodeLineElement) {
-    /*
-    codeLine.elements?.map(element => element.text === clickedItem.text ? )
-    const codeLine = this.codeLines().find(x => x.id === codeLine.id);
-    */
+    if (this.isSpaceElement(clickedItem.id)) {
+      return;
+    }
+    const updatedCodeLines = this.codeLines().map((item) => {
+      if (item.id !== codeLine.id) {
+        return item;
+      }
+      if (item.elements) {
+        const elementsInLine = item.elements.map((lineElement) =>
+          lineElement.id === clickedItem.id
+            ? { ...clickedItem, selected: !clickedItem.selected }
+            : lineElement
+        );
+
+        return { ...item, elements: elementsInLine };
+      }
+      return item;
+    });
+
+    this.codeLines.set(updatedCodeLines);
   }
 }

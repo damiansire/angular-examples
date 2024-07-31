@@ -1,11 +1,14 @@
 export interface CodeLineElement {
   id: string;
   text: string;
-  color: boolean;
+  selected: boolean;
+  reservedWord?: boolean;
 }
 export interface CodeLine {
   line?: CodeLineElement[] | any;
   elements?: CodeLineElement[];
-  active: boolean;
+  selected?: boolean;
   id?: string;
+  // @deprecated
+  active?: boolean;
 }

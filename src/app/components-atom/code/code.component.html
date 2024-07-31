@@ -1,24 +1,30 @@
 <div class="rounded-md overflow-hidden shadow-md p-4 bg-gray-800">
   @for (item of codeLines(); track $index) {
   <div
-    class="text-2xl font-mono whitespace-pre-wrap break-words py-2 cursor-pointer"
+    class="text-2xl font-mono whitespace-pre-wrap break-words py-2 cursor-pointer flex"
     [ngClass]="{
-      'bg-green-700 text-white': item.active,
-      'bg-gray-800 text-gray-300': !item.active,
-      'hover:bg-green-800 hover:text-white': !item.active
+      'bg-green-700 text-white': item.selected,
+      'bg-gray-800 text-gray-300': !item.selected,
+      'hover:bg-green-800 hover:text-white': !item.selected
     }"
     [class]="textSize"
     (click)="selectBy === 'Line' ? onLineClick(item) : null"
   >
     @for(element of item.elements; track $index){
-    <span
+    <div
       [ngClass]="{
-    'text-green-600': element.color,
-  }"
+        'bg-green-700': element.selected
+      }"
       (click)="selectBy === 'Element' ? onElementClick(item, element) : null"
     >
-      {{ element.text }}
-    </span>
+      <span
+        [ngClass]="{
+          'text-green-600': element.reservedWord
+        }"
+      >
+        {{ element.text }}
+      </span>
+    </div>
     }
   </div>
   }
