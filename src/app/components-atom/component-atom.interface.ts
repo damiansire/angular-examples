@@ -1,4 +1,5 @@
 export interface CodeLineElement {
+  id: string;
   text: string;
   color: boolean;
 }

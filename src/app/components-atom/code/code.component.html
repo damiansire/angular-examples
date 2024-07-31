@@ -8,13 +8,14 @@
       'hover:bg-green-800 hover:text-white': !item.active
     }"
     [class]="textSize"
-    (click)="onLineClick(item)"
+    (click)="selectBy === 'Line' ? onLineClick(item) : null"
   >
     @for(element of item.elements; track $index){
     <span
       [ngClass]="{
     'text-green-600': element.color,
   }"
+      (click)="selectBy === 'Element' ? onElementClick(item, element) : null"
     >
       {{ element.text }}
     </span>

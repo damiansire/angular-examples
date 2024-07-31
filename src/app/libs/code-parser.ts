@@ -9,18 +9,26 @@ export function spliteInTags(htmlString: string) {
   return result;
 }
 
+export function getAllTags(htmlString: string) {}
+
 export class HtmlIdGeneratorService {
   private static tagCounters: { [tagName: string]: number } = {};
 
   private static getElementType(content: string): string {
-    const isHtmlTag = content.startsWith('<') && content.endsWith('>');
-    if (isHtmlTag) {
-      const match = content.match(/<\/?([a-z]+)/i);
-      return match ? match[1].toLowerCase() : 'unknown';
+    content = content.trim(); // Remove leading and trailing spaces
+    const openingTagMatch = content.match(/<([a-z][a-z0-9]*)\b[^>]*>/i);
+    const closingTagMatch = content.match(/<\/([a-z][a-z0-9]*)\b[^>]*>/i);
+    if (openingTagMatch) {
+      return openingTagMatch[1].toLowerCase();
+    } else if (closingTagMatch) {
+      return closingTagMatch[1].toLowerCase();
+    } else if (content === '') {
+      return 'space';
     } else {
       return 'text';
     }
   }
+
   static generateId(line: string): string {
     const lineClean = line.toLowerCase().trim();
     const tagName = this.getElementType(lineClean);
@@ -30,7 +38,6 @@ export class HtmlIdGeneratorService {
     } else {
       this.tagCounters[tagName] = 1;
     }
-    debugger;
     return `${tagName}-${this.tagCounters[tagName]}`;
   }
 }

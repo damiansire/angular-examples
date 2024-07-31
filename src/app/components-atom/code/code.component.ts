@@ -40,7 +40,8 @@ type TailwindTextSize =
 export class CodeComponent {
   @Input() textSize: TailwindTextSize = 'text-2xl';
   @Input() lines: Signal<CodeLine[]> = signal([]);
-  @Output() lineClick = new EventEmitter<string>();
+  @Input() selectBy: 'Line' | 'Element' = 'Element';
+  @Output() click = new EventEmitter<string>();
   codeExample = ` <main> 
      <section> 
        <h2>  Introduction  </h2> 
@@ -64,15 +65,17 @@ export class CodeComponent {
         return {
           text,
           color: isTag(text),
+          id: HtmlIdGeneratorService.generateId(text),
         };
       });
       const newElement: CodeLine = {
         elements: codeLineElements,
         active: false,
-        id: HtmlIdGeneratorService.generateId(codeLineElements[0].text),
+        id: codeLineElements.map((x) => x.id).join('$'),
       };
       parsedCode.push(newElement);
     }
+    debugger;
     return parsedCode;
   }
 
@@ -83,6 +86,13 @@ export class CodeComponent {
 
     this.codeLines.set(updatedCodeLines);
 
-    this.lineClick.emit(clickedItem.id);
+    this.click.emit(clickedItem.id);
+  }
+
+  onElementClick(codeLine: CodeLine, clickedItem: CodeLineElement) {
+    /*
+    codeLine.elements?.map(element => element.text === clickedItem.text ? )
+    const codeLine = this.codeLines().find(x => x.id === codeLine.id);
+    */
   }
 }
