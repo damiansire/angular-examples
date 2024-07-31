@@ -81,10 +81,9 @@ export class CodeComponent {
   }
 
   onLineClick(clickedItem: CodeLine) {
+    const newState = !clickedItem.selected;
     const updatedCodeLines = this.codeLines().map((item) =>
-      item.id === clickedItem.id
-        ? { ...item, active: !clickedItem.selected }
-        : item
+      item.id === clickedItem.id ? { ...item, selected: newState } : item
     );
 
     this.codeLines.set(updatedCodeLines);
@@ -92,12 +91,8 @@ export class CodeComponent {
     this.click.emit(clickedItem.id);
   }
 
-  isSpaceElement(id: string) {
-    return /^space-\d+$/.test(id);
-  }
-
   onElementClick(codeLine: CodeLine, clickedItem: CodeLineElement) {
-    if (this.isSpaceElement(clickedItem.id)) {
+    if (HtmlIdGeneratorService.isSpaceElement(clickedItem.id)) {
       return;
     }
     const updatedCodeLines = this.codeLines().map((item) => {

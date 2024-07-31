@@ -1,21 +1,19 @@
 export function isTag(str: string) {
-  const tagRegex = /^<\/?[a-z][\w-]*>$/i; // Expresión regular para etiquetas básicas
+  const tagRegex = /^<\/?[a-z][\w-]*>$/i;
   return tagRegex.test(str);
 }
 
 export function spliteInTags(htmlString: string) {
-  const regex = /(<\/?\w+>)/g; // Expresión regular para encontrar etiquetas
-  const result = htmlString.split(regex).filter(Boolean); // Dividir y eliminar elementos vacíos
+  const regex = /(<\/?\w+>)/g;
+  const result = htmlString.split(regex).filter(Boolean);
   return result;
 }
-
-export function getAllTags(htmlString: string) {}
 
 export class HtmlIdGeneratorService {
   private static tagCounters: { [tagName: string]: number } = {};
 
   private static getElementType(content: string): string {
-    content = content.trim(); // Remove leading and trailing spaces
+    content = content.trim();
     const openingTagMatch = content.match(/<([a-z][a-z0-9]*)\b[^>]*>/i);
     const closingTagMatch = content.match(/<\/([a-z][a-z0-9]*)\b[^>]*>/i);
     if (openingTagMatch) {
@@ -39,5 +37,13 @@ export class HtmlIdGeneratorService {
       this.tagCounters[tagName] = 1;
     }
     return `${tagName}-${this.tagCounters[tagName]}`;
+  }
+
+  static getTagFromId(id: string) {
+    return id.split('-')[0];
+  }
+
+  static isSpaceElement(id: string) {
+    return /^space-\d+$/.test(id);
   }
 }
