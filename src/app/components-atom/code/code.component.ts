@@ -29,8 +29,9 @@ export class CodeComponent {
   @Input() lines: Signal<CodeLine[]> = signal([]);
   @Input() textSize: TailwindTextSize = 'text-2xl';
   @Input() selectBy: 'Line' | 'Element' = 'Element';
-  //@deprecated click with paramer string
-  @Output() click = new EventEmitter<string | CodeClick>();
+  //@deprecated use codeClick rather
+  @Output() click = new EventEmitter<string>();
+  @Output() codeClick = new EventEmitter<CodeClick>();
 
   codeExample = ` <main> 
      <section> 
@@ -70,17 +71,24 @@ export class CodeComponent {
   }
 
   onLineClick(clickedItem: CodeLine) {
-    const newState = !clickedItem.selected;
+    const isSelect = !clickedItem.selected;
     const updatedCodeLines = this.codeLines().map((item) =>
-      item.id === clickedItem.id ? { ...item, selected: newState } : item
+      item.id === clickedItem.id ? { ...item, selected: isSelect } : item
     );
 
     this.codeLines.set(updatedCodeLines);
 
-    this.click.emit(clickedItem.id);
+    //TODO: When remove deprecated element, remove || ""
+    const codeClick$: CodeClick = {
+      target: 'Line',
+      action: isSelect ? 'Select' : 'Deselect',
+      id: clickedItem.id || '',
+    };
+    this.codeClick.emit(codeClick$);
   }
 
   onElementClick(codeLine: CodeLine, clickedItem: CodeLineElement) {
+    const isSelect = !clickedItem.selected;
     if (HtmlIdGeneratorService.isSpaceElement(clickedItem.id)) {
       return;
     }
@@ -101,5 +109,13 @@ export class CodeComponent {
     });
 
     this.codeLines.set(updatedCodeLines);
+
+    //TODO: When remove deprecated element, remove || ""
+    const codeClick$: CodeClick = {
+      target: 'Element',
+      action: isSelect ? 'Select' : 'Deselect',
+      id: clickedItem.id || '',
+    };
+    this.codeClick.emit(codeClick$);
   }
 }
