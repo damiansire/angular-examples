@@ -14,21 +14,8 @@ import {
   spliteInTags,
   HtmlIdGeneratorService,
 } from '../../libs/code-parser';
-
-type TailwindTextSize =
-  | 'text-xs'
-  | 'text-sm'
-  | 'text-base'
-  | 'text-lg'
-  | 'text-xl'
-  | 'text-2xl'
-  | 'text-3xl'
-  | 'text-4xl'
-  | 'text-5xl'
-  | 'text-6xl'
-  | 'text-7xl'
-  | 'text-8xl'
-  | 'text-9xl';
+import { TailwindTextSize } from '../../interfaces/tailwind-css.interface';
+import { CodeClick } from './code.interface';
 
 @Component({
   selector: 'app-code',
@@ -42,7 +29,9 @@ export class CodeComponent {
   @Input() lines: Signal<CodeLine[]> = signal([]);
   @Input() textSize: TailwindTextSize = 'text-2xl';
   @Input() selectBy: 'Line' | 'Element' = 'Element';
-  @Output() click = new EventEmitter<string>();
+  //@deprecated click with paramer string
+  @Output() click = new EventEmitter<string | CodeClick>();
+
   codeExample = ` <main> 
      <section> 
        <h2>  Introduction  </h2> 
