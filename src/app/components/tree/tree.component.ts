@@ -4,6 +4,7 @@ import {
   Link,
   NodeTree,
 } from '../../components-draw/components-draw.inferface';
+import { generateLinks } from '../../libs/code-parser';
 
 @Component({
   selector: 'app-tree',
@@ -13,7 +14,7 @@ import {
   styleUrl: './tree.component.css',
 })
 export class TreeComponent {
-  htmlCode = input<string>();
+  htmlCode = input<string>('');
   nodesToShow = input<string[]>([]);
   nodesData: NodeTree[] = [
     {
@@ -64,36 +65,12 @@ export class TreeComponent {
       this.nodesToShow().includes(node.id)
     );
   });
-  links = signal<Link[]>([
-    {
-      source: 'main',
-      target: 'article',
-    },
-    {
-      source: 'main',
-      target: 'section',
-    },
-    {
-      source: 'section',
-      target: 'h2',
-    },
-    {
-      source: 'section',
-      target: 'p',
-    },
-    {
-      source: 'article',
-      target: 'h3',
-    },
-    {
-      source: 'article',
-      target: 'p2',
-    },
-  ]);
+  links = signal<Link[]>([]);
   constructor() {
     effect(
       () => {
-        //    this.codeLines.set(this.parseCode(this.htmlCode()));
+        const links = generateLinks(this.htmlCode());
+        this.links.set(links);
       },
       { allowSignalWrites: true }
     );

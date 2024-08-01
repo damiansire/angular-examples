@@ -2,10 +2,6 @@ import { Component, computed, signal } from '@angular/core';
 import { CodeLine } from '../../../../components-atom/component-atom.interface';
 import { CodeComponent } from '../../../../components-atom/code/code.component';
 import { NodeTreeComponent } from '../../../../components-draw/node-tree/node-tree.component';
-import {
-  Link,
-  NodeTree,
-} from '../../../../components-draw/components-draw.inferface';
 import { CodeClick } from '../../../../components-atom/code/code.interface';
 import { TreeComponent } from '../../../../components/tree/tree.component';
 
@@ -28,7 +24,17 @@ export class HtmlToTreeComponent {
        <p> Some interesting content </p> 
      </article> 
  </main> `;
-  nodesToShow = signal<string[]>([]);
+  //nodesToShow = signal<string[]>([]);
+  //for development only:
+  nodesToShow = signal<string[]>([
+    'main-1',
+    'article-1',
+    'section-1',
+    'h2-1',
+    'p-1',
+    'h3-1',
+    'p-2',
+  ]);
   codeClickHandler(event: CodeClick) {
     if (event.action == 'Select') {
       this.addNode(event.id);

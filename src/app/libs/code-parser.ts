@@ -1,3 +1,5 @@
+import { Link } from '../components-draw/components-draw.inferface';
+
 interface TagType {
   element: string;
   isClosingTag: boolean;
@@ -17,7 +19,7 @@ export function spliteInTags(htmlString: string) {
 export class HtmlIdGeneratorService {
   private static tagCounters: { [tagName: string]: number } = {};
 
-  private static getElementType(content: string): TagType {
+  static getElementType(content: string): TagType {
     content = content.trim();
     const openingTagMatch = content.match(/<([a-z][a-z0-9]*)\b[^>]*>/i);
     const closingTagMatch = content.match(/<\/([a-z][a-z0-9]*)\b[^>]*>/i);
@@ -57,4 +59,39 @@ export class HtmlIdGeneratorService {
   static isSpaceElement(id: string) {
     return /^space-\d+$/.test(id);
   }
+}
+
+export function generateLinks(htmlCode: string): Link[] {
+  const links: Link[] = [];
+  const tagStack: string[] = [];
+
+  const tags = spliteInTags(htmlCode);
+
+  for (const tag of tags) {
+    if (!isTag(tag)) {
+      continue; // Ignorar elementos que no son etiquetas
+    }
+
+    const tagId = HtmlIdGeneratorService.generateId(tag);
+    const tagName = HtmlIdGeneratorService.getTagFromId(tagId);
+    const isClosingTag =
+      HtmlIdGeneratorService.getElementType(tag).isClosingTag;
+    const isSpaceElement = HtmlIdGeneratorService.isSpaceElement(tagId);
+
+    if (!isClosingTag && !isSpaceElement) {
+      // Etiqueta de apertura (y no es espacio)
+      tagStack.push(tagId);
+
+      if (tagStack.length > 1) {
+        // Si no es la etiqueta raíz
+        const parentTagId = tagStack[tagStack.length - 2];
+        links.push({ source: parentTagId, target: tagId });
+      }
+    } else if (isClosingTag && !isSpaceElement) {
+      // Etiqueta de cierre (y no es espacio)
+      tagStack.pop();
+    }
+  }
+
+  return links;
 }
