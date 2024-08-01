@@ -7,11 +7,12 @@ import {
   NodeTree,
 } from '../../../../components-draw/components-draw.inferface';
 import { CodeClick } from '../../../../components-atom/code/code.interface';
+import { TreeComponent } from '../../../../components/tree/tree.component';
 
 @Component({
   selector: 'app-html-to-tree',
   standalone: true,
-  imports: [CodeComponent, NodeTreeComponent],
+  imports: [CodeComponent, NodeTreeComponent, TreeComponent],
   templateUrl: './html-to-tree.component.html',
   styleUrl: './html-to-tree.component.css',
 })
@@ -27,83 +28,21 @@ export class HtmlToTreeComponent {
        <p> Some interesting content </p> 
      </article> 
  </main> `;
-  data = signal<NodeTree[]>([]);
-  links = signal<Link[]>([
-    {
-      source: 'main',
-      target: 'article',
-    },
-    {
-      source: 'main',
-      target: 'section',
-    },
-    {
-      source: 'section',
-      target: 'h2',
-    },
-    {
-      source: 'section',
-      target: 'p',
-    },
-    {
-      source: 'article',
-      target: 'h3',
-    },
-    {
-      source: 'article',
-      target: 'p2',
-    },
-  ]);
-  baseElement = signal<NodeTree[]>([
-    {
-      name: 'main',
-      x: 550,
-      y: 100,
-    },
-    {
-      name: 'article',
-      x: 700,
-      y: 300,
-    },
-    {
-      name: 'section',
-      x: 400,
-      y: 300,
-    },
-    {
-      name: 'h2',
-      x: 300,
-      y: 500,
-    },
-    {
-      name: 'p',
-      x: 500,
-      y: 500,
-    },
-    {
-      name: 'h3',
-      x: 600,
-      y: 500,
-    },
-    {
-      name: 'p2',
-      x: 800,
-      y: 500,
-    },
-  ]);
+  nodesToShow = signal<string[]>([]);
   codeClickHandler(event: CodeClick) {
-    this.addElementToData(event.id);
-  }
-  addElementToData(name: string) {
-    const existingElement = this.data().find((item) => item.name === name);
-    if (!existingElement) {
-      const newElement = this.baseElement().find((item) => item.name === name);
-      if (newElement) {
-        this.data.update((data) => [...data, newElement]);
-      } else {
-        console.warn(`Element with name "${name}" not found in baseElement.`);
-      }
+    if (event.action == 'Select') {
+      this.addNode(event.id);
+    } else if (event.action == 'Deselect') {
+      this.removeNode(event.id);
     }
+  }
+  addNode(id: string) {
+    this.nodesToShow.update((currentNodes) => [...currentNodes, id]);
+  }
+  removeNode(id: string) {
+    this.nodesToShow.update((currentNodes) =>
+      currentNodes.filter((node) => node !== id)
+    );
   }
   onParsedCodeHandler(lines: CodeLine[]) {}
 }
