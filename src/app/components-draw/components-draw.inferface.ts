@@ -2,6 +2,7 @@ export interface NodeTree {
   name: string;
   x: number;
   y: number;
+  id: string;
   color?: string;
 }
 

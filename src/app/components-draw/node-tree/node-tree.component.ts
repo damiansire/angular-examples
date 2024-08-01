@@ -24,7 +24,7 @@ import { Link, NodeTree } from '../components-draw.inferface';
   styleUrl: './node-tree.component.css',
 })
 export class NodeTreeComponent {
-  @Input() data: WritableSignal<NodeTree[]> | Signal<NodeTree[]> = signal<
+  @Input() nodes: WritableSignal<NodeTree[]> | Signal<NodeTree[]> = signal<
     NodeTree[]
   >([]);
   @Input() links: WritableSignal<Link[]> = signal<Link[]>([]);
@@ -50,7 +50,7 @@ export class NodeTreeComponent {
         edgeLabel: {
           fontSize: 20,
         },
-        data: this.data(),
+        data: this.nodes(),
         itemStyle: {
           color: (params) => {
             const node = params.data as NodeTree;
