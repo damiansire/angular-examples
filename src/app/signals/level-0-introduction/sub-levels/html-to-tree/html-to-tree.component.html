@@ -9,9 +9,10 @@
     </div>
     <div class="inline-block">
       <app-code
-        [lines]="lines"
         textSize="text-xl"
-        (click)="lineClickHandler($event)"
+        (codeClick)="codeClickHandler($event)"
+        (onHtmlParsed)="onParsedCodeHandler($event)"
+        [htmlCode]="htmlCode"
       ></app-code>
     </div>
   </div>

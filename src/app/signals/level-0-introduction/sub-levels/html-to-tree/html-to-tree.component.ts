@@ -7,6 +7,7 @@ import {
   Link,
   NodeTree,
 } from '../../../../components-draw/components-draw.inferface';
+import { CodeClick } from '../../../../components-atom/code/code.interface';
 
 @Component({
   selector: 'app-html-to-tree',
@@ -16,91 +17,17 @@ import {
   styleUrl: './html-to-tree.component.css',
 })
 export class HtmlToTreeComponent {
-  lines = computed<CodeLine[]>(() =>
-    [
-      { line: [{ text: '<main>', color: true }], active: false, id: 'main' },
-      {
-        line: [
-          { text: '  ', color: false },
-          { text: '<section>', color: true },
-        ],
-        active: false,
-        id: 'section',
-      },
-      {
-        line: [
-          { text: '    ', color: false },
-          { text: '<h2>', color: true },
-          { text: 'Introduction', color: false },
-          { text: '</h2>', color: true },
-        ],
-        active: false,
-        id: 'h2',
-      },
-      {
-        line: [
-          { text: '    ', color: false },
-          { text: '<p>', color: true },
-          {
-            text: 'This is a simple example \n        \n        of a DOM tree',
-            color: false,
-          },
-          { text: '</p>', color: true },
-        ],
-        active: false,
-        id: 'p',
-      },
-
-      {
-        line: [
-          { text: '  ', color: false },
-          { text: '</section>', color: true },
-        ],
-        active: false,
-        id: 'section',
-      },
-      {
-        line: [
-          { text: '  ', color: false },
-          { text: '<article>', color: true },
-        ],
-        active: false,
-        id: 'article',
-      },
-      {
-        line: [
-          { text: '    ', color: false },
-          { text: '<h3>', color: true },
-          { text: 'Article Title', color: false },
-          { text: '</h3>', color: true },
-        ],
-        active: false,
-        id: 'h3',
-      },
-      {
-        line: [
-          { text: '    ', color: false },
-          { text: '<p>', color: true },
-          { text: 'Some interesting content here.', color: false },
-          { text: '</p>', color: true },
-        ],
-        active: false,
-        id: 'p2',
-      },
-      {
-        line: [
-          { text: '  ', color: false },
-          { text: '</article>', color: true },
-        ],
-        active: false,
-        id: 'article',
-      },
-      { line: [{ text: '</main>', color: true }], active: false, id: 'main' },
-    ].map((line) => ({
-      ...line,
-      active: this.data().some((dataItem) => dataItem.name === line.id),
-    }))
-  );
+  htmlCode = ` <main> 
+     <section> 
+       <h2>  Introduction  </h2> 
+       <p>  This is a simple example 
+             of a DOM tree  </p> 
+     </section> 
+     <article> 
+       <h3>  Article Title  </h3> 
+       <p> Some interesting content </p> 
+     </article> 
+ </main> `;
   data = signal<NodeTree[]>([]);
   links = signal<Link[]>([
     {
@@ -128,7 +55,7 @@ export class HtmlToTreeComponent {
       target: 'p2',
     },
   ]);
-  baseElement = [
+  baseElement = signal<NodeTree[]>([
     {
       name: 'main',
       x: 550,
@@ -164,14 +91,14 @@ export class HtmlToTreeComponent {
       x: 800,
       y: 500,
     },
-  ];
-  lineClickHandler(event: string) {
-    this.addElementToData(event);
+  ]);
+  codeClickHandler(event: CodeClick) {
+    this.addElementToData(event.id);
   }
   addElementToData(name: string) {
     const existingElement = this.data().find((item) => item.name === name);
     if (!existingElement) {
-      const newElement = this.baseElement.find((item) => item.name === name);
+      const newElement = this.baseElement().find((item) => item.name === name);
       if (newElement) {
         this.data.update((data) => [...data, newElement]);
       } else {
@@ -179,4 +106,5 @@ export class HtmlToTreeComponent {
       }
     }
   }
+  onParsedCodeHandler(lines: CodeLine[]) {}
 }

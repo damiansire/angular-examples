@@ -2,7 +2,9 @@ import { CommonModule } from '@angular/common';
 import {
   Component,
   computed,
+  effect,
   EventEmitter,
+  input,
   Input,
   Output,
   Signal,
@@ -29,23 +31,22 @@ export class CodeComponent {
   @Input() lines: Signal<CodeLine[]> = signal([]);
   @Input() textSize: TailwindTextSize = 'text-2xl';
   @Input() selectBy: 'Line' | 'Element' = 'Element';
+  htmlCode = input<string>('');
   //@deprecated use codeClick rather
   @Output() click = new EventEmitter<string>();
   @Output() codeClick = new EventEmitter<CodeClick>();
+  @Output() onHtmlParsed = new EventEmitter<CodeLine[]>();
 
-  codeExample = ` <main> 
-     <section> 
-       <h2>  Introduction  </h2> 
-       <p>  This is a simple example 
-             of a DOM tree  </p> 
-     </section> 
-     <article> 
-       <h3>  Article Title  </h3> 
-       <p> Some interesting content </p> 
-     </article> 
- </main> `;
+  codeLines = signal<CodeLine[]>([]);
 
-  codeLines = signal<CodeLine[]>(this.parseCode(this.codeExample));
+  constructor() {
+    effect(
+      () => {
+        this.codeLines.set(this.parseCode(this.htmlCode()));
+      },
+      { allowSignalWrites: true }
+    );
+  }
 
   parseCode(code: string): CodeLine[] {
     const parsedCode = [];
@@ -67,6 +68,7 @@ export class CodeComponent {
       };
       parsedCode.push(newElement);
     }
+    this.onHtmlParsed.emit(parsedCode);
     return parsedCode;
   }
 
