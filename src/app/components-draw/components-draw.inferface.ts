@@ -4,6 +4,7 @@ export interface NodeTree {
   y: number;
   id: string;
   color?: string;
+  level: number;
 }
 
 export interface Link {

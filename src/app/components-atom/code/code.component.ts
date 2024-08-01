@@ -15,6 +15,7 @@ import {
   isTag,
   spliteInTags,
   HtmlIdGeneratorService,
+  HtmlHelper,
 } from '../../libs/code-parser';
 import { TailwindTextSize } from '../../interfaces/tailwind-css.interface';
 import { CodeClick } from './code.interface';
@@ -49,6 +50,7 @@ export class CodeComponent {
   }
 
   parseCode(code: string): CodeLine[] {
+    const htmlIdGenerator = new HtmlIdGeneratorService();
     const parsedCode = [];
     const lines = code.split('\n');
     for (const line of lines) {
@@ -57,7 +59,7 @@ export class CodeComponent {
         return {
           text,
           reservedWord: isTag(text),
-          id: HtmlIdGeneratorService.generateId(text),
+          id: htmlIdGenerator.generateId(text),
           selected: false,
         };
       });
@@ -91,7 +93,7 @@ export class CodeComponent {
 
   onElementClick(codeLine: CodeLine, clickedItem: CodeLineElement) {
     const isSelect = !clickedItem.selected;
-    if (HtmlIdGeneratorService.isSpaceElement(clickedItem.id)) {
+    if (HtmlHelper.isSpaceElement(clickedItem.id)) {
       return;
     }
     const updatedCodeLines = this.codeLines().map((item) => {

@@ -1,4 +1,5 @@
-import { Link } from '../components-draw/components-draw.inferface';
+import { number } from 'echarts';
+import { Link, NodeTree } from '../components-draw/components-draw.inferface';
 
 interface TagType {
   element: string;
@@ -16,8 +17,14 @@ export function spliteInTags(htmlString: string) {
   return result;
 }
 
-export class HtmlIdGeneratorService {
-  private static tagCounters: { [tagName: string]: number } = {};
+export class HtmlHelper {
+  static getTagFromId(id: string) {
+    return id.split('-')[0];
+  }
+
+  static isSpaceElement(id: string) {
+    return /^space-\d+$/.test(id);
+  }
 
   static getElementType(content: string): TagType {
     content = content.trim();
@@ -33,9 +40,13 @@ export class HtmlIdGeneratorService {
       return { element: 'text', isClosingTag: false };
     }
   }
+}
 
-  static generateId(line: string): string {
-    const elementInfo = this.getElementType(line); // Devuelve un objeto
+export class HtmlIdGeneratorService {
+  private tagCounters: { [tagName: string]: number } = {};
+
+  generateId(line: string): string {
+    const elementInfo = HtmlHelper.getElementType(line); // Devuelve un objeto
 
     const tagName = elementInfo.element; // Extrae el nombre del elemento
 
@@ -51,19 +62,12 @@ export class HtmlIdGeneratorService {
       this.tagCounters[counterKey]
     }`;
   }
-
-  static getTagFromId(id: string) {
-    return id.split('-')[0];
-  }
-
-  static isSpaceElement(id: string) {
-    return /^space-\d+$/.test(id);
-  }
 }
 
 export function generateLinks(htmlCode: string): Link[] {
   const links: Link[] = [];
   const tagStack: string[] = [];
+  const htmlIdGenerator = new HtmlIdGeneratorService();
 
   const tags = spliteInTags(htmlCode);
 
@@ -72,11 +76,10 @@ export function generateLinks(htmlCode: string): Link[] {
       continue; // Ignorar elementos que no son etiquetas
     }
 
-    const tagId = HtmlIdGeneratorService.generateId(tag);
-    const tagName = HtmlIdGeneratorService.getTagFromId(tagId);
-    const isClosingTag =
-      HtmlIdGeneratorService.getElementType(tag).isClosingTag;
-    const isSpaceElement = HtmlIdGeneratorService.isSpaceElement(tagId);
+    const tagId = htmlIdGenerator.generateId(tag);
+    const tagName = HtmlHelper.getTagFromId(tagId);
+    const isClosingTag = HtmlHelper.getElementType(tag).isClosingTag;
+    const isSpaceElement = HtmlHelper.isSpaceElement(tagId);
 
     if (!isClosingTag && !isSpaceElement) {
       // Etiqueta de apertura (y no es espacio)
@@ -94,4 +97,49 @@ export function generateLinks(htmlCode: string): Link[] {
   }
 
   return links;
+}
+
+export function generateNodes(htmlCode: string): NodeTree[] {
+  const nodes: NodeTree[] = [];
+  const tagStack: TagType[] = [];
+  const htmlIdGenerator = new HtmlIdGeneratorService();
+
+  const tags = spliteInTags(htmlCode);
+
+  let x = 550;
+  let y = 100;
+  const xOffset = 150;
+  const yOffset = 100;
+  const elementForLevel: number[] = [];
+
+  for (const tag of tags) {
+    if (!isTag(tag)) {
+      //Falta contemplar el caso de texto
+      continue; // Ignorar elementos que no son etiquetas
+    }
+    const currentTagType: TagType = HtmlHelper.getElementType(tag);
+    const tagId = htmlIdGenerator.generateId(tag);
+    //Si es un tag de abierto, lo agrego a la pila
+    if (currentTagType.isClosingTag === false) {
+      tagStack.push(currentTagType);
+      const node = {
+        name: tagId,
+        x: 0,
+        y: y + tagStack.length * yOffset,
+        id: tagId,
+        level: tagStack.length,
+      };
+      nodes.push(node);
+    } else {
+      //Si es un tag de cerrado, verifico en la pila y el ultimo y lo saco
+      if (tagStack.at(-1)?.element === currentTagType.element) {
+        tagStack.pop();
+      }
+    }
+  }
+  for (const node of nodes) {
+    elementForLevel[node.level] = (elementForLevel[node.level] ?? 0) + 1;
+    node.x = x + xOffset * elementForLevel[node.level];
+  }
+  return nodes;
 }
