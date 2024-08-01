@@ -53,7 +53,7 @@ export class TreeComponent {
       y: 500,
     },
     {
-      id: 'p2',
+      id: 'p-2',
       name: 'p2',
       x: 800,
       y: 500,
