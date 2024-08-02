@@ -28,11 +28,7 @@ export class NodeTreeComponent {
     NodeTree[]
   >([]);
   @Input() links: WritableSignal<Link[]> = signal<Link[]>([]);
-  @Input() title: string = '';
   chartOption = computed<EChartsOption>(() => ({
-    title: {
-      text: this.title,
-    },
     tooltip: {},
     animationDurationUpdate: 1500,
     animationEasingUpdate: 'quinticInOut',

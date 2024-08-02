@@ -4,11 +4,12 @@ import { CodeComponent } from '../../../../components-atom/code/code.component';
 import { NodeTreeComponent } from '../../../../components-draw/node-tree/node-tree.component';
 import { CodeClick } from '../../../../components-atom/code/code.interface';
 import { TreeComponent } from '../../../../components/tree/tree.component';
+import { TitleComponent } from '../../../../components-atom/title/title.component';
 
 @Component({
   selector: 'app-html-to-tree',
   standalone: true,
-  imports: [CodeComponent, NodeTreeComponent, TreeComponent],
+  imports: [CodeComponent, NodeTreeComponent, TreeComponent, TitleComponent],
   templateUrl: './html-to-tree.component.html',
   styleUrl: './html-to-tree.component.css',
 })
@@ -26,15 +27,14 @@ export class HtmlToTreeComponent {
  </main> `;
   //nodesToShow = signal<string[]>([]);
   //for development only:
-  nodesToShow = signal<string[]>([
-    'main-1',
-    'article-1',
-    'section-1',
-    'h2-1',
-    'p-1',
-    'h3-1',
-    'p-2',
-  ]);
+  /*  'main-1',
+  'article-1',
+  'section-1',
+  'h2-1',
+  'p-1',
+  'h3-1',
+  'p-2',*/
+  nodesToShow = signal<string[]>([]);
   codeClickHandler(event: CodeClick) {
     if (event.action == 'Select') {
       this.addNode(event.id);
