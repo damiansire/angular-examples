@@ -23,6 +23,7 @@ import { VariablesComponent } from './signals/level-0-introduction/sub-levels/va
 import { HtmlToTreeComponent } from './signals/level-0-introduction/sub-levels/html-to-tree/html-to-tree.component';
 import { OldChangeDetectionComponent } from './signals/level-0-introduction/sub-levels/old-change-detection/old-change-detection.component';
 import { SignalsChangeDetectionComponent } from './signals/level-0-introduction/sub-levels/signals-change-detection/signals-change-detection.component';
+import { VariableRefreshAndTreeComponent } from './signals/level-0-introduction/sub-levels/variable-refresh-and-tree/variable-refresh-and-tree.component';
 
 const signalsRoutesTree: RouteItem[] = [
   {
@@ -30,9 +31,10 @@ const signalsRoutesTree: RouteItem[] = [
     component: IntroductionComponent,
     subLevels: [
       { path: '1', component: HtmlToTreeComponent },
+      { path: '2', component: VariableRefreshAndTreeComponent },
+      //{ path: '3', component: OldChangeDetectionComponent },
       /*
-      { path: '2', component: OldChangeDetectionComponent },
-      { path: '3', component: SignalsChangeDetectionComponent },
+      { path: '4', component: SignalsChangeDetectionComponent },
        */
     ],
   },
