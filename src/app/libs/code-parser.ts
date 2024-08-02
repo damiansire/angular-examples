@@ -137,9 +137,34 @@ export function generateNodes(htmlCode: string): NodeTree[] {
       }
     }
   }
+
   for (const node of nodes) {
     elementForLevel[node.level] = (elementForLevel[node.level] ?? 0) + 1;
-    node.x = x + xOffset * elementForLevel[node.level];
   }
+  const elementLevelIndex: number[] = [];
+  let canvasWidth = 565;
+  for (const node of nodes) {
+    elementLevelIndex[node.level] = (elementLevelIndex[node.level] ?? 0) + 1;
+
+    if (elementForLevel[node.level] === 1) {
+    } else if (elementForLevel[node.level] === 2) {
+      if (elementLevelIndex[node.level] === 1) {
+        node.x = -100;
+      } else {
+        node.x = 100;
+      }
+    } else if (elementForLevel[node.level] === 4) {
+      if (elementLevelIndex[node.level] === 1) {
+        node.x = -100 - 50;
+      } else if (elementLevelIndex[node.level] === 2) {
+        node.x = -100 + 50;
+      } else if (elementLevelIndex[node.level] === 3) {
+        node.x = 50;
+      } else if (elementLevelIndex[node.level] === 4) {
+        node.x = 100 + 50;
+      }
+    }
+  }
+
   return nodes;
 }

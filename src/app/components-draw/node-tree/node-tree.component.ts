@@ -39,7 +39,6 @@ export class NodeTreeComponent {
     series: [
       {
         type: 'graph',
-        layout: 'none',
         symbolSize: 60,
         roam: true,
         label: {
