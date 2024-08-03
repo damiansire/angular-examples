@@ -33,8 +33,8 @@ export class VariableRefreshAndTreeComponent {
     <button (click)="increment()"> Increment </button>
   </section>
   <section>
-    <p> Multiplo de 2: <span>Si</span></p>
-    <p> Multiplo de 3: <span>Si</span></p>
+    <p> Multiplo de 2: <span> {{ !(count % 2) ? "Si" : "No" }} </span></p>
+    <p> Multiplo de 3: <span> {{ !(count % 3) ? "Si" : "No" }} </span></p>
   </section>
 </section>  `;
   selectedHtmlCode = this.htmlCode;

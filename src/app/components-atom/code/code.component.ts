@@ -80,12 +80,6 @@ export class CodeComponent {
     return parsedCode;
   }
 
-  //PLEASE FIXS THE ALGORITM DONT USE THIS XD
-  //NAME VERY BAD FOR BREAK THE EYES
-  fixs_algotimserrorsxd(parseCode : CodeLine[]){
-    parseCode[0].
-  }
-
   onLineClick(clickedItem: CodeLine) {
     const isSelect = !clickedItem.selected;
     const updatedCodeLines = this.codeLines().map((item) =>
