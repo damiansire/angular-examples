@@ -6,9 +6,10 @@ interface TagType {
   isClosingTag: boolean;
 }
 
-export function isTag(str: string) {
-  const tagRegex = /^<\/?[a-z][\w-]*>$/i;
-  return tagRegex.test(str);
+export function isTag(str: string): boolean {
+  const tagWithAttributesRegex =
+    /^<\/?[a-z][\w-]*(\s+[a-z][\w-]*(\s*=\s*(?:".*?"|'.*?'|[^'">\s]+))?)*\s*\/?>$/i;
+  return tagWithAttributesRegex.test(str);
 }
 
 export function spliteInTags(htmlString: string) {
