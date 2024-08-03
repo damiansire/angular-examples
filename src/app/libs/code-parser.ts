@@ -13,11 +13,16 @@ export function isTag(str: string): boolean {
 }
 
 export function spliteInTags(htmlString: string) {
-  const regex = /(<\/?\w+>)/g;
+  // Expresión regular actualizada para etiquetas vacías y anidadas
+  const regex =
+    /\s*(<\/?\w+(?:\s+\w+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^'">\s]+))?)*\/?>|\s*<\/?\w+\s+\/>)\s*/g;
+  //              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^
+  //                 |                                                              |          |
+  //    Patrón para etiquetas con atributos opcionales                          Patrón para etiquetas vacías
+
   const result = htmlString.split(regex).filter(Boolean);
   return result;
 }
-
 export class HtmlHelper {
   static getTagFromId(id: string) {
     return id.split('-')[0];
