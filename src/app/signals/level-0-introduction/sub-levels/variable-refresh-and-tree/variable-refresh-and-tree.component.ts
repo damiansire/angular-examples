@@ -2,11 +2,19 @@ import { Component } from '@angular/core';
 import { TitleComponent } from '../../../../components-atom/title/title.component';
 import { CodeComponent } from '../../../../components-atom/code/code.component';
 import { TreeComponent } from '../../../../components/tree/tree.component';
+import { CountIncrementComponent } from './count-increment/count-increment.component';
+import { ButtonComponent } from '../../../../components-atom/button/button.component';
 
 @Component({
   selector: 'app-variable-refresh-and-tree',
   standalone: true,
-  imports: [TitleComponent, CodeComponent, TreeComponent],
+  imports: [
+    TitleComponent,
+    CodeComponent,
+    TreeComponent,
+    CountIncrementComponent,
+    ButtonComponent,
+  ],
   templateUrl: './variable-refresh-and-tree.component.html',
   styleUrl: './variable-refresh-and-tree.component.css',
 })
@@ -28,24 +36,24 @@ export class VariableRefreshAndTreeComponent {
   <section>
     <p>
       <span> El valor es: </span>
-      <span id="count"> {{ count }} </span>
+      <span> {{ count }} </span>
     </p>
     <button (click)="increment()"> Increment </button>
   </section>
   <section>
-    <p> Multiplo de 2: <span> {{ !(count % 2) ? "Si" : "No" }} </span></p>
-    <p> Multiplo de 3: <span> {{ !(count % 3) ? "Si" : "No" }} </span></p>
+    <p> Multiplo de 2: {{ count % 2 ? "No" : "Si" }} </p>
+    <p> Multiplo de 3: {{ count % 3 ? "No" : "Si" }} </p>
   </section>
 </section>  `;
-  selectedHtmlCode = this.htmlCode;
-  count = 0;
-  increment() {
-    this.count++;
+  sliderNumber = 0;
+  nextSlider() {
+    this.sliderNumber++;
+    this.sliderNumber = this.sliderNumber % 4;
   }
-  toggleHtmlCodeSelection() {
-    this.selectedHtmlCode =
-      this.selectedHtmlCode == this.htmlCode
-        ? this.htmlAngularCode
-        : this.htmlCode;
+  beforeSlider() {
+    this.sliderNumber--;
+    if (this.sliderNumber === -1) {
+      this.sliderNumber = 3;
+    }
   }
 }

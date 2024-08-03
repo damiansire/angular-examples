@@ -1,53 +1,55 @@
 <div class="flex text-center pb-3">
-  <button (click)="toggleHtmlCodeSelection()">Change</button>
   <div class="flex-grow">
     <app-title title="Variables and their updates on the screen"></app-title>
   </div>
+  @if(sliderNumber > 0){
+
+  <button
+    (click)="beforeSlider()"
+    class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-1 px-2 rounded"
+  >
+    Prev
+  </button>
+  } @if (sliderNumber < 3) {
+
+  <button
+    (click)="nextSlider()"
+    class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-1 px-2 rounded"
+  >
+    Next
+  </button>
+  }
 </div>
 
 <div class="grid grid-cols-2 gap-2">
+  @if(sliderNumber === 0 || sliderNumber === 2){
   <div>
-    <section>
-      <app-tree [htmlCode]="htmlCode"></app-tree>
-    </section>
-    <section
-      class="p-4 bg-gray-100 rounded-md shadow-md grid grid-cols-2 gap-4 items-center"
-    >
-      <div class="flex flex-col items-center justify-center">
-        <p class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-          <span>El valor es:</span>
-          <span class="ml-2 text-blue-500 font-bold">{{ count }}</span>
-        </p>
-      </div>
-      <div class="flex flex-col items-center justify-center">
-        <button
-          class="bg-blue-500 hover:bg-blue-600 focus:outline-none text-white font-bold py-2 px-4 rounded transition duration-300"
-          (click)="increment()"
-        >
-          Increment
-        </button>
-      </div>
-      <div
-        class="text-base text-gray-700 flex flex-col items-center justify-center"
-      >
-        <div>Multiplo de 2</div>
-        <div>
-          <span class="font-medium">{{ !(count % 2) ? "Si" : "No" }}</span>
-        </div>
-      </div>
-      <div
-        class="text-base text-gray-700 flex flex-col items-center justify-center"
-      >
-        <div>Multiplo de 3</div>
-        <div>
-          <span class="font-medium">{{ !(count % 3) ? "Si" : "No" }}</span>
-        </div>
-      </div>
-    </section>
+    <app-count-increment></app-count-increment>
+    <app-tree [htmlCode]="htmlCode"></app-tree>
   </div>
   <div>
-    <section>
-      <app-code textSize="text-base" [htmlCode]="selectedHtmlCode"></app-code>
-    </section>
+    <app-code textSize="text-base" [htmlCode]="htmlCode"></app-code>
   </div>
+  } @else if (sliderNumber === 1) {
+  <div>
+    <app-count-increment></app-count-increment>
+    <app-tree [htmlCode]="htmlCode"></app-tree>
+  </div>
+  <div>
+    <img
+      src="/assets/images/signals/simple_count_in_javascript.png"
+      class="w-full object-contain"
+    />
+  </div>
+  } @else if(sliderNumber === 3){
+  <div>
+    <app-count-increment></app-count-increment>
+    <div class="flex justify-center mt-8">
+      <img src="/assets/images/signals/simple_count_increment.png" />
+    </div>
+  </div>
+  <div>
+    <app-code textSize="text-base" [htmlCode]="htmlAngularCode"></app-code>
+  </div>
+  }
 </div>
