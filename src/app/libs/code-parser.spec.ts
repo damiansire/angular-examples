@@ -190,4 +190,15 @@ describe('spliteInTags', () => {
       'This is just plain text',
     ]);
   });
+
+  it('should split angular tags', () => {
+    const htmlString = '<button (click)="increment()"> Increment </button>';
+    const expectedResult = [
+      '<button (click)="increment()">',
+      ' Increment ',
+      '</button>',
+    ];
+
+    expect(spliteInTags(htmlString)).toEqual(expectedResult);
+  });
 });
