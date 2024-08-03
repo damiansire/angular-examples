@@ -5,8 +5,11 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './count-increment.component.html',
-  styleUrl: './count-increment.component.css'
+  styleUrl: './count-increment.component.css',
 })
 export class CountIncrementComponent {
-
+  count = 0;
+  increment() {
+    this.count++;
+  }
 }
