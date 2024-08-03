@@ -1,6 +1,11 @@
-<app-title title="Variables and their updates on the screen"></app-title>
+<div class="flex text-center pb-3">
+  <button>Change</button>
+  <div class="flex-grow">
+    <app-title title="Variables and their updates on the screen"></app-title>
+  </div>
+</div>
 
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-2 gap-2">
   <div>
     <section>
       <app-tree [htmlCode]="htmlCode"></app-tree>
