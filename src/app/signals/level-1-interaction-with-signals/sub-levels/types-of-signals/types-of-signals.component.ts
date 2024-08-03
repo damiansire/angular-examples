@@ -5,6 +5,7 @@ import { TitleComponent } from '../../../../components-atom/title/title.componen
 import { CodeComponent } from '../../../../components-atom/code/code.component';
 import { TextDescriptionComponent } from '../../../../components-atom/text-description/text-description.component';
 import { VariableBoxDrawComponent } from '../../../../components-draw/variable-box-draw/variable-box-draw.component';
+import { CodeLegazyComponent } from '../../../../components-atom/code-legazy/code-legazy.component';
 
 @Component({
   selector: 'app-types-of-signals',
@@ -15,6 +16,7 @@ import { VariableBoxDrawComponent } from '../../../../components-draw/variable-b
     CodeComponent,
     TextDescriptionComponent,
     VariableBoxDrawComponent,
+    CodeLegazyComponent,
   ],
   templateUrl: './types-of-signals.component.html',
   styleUrl: './types-of-signals.component.css',

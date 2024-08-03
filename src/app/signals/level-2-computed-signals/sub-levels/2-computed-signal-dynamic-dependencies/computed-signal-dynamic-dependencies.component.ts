@@ -7,6 +7,7 @@ import { VariableBoxComponent } from '../../../../components-atom/variable-box/v
 import { HistoryElement } from '../../../../components/component.interface';
 import { DependenciesStatusComponent } from '../../../../components/dependencies-status/dependencies-status.component';
 import { EventHistoryComponent } from '../../../../components/event-history/event-history.component';
+import { CodeLegazyComponent } from '../../../../components-atom/code-legazy/code-legazy.component';
 
 @Component({
   selector: 'app-computed-signal-dynamic-dependencies',
@@ -20,6 +21,7 @@ import { EventHistoryComponent } from '../../../../components/event-history/even
     VariableBoxComponent,
     EventHistoryComponent,
     DependenciesStatusComponent,
+    CodeLegazyComponent,
   ],
 })
 export class ComputedSignalDynamicDependenciesComponent {

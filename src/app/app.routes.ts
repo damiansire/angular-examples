@@ -32,13 +32,10 @@ const signalsRoutesTree: RouteItem[] = [
     subLevels: [
       { path: '1', component: HtmlToTreeComponent },
       { path: '2', component: VariableRefreshAndTreeComponent },
-      //{ path: '3', component: OldChangeDetectionComponent },
-      /*
+      { path: '3', component: OldChangeDetectionComponent },
       { path: '4', component: SignalsChangeDetectionComponent },
-       */
     ],
   },
-  /*
   {
     path: '1',
     component: InteractionWithSignalsComponent,
@@ -49,7 +46,7 @@ const signalsRoutesTree: RouteItem[] = [
       { path: '4', component: CreateNewSignalsComponent },
       { path: '5', component: WritableSignalsComponent },
       { path: '6', component: UpdateSignalComponent },
-       { path: '7', component: ReadOnlySignalsComponent },
+      // { path: '7', component: ReadOnlySignalsComponent },
     ],
   },
   {
@@ -67,8 +64,8 @@ const signalsRoutesTree: RouteItem[] = [
     subLevels: [
       { path: '1', component: EffectComponent },
       { path: '2', component: DestroyEffectComponent },
-      { path: '3', component: IntervalManualDestructionComponent },
-      { path: '4', component: EffectManualDestructionComponent },
+      //{ path: '3', component: IntervalManualDestructionComponent },
+      //{ path: '4', component: EffectManualDestructionComponent },
       { path: '3', component: EffectDestroyComponent },
     ],
   },
@@ -77,7 +74,6 @@ const signalsRoutesTree: RouteItem[] = [
     component: SignalEqualityFunctionsComponent,
     subLevels: [{ path: '1', component: SignalEqualityFunctionsComponent }],
   },
-  */
 ];
 
 export interface CustomRoute {

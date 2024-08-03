@@ -8,6 +8,7 @@ import { VariableBoxComponent } from '../../../../components-atom/variable-box/v
 import { VariableBoxDrawComponent } from '../../../../components-draw/variable-box-draw/variable-box-draw.component';
 import { CodeLine } from '../../../../components-atom/component-atom.interface';
 import { CodeComponent } from '../../../../components-atom/code/code.component';
+import { CodeLegazyComponent } from '../../../../components-atom/code-legazy/code-legazy.component';
 
 @Component({
   selector: 'app-what-is-signals',
@@ -21,6 +22,7 @@ import { CodeComponent } from '../../../../components-atom/code/code.component';
     VariableBoxComponent,
     VariableBoxDrawComponent,
     CodeComponent,
+    CodeLegazyComponent,
   ],
   templateUrl: './what-is-signals.component.html',
   styleUrl: './what-is-signals.component.css',

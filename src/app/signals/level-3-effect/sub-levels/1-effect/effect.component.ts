@@ -5,6 +5,7 @@ import { VariableBoxComponent } from '../../../../components-atom/variable-box/v
 import { HistoryElement } from '../../../../components/component.interface';
 import { DependenciesStatusComponent } from '../../../../components/dependencies-status/dependencies-status.component';
 import { EventHistoryComponent } from '../../../../components/event-history/event-history.component';
+import { CodeLegazyComponent } from '../../../../components-atom/code-legazy/code-legazy.component';
 
 @Component({
   selector: 'app-effect',
@@ -16,6 +17,7 @@ import { EventHistoryComponent } from '../../../../components/event-history/even
     VariableBoxComponent,
     EventHistoryComponent,
     DependenciesStatusComponent,
+    CodeLegazyComponent,
   ],
 })
 export class EffectComponent {
@@ -54,13 +56,13 @@ export class EffectComponent {
     { line: 'effect(() => {', active: false },
     {
       line: '  console.log(`The current count is: ${count()}`);',
-      active: false,
+      active: true,
     },
     { line: '});', active: false },
     { line: 'effect(() => {', active: false },
     {
       line: '  console.log(`The current count is: ${count2()}`);',
-      active: false,
+      active: true,
     },
     { line: '});', active: false },
   ]);

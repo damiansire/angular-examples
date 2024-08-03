@@ -7,6 +7,7 @@ import { CodeComponent } from '../../components-atom/code/code.component';
 import { EventHistoryComponent } from '../../components/event-history/event-history.component';
 import { HistoryElement } from '../../components/component.interface';
 import { SelectionOptionComponent } from '../../components/selection-option/selection-option.component';
+import { CodeLegazyComponent } from '../../components-atom/code-legazy/code-legazy.component';
 
 @Component({
   selector: 'app-signal-equality-functions',
@@ -20,6 +21,7 @@ import { SelectionOptionComponent } from '../../components/selection-option/sele
     CodeComponent,
     EventHistoryComponent,
     SelectionOptionComponent,
+    CodeLegazyComponent,
   ],
 })
 export class SignalEqualityFunctionsComponent {

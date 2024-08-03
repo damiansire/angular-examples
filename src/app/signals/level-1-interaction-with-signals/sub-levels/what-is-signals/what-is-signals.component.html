@@ -31,7 +31,10 @@
 } @if(clickCount > 4){
 <div class="flex justify-center">
   <div class="max-w-fit">
-    <app-code [lines]="signalWrapperLines" textSize="text-lg"></app-code>
+    <app-code-legazy
+      [lines]="signalWrapperLines"
+      textSize="text-lg"
+    ></app-code-legazy>
   </div>
 </div>
 }

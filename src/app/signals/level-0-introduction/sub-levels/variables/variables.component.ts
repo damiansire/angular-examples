@@ -3,6 +3,7 @@ import { VariableBoxDrawComponent } from '../../../../components-draw/variable-b
 import { CodeLine } from '../../../../components-atom/component-atom.interface';
 import { CodeComponent } from '../../../../components-atom/code/code.component';
 import { TitleComponent } from '../../../../components-atom/title/title.component';
+import { CodeLegazyComponent } from '../../../../components-atom/code-legazy/code-legazy.component';
 
 interface DataTypeExample {
   name: string;
@@ -12,7 +13,12 @@ interface DataTypeExample {
 @Component({
   selector: 'app-variables',
   standalone: true,
-  imports: [VariableBoxDrawComponent, CodeComponent, TitleComponent],
+  imports: [
+    VariableBoxDrawComponent,
+    CodeComponent,
+    TitleComponent,
+    CodeLegazyComponent,
+  ],
   templateUrl: './variables.component.html',
   styleUrl: './variables.component.css',
 })
