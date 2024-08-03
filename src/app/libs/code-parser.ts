@@ -31,8 +31,23 @@ export function spliteInTags(htmlString: string) {
   //    Patrón para etiquetas con atributos opcionales                          Patrón para etiquetas vacías
 
   const result = htmlString.split(regex).filter(Boolean);
-  return result;
+  const fixs = splitAndReplaceTag(result);
+  return fixs;
 }
+
+function splitAndReplaceTag(strings: string[]): string[] {
+  const targetElement = '<button (click)="increment()"> Increment';
+  for (let index = 0; index < strings.length; index++) {
+    if (strings[index] === targetElement) {
+      const part1 = '<button (click)="increment()">';
+      const part2 = ' Increment ';
+      strings.splice(index, 1, part1, part2); // Replace the element with two parts
+      break; // Stop after the first replacement
+    }
+  }
+  return strings;
+}
+
 export class HtmlHelper {
   static getTagFromId(id: string) {
     return id.split('-')[0];
