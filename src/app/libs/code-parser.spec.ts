@@ -1,88 +1,95 @@
 import { isTag } from './code-parser'; // Ajusta la ruta si es necesario
 
 describe('isTag', () => {
-  // Valid Test Cases
+  // Definición de objetos para los casos de prueba
+  const validTagCases = [
+    { tag: '<h1>', description: 'Failed for opening h1 tag' },
+    { tag: '</h1>', description: 'Failed for closing h1 tag' },
+    { tag: '<div>', description: 'Failed for opening div tag' },
+    { tag: '<span>', description: 'Failed for opening span tag' },
+    { tag: '</span>', description: 'Failed for closing span tag' },
+    { tag: '<img />', description: 'Failed for self-closing img tag' },
+    { tag: '<input>', description: 'Failed for input tag' },
+    { tag: '<my-custom-element>', description: 'Failed for custom element' },
+    {
+      tag: '<my-element-with-dash>',
+      description: 'Failed for element with dash',
+    },
+    {
+      tag: '<div >',
+      description: 'Failed for tag with space before closing bracket',
+    },
+    {
+      tag: '</div  >',
+      description: 'Failed for closing tag with extra spaces',
+    },
+  ];
+
+  const invalidTagCases = [
+    { tag: '<1h1>', description: 'Failed for tag starting with number' },
+    { tag: '< h1>', description: 'Failed for tag with leading space' },
+    { tag: '<>', description: 'Failed for empty tag' },
+    { tag: '<div', description: 'Failed for unclosed div tag' },
+    { tag: 'div>', description: 'Failed for tag without opening bracket' },
+    { tag: '</div', description: 'Failed for closing tag without opening' },
+    { tag: '<di$v>', description: 'Failed for tag with invalid characters' },
+    {
+      tag: '</di$v>',
+      description: 'Failed for closing tag with invalid characters',
+    },
+  ];
+
+  const tagsWithAttributes = [
+    {
+      tag: '<div id="myDiv">',
+      description: 'Failed for div with id attribute',
+    },
+    {
+      tag: '<img src="image.jpg" alt="Image">',
+      description: 'Failed for img with src and alt attributes',
+    },
+    {
+      tag: '<custom-element data-info="value">',
+      description: 'Failed for custom element with data attribute',
+    },
+    {
+      tag: '<button class="btn btn-primary" disabled>',
+      description:
+        'Failed for button with multiple attributes and text content',
+    },
+  ];
+
+  const caseInsensitiveTags = [
+    { tag: '<DIV>', description: 'Failed for uppercase opening DIV tag' },
+    { tag: '</DIV>', description: 'Failed for uppercase closing DIV tag' },
+  ];
+
+  // Pruebas utilizando los objetos
   it('should identify valid HTML tags', () => {
-    expect(isTag('<h1>')).withContext('Failed for opening h1 tag').toBeTrue();
-    expect(isTag('</h1>')).withContext('Failed for closing h1 tag').toBeTrue();
-    expect(isTag('<div>')).withContext('Failed for opening div tag').toBeTrue();
-    expect(isTag('<span>'))
-      .withContext('Failed for opening span tag')
-      .toBeTrue();
-    expect(isTag('</span>'))
-      .withContext('Failed for closing span tag')
-      .toBeTrue();
-    expect(isTag('<img />'))
-      .withContext('Failed for self-closing img tag')
-      .toBeTrue();
-    expect(isTag('<input>')).withContext('Failed for input tag').toBeTrue();
-    expect(isTag('<my-custom-element>'))
-      .withContext('Failed for custom element')
-      .toBeTrue();
-    expect(isTag('<my-element-with-dash>'))
-      .withContext('Failed for element with dash')
-      .toBeTrue();
-    expect(isTag('<div >'))
-      .withContext('Failed for tag with space before closing bracket')
-      .toBeTrue();
-    expect(isTag('</div  >'))
-      .withContext('Failed for closing tag with extra spaces')
-      .toBeTrue();
+    validTagCases.forEach((testCase) => {
+      expect(isTag(testCase.tag)).withContext(testCase.description).toBeTrue();
+    });
   });
 
-  // Invalid Test Cases
   it('should identify invalid HTML tags', () => {
-    expect(isTag('<1h1>'))
-      .withContext('Failed for tag starting with number')
-      .toBeFalse();
-    expect(isTag('< h1>'))
-      .withContext('Failed for tag with leading space')
-      .toBeFalse();
-    expect(isTag('<>')).withContext('Failed for empty tag').toBeFalse();
-    expect(isTag('<div'))
-      .withContext('Failed for unclosed div tag')
-      .toBeFalse();
-    expect(isTag('div>'))
-      .withContext('Failed for tag without opening bracket')
-      .toBeFalse();
-    expect(isTag('</div'))
-      .withContext('Failed for closing tag without opening')
-      .toBeFalse();
-    expect(isTag('<di$v>'))
-      .withContext('Failed for tag with invalid characters')
-      .toBeFalse();
-    expect(isTag('</di$v>'))
-      .withContext('Failed for closing tag with invalid characters')
-      .toBeFalse();
+    invalidTagCases.forEach((testCase) => {
+      expect(isTag(testCase.tag)).withContext(testCase.description).toBeFalse();
+    });
   });
 
   it('should handle tags with attributes', () => {
-    expect(isTag('<div id="myDiv">'))
-      .withContext('Failed for div with id attribute')
-      .toBeTrue();
-    expect(isTag('<img src="image.jpg" alt="Image">'))
-      .withContext('Failed for img with src and alt attributes')
-      .toBeTrue();
-    expect(isTag('<custom-element data-info="value">'))
-      .withContext('Failed for custom element with data attribute')
-      .toBeTrue();
-    expect(isTag('<button class="btn btn-primary" disabled>'))
-      .withContext(
-        'Failed for button with multiple attributes and text content'
-      )
-      .toBeTrue();
+    tagsWithAttributes.forEach((testCase) => {
+      expect(isTag(testCase.tag)).withContext(testCase.description).toBeTrue();
+    });
   });
 
   it('should be case-insensitive', () => {
-    expect(isTag('<DIV>'))
-      .withContext('Failed for uppercase opening DIV tag')
-      .toBeTrue();
-    expect(isTag('</DIV>'))
-      .withContext('Failed for uppercase closing DIV tag')
-      .toBeTrue();
+    caseInsensitiveTags.forEach((testCase) => {
+      expect(isTag(testCase.tag)).withContext(testCase.description).toBeTrue();
+    });
   });
 
-  it('should handle empty or null strings', () => {
+  it('should handle empty strings', () => {
     expect(isTag('')).withContext('Failed for empty string').toBeFalse();
   });
 });
