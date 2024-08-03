@@ -57,6 +57,10 @@ describe('isTag', () => {
       description:
         'Failed for button with multiple attributes and text content',
     },
+    {
+      tag: '<button (click)="increment()">',
+      description: 'Failed for angular example - click event with funciton',
+    },
   ];
 
   const caseInsensitiveTags = [
