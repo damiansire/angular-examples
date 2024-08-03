@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ComputedSignalsLazilyEvaluatedMemoizedComponent } from './multiples-signals-evaluated';
+import { ComputedSignalsLazilyEvaluatedMemoizedComponent } from './computed-signals-lazily-evaluated-memoized.component';
 
 describe('ComputedSignalsLazilyEvaluatedMemoizedComponent', () => {
   let component: ComputedSignalsLazilyEvaluatedMemoizedComponent;
