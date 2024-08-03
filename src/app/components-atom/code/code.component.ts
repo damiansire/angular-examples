@@ -39,7 +39,7 @@ export class CodeComponent {
   @Output() onHtmlParsed = new EventEmitter<CodeLine[]>();
 
   codeLines = signal<CodeLine[]>([]);
-
+  characterIndentSize = 12;
   constructor() {
     effect(
       () => {
@@ -53,8 +53,12 @@ export class CodeComponent {
     const htmlIdGenerator = new HtmlIdGeneratorService();
     const parsedCode = [];
     const lines = code.split('\n');
+
     for (const line of lines) {
-      const elementInLine = spliteInTags(line);
+      // Calculate indentation
+      const indent = line.search(/\S/); // Find the index of the first non-whitespace character
+
+      const elementInLine = spliteInTags(line.trim()); // Trim leading/trailing whitespace
       const codeLineElements: CodeLineElement[] = elementInLine.map((text) => {
         return {
           text,
@@ -67,9 +71,11 @@ export class CodeComponent {
         elements: codeLineElements,
         selected: false,
         id: codeLineElements.map((x) => x.id).join('$'),
+        indent: indent, // Add the indentation to the CodeLine object
       };
       parsedCode.push(newElement);
     }
+
     this.onHtmlParsed.emit(parsedCode);
     return parsedCode;
   }

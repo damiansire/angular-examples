@@ -11,4 +11,5 @@ export interface CodeLine {
   id?: string;
   // @deprecated
   active?: boolean;
+  indent?: number;
 }

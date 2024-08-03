@@ -10,6 +10,9 @@
     [class]="textSize"
     (click)="selectBy === 'Line' ? onLineClick(item) : null"
   >
+    <div
+      [style.paddingLeft.px]="(item.indent || 0) * characterIndentSize"
+    ></div>
     @for(element of item.elements; track $index){
     <div
       [ngClass]="{
