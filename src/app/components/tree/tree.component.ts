@@ -15,12 +15,14 @@ import { generateLinks, generateNodes } from '../../libs/code-parser';
 })
 export class TreeComponent {
   htmlCode = input<string>('');
-  nodesToShow = input<string[]>([]);
+  nodesToShow = input<string[] | undefined>();
   nodesData = signal<NodeTree[]>([]);
   nodes = computed(() => {
-    return this.nodesData().filter((node) =>
-      this.nodesToShow().includes(node.id)
-    );
+    const hiddenNodes = this.nodesToShow();
+    if (hiddenNodes) {
+      return this.nodesData().filter((node) => hiddenNodes.includes(node.id));
+    }
+    return this.nodesData();
   });
   links = signal<Link[]>([]);
   constructor() {
