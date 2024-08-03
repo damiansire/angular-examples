@@ -1,12 +1,31 @@
 import { Component } from '@angular/core';
+import { TitleComponent } from '../../../../components-atom/title/title.component';
+import { CodeComponent } from '../../../../components-atom/code/code.component';
+import { TreeComponent } from '../../../../components/tree/tree.component';
 
 @Component({
   selector: 'app-variable-refresh-and-tree',
   standalone: true,
-  imports: [],
+  imports: [TitleComponent, CodeComponent, TreeComponent],
   templateUrl: './variable-refresh-and-tree.component.html',
-  styleUrl: './variable-refresh-and-tree.component.css'
+  styleUrl: './variable-refresh-and-tree.component.css',
 })
 export class VariableRefreshAndTreeComponent {
-
+  htmlCode = `<section>
+  <section>
+    <p>
+      <span> El valor es: </span>
+      <span id="count"> 0 </span>
+    </p>
+    <button> Increment </button>
+  </section>
+  <section>
+    <p> Multiplo de 2: <span>Si</span></p>
+    <p> Multiplo de 3: <span>Si</span></p>
+  </section>
+</section>  `;
+  count = 0;
+  increment() {
+    this.count++;
+  }
 }
