@@ -25,10 +25,14 @@
   @if(sliderNumber === 0 || sliderNumber === 2){
   <div>
     <app-count-increment></app-count-increment>
-    <app-tree [htmlCode]="htmlCode"></app-tree>
+    <app-tree [htmlCode]="htmlCode" [nodesToShow]="nodesToShow()"></app-tree>
   </div>
   <div>
-    <app-code textSize="text-base" [htmlCode]="htmlCode"></app-code>
+    <app-code
+      textSize="text-base"
+      [htmlCode]="htmlCode"
+      (codeClick)="codeClickHandler($event)"
+    ></app-code>
   </div>
   } @else if (sliderNumber === 1) {
   <div>
