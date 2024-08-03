@@ -24,8 +24,28 @@ export class VariableRefreshAndTreeComponent {
     <p> Multiplo de 3: <span>Si</span></p>
   </section>
 </section>  `;
+  htmlAngularCode = `<section>
+  <section>
+    <p>
+      <span> El valor es: </span>
+      <span id="count"> {{ count }} </span>
+    </p>
+    <button (click)="increment()"> Increment </button>
+  </section>
+  <section>
+    <p> Multiplo de 2: <span>Si</span></p>
+    <p> Multiplo de 3: <span>Si</span></p>
+  </section>
+</section>  `;
+  selectedHtmlCode = this.htmlCode;
   count = 0;
   increment() {
     this.count++;
+  }
+  toggleHtmlCodeSelection() {
+    this.selectedHtmlCode =
+      this.selectedHtmlCode == this.htmlCode
+        ? this.htmlAngularCode
+        : this.htmlCode;
   }
 }

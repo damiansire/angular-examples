@@ -1,5 +1,5 @@
 <div class="flex text-center pb-3">
-  <button>Change</button>
+  <button (click)="toggleHtmlCodeSelection()">Change</button>
   <div class="flex-grow">
     <app-title title="Variables and their updates on the screen"></app-title>
   </div>
@@ -47,7 +47,7 @@
   </div>
   <div>
     <section>
-      <app-code textSize="text-base" [htmlCode]="htmlCode"></app-code>
+      <app-code textSize="text-base" [htmlCode]="selectedHtmlCode"></app-code>
     </section>
   </div>
 </div>
