@@ -31,7 +31,7 @@ export class TypesOfSignalsComponent {
   dataTypes = [
     { text: 'Number', example: '64' },
     { text: 'String', example: '"Damian"' },
-    { text: 'Boolean', example: 'True' },
+    { text: 'Boolean', example: 'true' },
     { text: 'Object', example: "{name : 'Damian'}" },
     { text: 'Array', example: '[ 1, 2, 3]' },
   ];
