@@ -32,7 +32,7 @@ export class VariableRefreshAndTreeComponent {
     <p> Multiplo de 2: <span>Si</span></p>
     <p> Multiplo de 3: <span>Si</span></p>
   </section>
-</section>  `;
+</section>`;
   htmlAngularCode = `<section>
   <section>
     <p>
@@ -45,7 +45,7 @@ export class VariableRefreshAndTreeComponent {
     <p> Multiplo de 2: {{ count % 2 ? "No" : "Si" }} </p>
     <p> Multiplo de 3: {{ count % 3 ? "No" : "Si" }} </p>
   </section>
-</section>  `;
+</section>`;
   nodesToShow = signal<string[]>([]);
   sliderNumber = 0;
   nextSlider() {
