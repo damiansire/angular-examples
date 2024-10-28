@@ -5,6 +5,8 @@ import { TreeComponent } from '../../../../components/tree/tree.component';
 import { CountIncrementComponent } from './count-increment/count-increment.component';
 import { ButtonComponent } from '../../../../components-atom/button/button.component';
 import { CodeClick } from '../../../../components-atom/code/code.interface';
+import { TwoColumnLayoutComponent } from '../../../../layouts/two-column-layout/two-column-layout.component';
+import { SlidersControlButtonsComponent } from '../../../../components-draw/sliders-control-buttons/sliders-control-buttons.component';
 
 @Component({
   selector: 'app-variable-refresh-and-tree',
@@ -15,6 +17,8 @@ import { CodeClick } from '../../../../components-atom/code/code.interface';
     TreeComponent,
     CountIncrementComponent,
     ButtonComponent,
+    TwoColumnLayoutComponent,
+    SlidersControlButtonsComponent,
   ],
   templateUrl: './variable-refresh-and-tree.component.html',
   styleUrl: './variable-refresh-and-tree.component.css',
@@ -48,16 +52,6 @@ export class VariableRefreshAndTreeComponent {
 </section>`;
   nodesToShow = signal<string[]>([]);
   sliderNumber = 0;
-  nextSlider() {
-    this.sliderNumber++;
-    this.sliderNumber = this.sliderNumber % 4;
-  }
-  beforeSlider() {
-    this.sliderNumber--;
-    if (this.sliderNumber === -1) {
-      this.sliderNumber = 3;
-    }
-  }
   codeClickHandler(event: CodeClick) {
     if (event.action == 'Select') {
       this.addNode(event.id);
@@ -72,5 +66,8 @@ export class VariableRefreshAndTreeComponent {
     this.nodesToShow.update((currentNodes) =>
       currentNodes.filter((node) => node !== id)
     );
+  }
+  onSliderChanged(newValue: number) {
+    this.sliderNumber = newValue;
   }
 }

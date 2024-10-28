@@ -1,45 +1,37 @@
-<div class="flex text-center pb-3">
-  <div class="flex-grow">
-    <app-title title="Variables and their updates on the screen"></app-title>
-  </div>
-  @if(sliderNumber > 0){
-
-  <button (click)="beforeSlider()" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-1 px-2 rounded">
-    Prev
-  </button>
-  } @if (sliderNumber < 2) { <button (click)="nextSlider()"
-    class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-1 px-2 rounded">
-    Next
-    </button>
-    }
-</div>
-
-<div class="grid grid-cols-2 gap-2">
-  @if(sliderNumber === 0){
-  <div>
+<app-two-column-layout title="Variables and their updates on the screen">
+  <app-sliders-control-buttons
+    menuRight
+    (sliderChanged)="onSliderChanged($event)"
+    class="content-center"
+  ></app-sliders-control-buttons>
+  <div left>
     <app-count-increment></app-count-increment>
+    @switch (sliderNumber) { @case (0) {
     <app-tree [htmlCode]="htmlCode" [nodesToShow]="nodesToShow()"></app-tree>
-  </div>
-  <div>
-    <app-code textSize="text-base" [htmlCode]="htmlCode" (codeClick)="codeClickHandler($event)"></app-code>
-  </div>
-  } @else if (sliderNumber === 1) {
-  <div>
-    <app-count-increment></app-count-increment>
+    } @case (1) {
     <app-tree [htmlCode]="htmlCode"></app-tree>
-  </div>
-  <div>
-    <img src="/assets/images/signals/simple_count_in_javascript.png" class="w-full object-contain" />
-  </div>
-  } @else if(sliderNumber === 2){
-  <div>
-    <app-count-increment></app-count-increment>
+    } @case (2) {
     <div class="flex justify-center mt-8">
       <img src="/assets/images/signals/simple_count_increment.png" />
     </div>
+    } }
   </div>
-  <div>
-    <app-code textSize="text-base" [htmlCode]="htmlAngularCode"></app-code>
+  <div right>
+    @switch (sliderNumber) { @case (0) {
+    <app-code
+      textSize="text-base"
+      [htmlCode]="htmlCode"
+      (codeClick)="codeClickHandler($event)"
+    ></app-code>
+    } @case (1) {
+    <img
+      src="/assets/images/signals/simple_count_in_javascript.png"
+      class="w-full object-contain"
+    />
+    } @case (2) {
+    <div>
+      <app-code textSize="text-base" [htmlCode]="htmlAngularCode"></app-code>
+    </div>
+    } }
   </div>
-  }
-</div>
+</app-two-column-layout>

@@ -1,19 +1,10 @@
-<div>
-  <div class="grid grid-cols-2 gap-4">
-    <div>
-      <app-title
-        title="Example of HTML tree construction"
-        textSize="text-2xl"
-      ></app-title>
-      <app-tree [nodesToShow]="nodesToShow()" [htmlCode]="htmlCode"></app-tree>
-    </div>
-    <div class="inline-block">
-      <app-code
-        textSize="text-xl"
-        (codeClick)="codeClickHandler($event)"
-        (onHtmlParsed)="onParsedCodeHandler($event)"
-        [htmlCode]="htmlCode"
-      ></app-code>
-    </div>
-  </div>
-</div>
+<app-two-column-layout title="Example of HTML tree construction">
+  <app-tree [nodesToShow]="nodesToShow()" [htmlCode]="htmlCode" left></app-tree>
+  <app-code
+    textSize="text-xl"
+    (codeClick)="codeClickHandler($event)"
+    (onHtmlParsed)="onParsedCodeHandler($event)"
+    [htmlCode]="htmlCode"
+    right
+  ></app-code>
+</app-two-column-layout>
