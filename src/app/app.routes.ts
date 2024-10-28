@@ -19,11 +19,11 @@ import { WhatIsSignalsComponent } from './signals/level-1-interaction-with-signa
 import { CreateNewSignalsComponent } from './signals/level-1-interaction-with-signals/sub-levels/create-new-signals/create-new-signals.component';
 import { TypesOfSignalsComponent } from './signals/level-1-interaction-with-signals/sub-levels/types-of-signals/types-of-signals.component';
 import { IntroductionComponent } from './signals/level-0-introduction/introduction.component';
-import { VariablesComponent } from './signals/level-0-introduction/sub-levels/variables/variables.component';
 import { HtmlToTreeComponent } from './signals/level-0-introduction/sub-levels/html-to-tree/html-to-tree.component';
 import { OldChangeDetectionComponent } from './signals/level-0-introduction/sub-levels/old-change-detection/old-change-detection.component';
 import { SignalsChangeDetectionComponent } from './signals/level-0-introduction/sub-levels/signals-change-detection/signals-change-detection.component';
 import { VariableRefreshAndTreeComponent } from './signals/level-0-introduction/sub-levels/variable-refresh-and-tree/variable-refresh-and-tree.component';
+import { VariablesComponent } from './signals/level-1-interaction-with-signals/sub-levels/variables/variables.component';
 
 const signalsRoutesTree: RouteItem[] = [
   {
